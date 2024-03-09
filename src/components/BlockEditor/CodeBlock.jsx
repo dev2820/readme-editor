@@ -28,9 +28,6 @@ export const insertCodeBlock = (editor) => ({
     }`,
       },
     };
-    // insertOrUpdateBlock(editor, {
-    //   type: 'code-block',
-    // });
     editor.insertBlocks([codeBlock], currentBlock, 'after');
   },
 });
