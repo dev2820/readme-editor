@@ -11,6 +11,7 @@ function App() {
   return (
     <>
       <main className="w-full">
+        <h1>Online Block Base Markdown Editor</h1>
         <div className="flex flex-row justify-center overflow-hidden">
           <div className="w-200 h-160 overflow-auto">
             <BlockEditor ref={editorRef} className="h-full"></BlockEditor>
