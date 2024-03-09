@@ -14,8 +14,10 @@ import '@blocknote/react/style.css';
 import { forwardRef, useEffect, useImperativeHandle } from 'react';
 
 import { cn } from '@/libs/utils';
+import { omit } from '@/utils';
 
 import { CodeBlock, insertCodeBlock } from './CodeBlock';
+import { ImageBlock, insertImageBlock } from './ImageBlock';
 import { blockTraverse } from './blockTraverse';
 import { htmlToMarkdown } from './htmlToMarkdown';
 import { markdownToHtml } from './markdownToHtml';
@@ -23,13 +25,18 @@ import { darkTheme, lightTheme } from './theme';
 
 const blockSchema = BlockNoteSchema.create({
   blockSpecs: {
-    ...defaultBlockSpecs,
+    ...omit(defaultBlockSpecs, 'image'),
     'code-block': CodeBlock,
+    'image-block': ImageBlock,
   },
 });
 
 const getCustomSlashMenuItems = (editor) => {
-  return [...getDefaultReactSlashMenuItems(editor), insertCodeBlock(editor)];
+  return [
+    ...getDefaultReactSlashMenuItems(editor),
+    insertCodeBlock(editor),
+    insertImageBlock(editor),
+  ];
 };
 
 export const _BlockEditor = (
