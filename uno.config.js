@@ -1,7 +1,7 @@
-import { defineConfig } from "vite";
 import presetWind from "@unocss/preset-wind";
 import presetAnimations from "unocss-preset-animations";
 import { presetShadcn } from "unocss-preset-shadcn";
+import { defineConfig } from "vite";
 
 import { colors } from "./theme";
 

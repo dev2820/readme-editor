@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "pnpm exec prettier . --write"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
@@ -20,6 +21,7 @@
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "@unocss/preset-wind": "^0.58.5",
@@ -28,6 +30,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "prettier": "^3.2.5",
     "unocss": "^0.58.5",
     "unocss-preset-animations": "^1.0.1",
     "unocss-preset-shadcn": "^0.2.3",
