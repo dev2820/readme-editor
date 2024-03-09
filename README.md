@@ -19,6 +19,7 @@
   - [ ] 이미지 드래그 앤 드롭 기능 추가
     - [ ] 그리드 갤러리: https://github.com/benhowell/react-grid-gallery
     - [ ] 드래그 앤 드롭 https://github.com/KarimMokhtar/react-drag-drop-files
+    - [ ] 이미지 뷰어: https://www.npmjs.com/package/react-modal-image
 - [ ] 마크다운 파일 이름 입력 input 만들기
 - [ ] 마크다운 preview 기능 만들기
 
