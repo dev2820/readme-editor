@@ -37,19 +37,16 @@ export const CodeBlock = createReactBlockSpec(
     type: 'code-block',
     propSchema: {
       ...defaultProps,
-      lang: {
-        default: 'js',
-        values: ['js'],
-      },
     },
     content: 'none',
   },
   {
     render: ({ block, contentRef }) => {
-      const { lang, code } = block.props;
+      const { lang = 'js', code = '' } = block.props;
       return (
         <CodeEditor
           className="code-editor"
+          data-lang="js"
           lang={lang}
           initCode={code}
           ref={contentRef}
@@ -61,12 +58,12 @@ export const CodeBlock = createReactBlockSpec(
       const $code = document.querySelector(
         `[data-id="${blockId}"] .code-editor`,
       );
+      const code = $code.dataset['code'];
+      const lang = $code.dataset['lang'];
 
       return (
-        <pre ref={contentRef} data-code={$code.dataset['code']}>
-          <code className={`language-${block.props.lang}`}>
-            {$code.dataset['code']}
-          </code>
+        <pre ref={contentRef}>
+          <code className={`language-${lang}`}>{code}</code>
         </pre>
       );
     },

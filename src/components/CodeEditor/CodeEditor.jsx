@@ -18,7 +18,6 @@ function _CodeEditor({ lang = 'js', initCode = '', ...props }, ref) {
     <div className={'rounded-xl'} ref={ref} data-code={code} {...props}>
       <CodeMirror
         value={initCode}
-        height="200px"
         theme={dracula}
         extensions={[extensionMap[lang]]}
         onChange={handleChangeCode}

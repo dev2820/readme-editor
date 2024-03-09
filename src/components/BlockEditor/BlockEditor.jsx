@@ -19,7 +19,7 @@ import { CodeBlock, insertCodeBlock } from './CodeBlock';
 import { blockTraverse } from './blockTraverse';
 import { htmlToMarkdown } from './htmlToMarkdown';
 import { markdownToHtml } from './markdownToHtml';
-import './style.css';
+import { darkTheme, lightTheme } from './theme';
 
 const blockSchema = BlockNoteSchema.create({
   blockSpecs: {
@@ -90,20 +90,24 @@ export const _BlockEditor = (
   }, [editor, initMarkdown, postPath]);
 
   return (
-    <BlockNoteView
-      editor={editor}
-      onChange={onChangeContent}
-      className={cn(className)}
-      slashMenu={false}
-      {...props}
-    >
-      <SuggestionMenuController
-        triggerCharacter={'/'}
-        getItems={async (query) =>
-          filterSuggestionItems(getCustomSlashMenuItems(editor), query)
-        }
-      ></SuggestionMenuController>
-    </BlockNoteView>
+    <div className={cn('bg-#f5f5f4', className)} {...props}>
+      <BlockNoteView
+        editor={editor}
+        onChange={onChangeContent}
+        slashMenu={false}
+        theme={{
+          light: lightTheme,
+          dark: darkTheme,
+        }}
+      >
+        <SuggestionMenuController
+          triggerCharacter={'/'}
+          getItems={async (query) =>
+            filterSuggestionItems(getCustomSlashMenuItems(editor), query)
+          }
+        ></SuggestionMenuController>
+      </BlockNoteView>
+    </div>
   );
 };
 export const BlockEditor = forwardRef(_BlockEditor);
