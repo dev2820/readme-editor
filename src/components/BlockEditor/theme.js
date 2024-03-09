@@ -23,8 +23,8 @@ export const lightTheme = {
       background: '#e7e5e4',
     },
     disabled: {
-      text: '#991b1b',
-      background: '#fecaca',
+      text: '#cccccc',
+      background: '#f5f5f4',
     },
     shadow: '#f3f4f6',
     border: '#d1d5db',
