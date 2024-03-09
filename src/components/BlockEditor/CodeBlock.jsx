@@ -21,12 +21,6 @@ export const insertCodeBlock = (editor) => ({
     const currentBlock = editor.getTextCursorPosition().block;
     const codeBlock = {
       type: 'code-block',
-      props: {
-        lang: 'js',
-        code: `function abc() {
-    console.log('hello world')
-    }`,
-      },
     };
     editor.insertBlocks([codeBlock], currentBlock, 'after');
   },
