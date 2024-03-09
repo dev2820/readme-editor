@@ -11,6 +11,8 @@
     "format": "pnpm exec prettier . --write"
   },
   "dependencies": {
+    "@blocknote/core": "^0.12.0",
+    "@blocknote/react": "^0.12.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@unocss/reset": "^0.58.5",
     "class-variance-authority": "^0.7.0",
