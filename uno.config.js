@@ -1,23 +1,30 @@
-import presetWind from "@unocss/preset-wind";
-import presetAnimations from "unocss-preset-animations";
-import { presetShadcn } from "unocss-preset-shadcn";
-import { defineConfig } from "vite";
+import presetWebFonts from '@unocss/preset-web-fonts';
+import presetWind from '@unocss/preset-wind';
+import presetAnimations from 'unocss-preset-animations';
+import { presetShadcn } from 'unocss-preset-shadcn';
+import { defineConfig } from 'vite';
 
-import { colors } from "./theme";
+import { colors } from './theme';
 
 export default defineConfig({
   presets: [
     presetWind(),
     presetAnimations(),
     presetShadcn({
-      color: "red",
+      color: 'red',
+    }),
+    presetWebFonts({
+      provider: 'google',
+      fonts: {
+        mono: ['Fira Code', 'Fira Mono:400,700'],
+      },
     }),
   ],
   content: {
     pipeline: {
       include: [
         /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
-        "src/**/*.{js,ts}",
+        'src/**/*.{js,ts}',
       ],
     },
   },

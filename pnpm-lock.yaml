@@ -88,6 +88,9 @@ devDependencies:
   '@types/react-dom':
     specifier: ^18.2.19
     version: 18.2.19
+  '@unocss/preset-web-fonts':
+    specifier: ^0.58.5
+    version: 0.58.5
   '@unocss/preset-wind':
     specifier: ^0.58.5
     version: 0.58.5

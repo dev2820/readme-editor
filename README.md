@@ -11,7 +11,8 @@
   - [ ] 인용 블럭 추가
   - [ ] raw code 블럭 추가
   - [ ] 테마 설정
-  - [ ] code block에 mono font 적용
+  - [ ] code block 언어 설정 기능 추가
+  - [ ] code block theme 바꾸기
 - [ ] frontmatter 추가 기능
 - [ ] 자동 저장 기능
 - [ ] 이미지 박스 기능 추가

@@ -3,11 +3,13 @@ import { dracula } from '@uiw/codemirror-theme-dracula';
 import CodeMirror from '@uiw/react-codemirror';
 import { forwardRef, useState } from 'react';
 
+import { cn } from '@/libs/utils';
+
 const extensionMap = {
   js: javascript({ jsx: true }),
 };
 
-function _CodeEditor({ lang = 'js', initCode = '', ...props }, ref) {
+function _CodeEditor({ lang = 'js', initCode = '', className, ...props }, ref) {
   const [code, setCode] = useState(initCode);
 
   function handleChangeCode(newCode) {
@@ -15,7 +17,12 @@ function _CodeEditor({ lang = 'js', initCode = '', ...props }, ref) {
   }
 
   return (
-    <div className={'rounded-xl'} ref={ref} data-code={code} {...props}>
+    <div
+      className={cn('rounded-xl [&_*]:font-mono!', className)}
+      ref={ref}
+      data-code={code}
+      {...props}
+    >
       <CodeMirror
         value={initCode}
         theme={dracula}
