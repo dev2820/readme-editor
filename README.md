@@ -7,7 +7,7 @@
 ### 에디터
 
 - [ ] body 수정 기능
-  - [ ] 이미지 블럭 추가
+  - [ ] 이미지 삭제 기능
   - [ ] 인용 블럭 추가
   - [ ] raw code 블럭 추가
   - [ ] 테마 설정
@@ -17,6 +17,8 @@
 - [ ] 자동 저장 기능
 - [ ] 이미지 박스 기능 추가
   - [ ] 이미지 드래그 앤 드롭 기능 추가
+    - [ ] 그리드 갤러리: https://github.com/benhowell/react-grid-gallery
+    - [ ] 드래그 앤 드롭 https://github.com/KarimMokhtar/react-drag-drop-files
 - [ ] 마크다운 파일 이름 입력 input 만들기
 - [ ] 마크다운 preview 기능 만들기
 
