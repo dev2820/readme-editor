@@ -47,13 +47,12 @@ export const ImageBlock = createReactBlockSpec(
       );
     },
     toExternalHTML: ({ block, contentRef }) => {
-      /**
-       * TODO: imageField만 있는 상태에서 external하는 경우를 처리해줘야함
-       */
       const blockId = block.id;
       const $block = document.querySelector(`[data-id="${blockId}"]`);
       const $image = $block.querySelector(`img`);
       const $captionInput = $block.querySelector(`input[type="text"]`);
+
+      if (!$image) return <br />;
       return (
         <figure ref={contentRef}>
           <img src={$image.src} alt={$image.getAttribute('alt')}></img>
