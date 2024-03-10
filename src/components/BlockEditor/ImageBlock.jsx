@@ -1,6 +1,7 @@
 import { defaultProps } from '@blocknote/core';
 import { createReactBlockSpec } from '@blocknote/react';
 import { forwardRef, useRef, useState } from 'react';
+import { FileUploader } from 'react-drag-drop-files';
 import * as Icon from 'react-feather';
 
 import { Button } from '@/components/ui/Button';
@@ -71,18 +72,20 @@ export const ImageBlock = createReactBlockSpec(
 );
 
 function ImageSelector({ onSelectImage }) {
-  const handleChangeFile = (e) => {
-    const file = e.target.files[0];
+  const handleChangeFile = (file) => {
     onSelectImage(file);
   };
 
   return (
-    <Input
-      type="file"
-      name="image"
-      accept="image/png, image/jpeg, image/gif"
-      onChange={handleChangeFile}
-    ></Input>
+    <div className="[&_label[for='image']]:w-full [&_label[for='image']]:max-w-full [&_label[for='image']]:h-20 [&_label[for='image']]:hover:bg-grey-200">
+      <FileUploader
+        name="image"
+        types={['jpg', 'jpeg', 'png', 'gif']}
+        label="Upload ro drop a image file right here"
+        hoverTitle="+ Drop here"
+        handleChange={handleChangeFile}
+      ></FileUploader>
+    </div>
   );
 }
 
@@ -220,7 +223,7 @@ const WidthResizable = ({ width = 200, onResize, children }) => {
         style={{ width: `${size}px` }}
       >
         {children}
-        <span className="grip absolute w-2 h-8 right-0 top-1/2 translate-y-[-1rem] bg-grey-500 rounded-full"></span>
+        <span className="grip hover:bg-grey-500 hover:cursor-pointer absolute w-2 h-8 right-0 top-1/2 translate-y-[-1rem] bg-grey-500/50 rounded-full"></span>
       </div>
     </div>
   );
