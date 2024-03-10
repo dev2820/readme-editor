@@ -54,10 +54,9 @@ export const ImageBlock = createReactBlockSpec(
       const $block = document.querySelector(`[data-id="${blockId}"]`);
       const $image = $block.querySelector(`img`);
       const $captionInput = $block.querySelector(`input[type="text"]`);
-
       return (
         <figure ref={contentRef}>
-          <img src={$image.src} alt={$captionInput.value}></img>
+          <img src={$image.src} alt={$image.getAttribute('alt')}></img>
           <figcaption>{$captionInput.value}</figcaption>
         </figure>
       );
@@ -107,6 +106,7 @@ function _ImageViewer({ src = '', blockId, caption, ...props }, ref) {
 
   let originImageWidth = useRef(0);
   const [imageUrl, setImageUrl] = useState(src);
+  const [imageName, setImageName] = useState('');
   const [imageCaption, setImageCaption] = useState(caption);
   const [imageWidth, setImageWidth] = useState(0);
 
@@ -119,9 +119,6 @@ function _ImageViewer({ src = '', blockId, caption, ...props }, ref) {
     setImageWidth(size);
   }
   async function handlePickImage(file) {
-    // console.log(url);
-    // // 이미지를 고르면 이미지에 대한 키를 생성하고 이미지를 스토어에 업로드, 이후 키로 다시 이미지를 참조해온다.
-
     const url = window.URL.createObjectURL(file);
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -137,6 +134,8 @@ function _ImageViewer({ src = '', blockId, caption, ...props }, ref) {
     };
     reader.readAsDataURL(file);
     setImageUrl(url);
+    console.log(file.name);
+    setImageName(file.name);
     addImage(blockId, file);
   }
 
@@ -155,6 +154,7 @@ function _ImageViewer({ src = '', blockId, caption, ...props }, ref) {
               className="w-full"
               data-width={imageWidth}
               src={imageUrl}
+              alt={imageName}
               data-url={imageUrl}
             />
           </WidthResizable>

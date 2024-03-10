@@ -29,24 +29,24 @@ function underline(turndownService) {
   });
 }
 
-// function figure(turndownService) {
-//   turndownService.addRule('figure', {
-//     filter: ['figure'],
-//     replacement: function (content, node) {
-//       const img = node.querySelector('img');
-//       const figcaption = node.querySelector('figcaption');
+function figure(turndownService) {
+  turndownService.addRule('figure', {
+    filter: ['figure'],
+    replacement: function (content, node) {
+      const img = node.querySelector('img');
+      const figcaption = node.querySelector('figcaption');
 
-//       if (img) {
-//         const filename = getFilenameFromUrl(img.src);
-//         const caption = figcaption ? figcaption.textContent : '';
+      if (img) {
+        const filename = img.getAttribute('alt');
+        const caption = figcaption ? figcaption.textContent : filename;
 
-//         return `![${caption}](./${filename})\n`;
-//       }
+        return `![${caption}](./${filename})\n`;
+      }
 
-//       return content;
-//     },
-//   });
-// }
+      return content;
+    },
+  });
+}
 
 const turndownService = new TurndownService({
   headingStyle: 'atx',
@@ -59,7 +59,7 @@ const turndownService = new TurndownService({
   },
 });
 
-turndownService.use([strikethrough, underline]);
+turndownService.use([strikethrough, underline, figure]);
 turndownService.addRule('image', {
   filter: ['img'],
   replacement(_, node) {
