@@ -9,12 +9,17 @@ export const DownloadPannel = ({ editorRef }) => {
 
   async function handleDownloadMarkdown() {
     const content = await editorRef.current.getMarkdown();
+    const images = Object.values(imageCollection);
+
     const zip = new JSZip();
     zip.file('index.md', content);
-    const imagesFolder = zip.folder('images');
-    Object.values(imageCollection).forEach((image) => {
-      imagesFolder.file(image.name, image);
-    });
+    if (images.length > 0) {
+      const imagesFolder = zip.folder('images');
+      images.forEach((image) => {
+        imagesFolder.file(image.name, image);
+      });
+    }
+
     zip.generateAsync({ type: 'blob' }).then((content) => {
       downloadFile(content, 'post.zip');
     });
