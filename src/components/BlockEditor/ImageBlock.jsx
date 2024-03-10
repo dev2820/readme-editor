@@ -133,7 +133,6 @@ function _ImageViewer({ src = '', blockId, caption, ...props }, ref) {
     };
     reader.readAsDataURL(file);
     setImageUrl(url);
-    console.log(file.name);
     setImageName(file.name);
     addImage(blockId, file);
   }

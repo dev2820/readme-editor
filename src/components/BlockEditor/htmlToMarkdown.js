@@ -38,9 +38,8 @@ function figure(turndownService) {
 
       if (img) {
         const filename = img.getAttribute('alt');
-        const caption = figcaption ? figcaption.textContent : filename;
-
-        return `![${caption}](./${filename})\n`;
+        const caption = figcaption?.textContent || filename;
+        return `![${caption}](./images/${filename})\n`;
       }
 
       return content;
@@ -77,6 +76,5 @@ turndownService.addRule('image', {
 });
 
 export async function htmlToMarkdown(html) {
-  console.log(html);
   return turndownService.turndown(html);
 }

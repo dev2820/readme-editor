@@ -1,21 +1,11 @@
 import { useRef } from 'react';
 
 import { BlockEditor } from './components/BlockEditor';
+import { DownloadPannel } from './components/DownloadPannel/DownloadPannel';
 import { ImageGallery } from './components/ImageGallery';
-import { Button } from './components/ui/Button';
-import { downloadFile } from './utils';
 
 function App() {
   const editorRef = useRef(null);
-
-  async function handleExtractMarkdown() {
-    const content = await editorRef.current.getMarkdown();
-    // const file = new File([content], 'index.md', {
-    //   type: 'text/plain',
-    // });
-    // downloadFile(file);
-    console.log(content);
-  }
 
   async function handleRemoveImage(id) {
     editorRef.current.removeImage(id);
@@ -25,9 +15,7 @@ function App() {
     <>
       <main className="w-full">
         <h1>Online Block Base Markdown Editor</h1>
-        <div>
-          <Button onClick={handleExtractMarkdown}>Download</Button>
-        </div>
+        <DownloadPannel editorRef={editorRef}></DownloadPannel>
         <div className="flex flex-row justify-center overflow-hidden">
           <ImageGallery
             className="w-sm"
