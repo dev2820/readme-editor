@@ -1,7 +1,21 @@
 import { create } from 'zustand';
 
 export const useStore = create((set) => ({
-  // https://docs.pmnd.rs/zustand/getting-started/introduction
-  // image collection 만들기
-  imageCollection: [],
+  imageCollection: {},
+  addImage: (id, image) =>
+    set((state) => {
+      const newImageCollection = { ...state.imageCollection, [id]: image };
+      return {
+        imageCollection: newImageCollection,
+      };
+    }),
+  removeImage: (id) =>
+    set((state) => {
+      const newImageCollection = { ...state.imageCollection };
+      delete newImageCollection[id];
+
+      return {
+        imageCollection: newImageCollection,
+      };
+    }),
 }));

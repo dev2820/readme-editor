@@ -6,6 +6,7 @@ import * as Icon from 'react-feather';
 
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
+import { useImageStore } from '@/hooks/useImageStore';
 
 export const insertImageBlock = (editor) => ({
   title: 'Image',
@@ -31,12 +32,18 @@ export const ImageBlock = createReactBlockSpec(
     content: 'none',
   },
   {
-    render: ({ contentRef }) => {
+    render: ({ block, contentRef }) => {
       const src = '';
       const caption = '';
+      const blockId = block.id;
 
       return (
-        <ImageViewer ref={contentRef} src={src} caption={caption}></ImageViewer>
+        <ImageViewer
+          ref={contentRef}
+          src={src}
+          caption={caption}
+          blockId={blockId}
+        ></ImageViewer>
       );
     },
     toExternalHTML: ({ block, contentRef }) => {
@@ -89,18 +96,19 @@ function ImageSelector({ onSelectImage }) {
   );
 }
 
-function _ImageViewer({ src = '', caption, ...props }, ref) {
+function _ImageViewer({ src = '', blockId, caption, ...props }, ref) {
   /**
    * 이미지 선택기가 이미지를 선택했다. -> 이미지를 보여준다.
    * 이미지 선택기가 이미지를 선택하지 않았다 -> 이미지 선택기를 보여준다.
    * 이미지는 원본 가로사이즈를 유지해야한다.
    * 중앙 정렬을 선택했음을 전달받고 그에 따라 이미지의 위치를 결정해야한다.
    */
+  const { addImage } = useImageStore();
+
   let originImageWidth = useRef(0);
   const [imageUrl, setImageUrl] = useState(src);
   const [imageCaption, setImageCaption] = useState(caption);
   const [imageWidth, setImageWidth] = useState(0);
-  // const { targetPath } = usePostContext();
 
   function handleCaption(evt) {
     const newCaption = evt.target.value;
@@ -108,11 +116,12 @@ function _ImageViewer({ src = '', caption, ...props }, ref) {
   }
 
   function handleResize(size) {
-    console.log(size);
     setImageWidth(size);
   }
   async function handlePickImage(file) {
-    console.log(file);
+    // console.log(url);
+    // // 이미지를 고르면 이미지에 대한 키를 생성하고 이미지를 스토어에 업로드, 이후 키로 다시 이미지를 참조해온다.
+
     const url = window.URL.createObjectURL(file);
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -127,17 +136,13 @@ function _ImageViewer({ src = '', caption, ...props }, ref) {
       img.src = e.target.result;
     };
     reader.readAsDataURL(file);
-    /**
-     * 파일을 전역 스토어에 업로드한 뒤 url을 받아와야함
-     */
     setImageUrl(url);
+    addImage(blockId, file);
   }
 
   function rollbackOriginImageSize() {
-    console.log(originImageWidth.current);
     setImageWidth(originImageWidth.current);
   }
-
   return (
     <div {...props} ref={ref}>
       {imageUrl === '' ? (

@@ -77,5 +77,6 @@ turndownService.addRule('image', {
 });
 
 export async function htmlToMarkdown(html) {
+  console.log(html);
   return turndownService.turndown(html);
 }

@@ -26,6 +26,7 @@ import { darkTheme, lightTheme } from './theme';
 const blockSchema = BlockNoteSchema.create({
   blockSpecs: {
     ...omit(defaultBlockSpecs, 'image'),
+    // ...omit(defaultBlockSpecs),
     'code-block': CodeBlock,
     'image-block': ImageBlock,
   },
@@ -46,7 +47,6 @@ export const _BlockEditor = (
   const editor = useCreateBlockNote({
     schema: blockSchema,
   });
-
   useImperativeHandle(
     ref,
     () => {
@@ -55,6 +55,9 @@ export const _BlockEditor = (
           const html = await editor.blocksToHTMLLossy(editor.document);
           const markdown = await htmlToMarkdown(html);
           return markdown;
+        },
+        async removeImage(id) {
+          editor.removeBlocks([id]);
         },
       };
     },
