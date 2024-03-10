@@ -25,6 +25,7 @@
     "lucide-react": "^0.352.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-drag-drop-files": "^2.3.10",
     "react-feather": "^2.0.10",
     "rehype-stringify": "^10.0.0",
     "remark-breaks": "^4.0.0",
