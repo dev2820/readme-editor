@@ -21,7 +21,7 @@ jobs:
         run: npm install
 
       - name: 빌드
-        run: npm run build # 빌드 스크립트에 따라 변경될 수 있음
+        run: npm run build
 
       - name: GitHub Pages에 배포
         uses: peaceiris/actions-gh-pages@v3
