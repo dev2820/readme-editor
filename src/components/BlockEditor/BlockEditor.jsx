@@ -27,6 +27,7 @@ import {
   insertHeading6Block,
 } from './HeadingBlock';
 import { ImageBlock, insertImageBlock } from './ImageBlock';
+import { QuoteBlock, insertQuoteBlock } from './QuoteBlock';
 import './blockStyle.css';
 import { blockTraverse } from './blockTraverse';
 import { htmlToMarkdown } from './htmlToMarkdown';
@@ -38,6 +39,7 @@ const blockSchema = BlockNoteSchema.create({
     // ...omit(defaultBlockSpecs, 'image'),
     ...omit(defaultBlockSpecs, 'image', 'heading'),
     'heading-block': HeadingBlock,
+    'quote-block': QuoteBlock,
     'code-block': CodeBlock,
     'image-block': ImageBlock,
   },
@@ -54,6 +56,7 @@ const getCustomSlashMenuItems = (editor) => {
     insertHeading4Block(editor),
     insertHeading5Block(editor),
     insertHeading6Block(editor),
+    insertQuoteBlock(editor),
   ];
 };
 

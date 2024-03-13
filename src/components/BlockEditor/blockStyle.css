@@ -80,3 +80,20 @@ code {
   background-color: rgba(175, 184, 193, 0.2);
   border-radius: 6px;
 }
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+blockquote {
+  margin-top: 0;
+  margin-bottom: 16px;
+  padding: 0 1rem;
+  color: rgb(101, 109, 118);
+  border-left: 0.25rem solid rgb(208, 215, 222);
+}
+[data-content-type='quote-block'] :has(.ProseMirror-trailingBreak)::before {
+  position: absolute;
+  color: rgba(0, 0, 0, 0.14);
+  content: 'Quote';
+}
