@@ -31,9 +31,9 @@ export const DownloadPannel = ({ editorRef }) => {
   };
 
   return (
-    <div>
+    <>
       <Button onClick={handleDownloadMarkdown}>Download</Button>
       <Button onClick={handleDebug}>(_debug) show markdown</Button>
-    </div>
+    </>
   );
 };
