@@ -163,7 +163,31 @@ export const HeadingBlock = createReactBlockSpec(
           level: 1,
         };
       }
-
+      if (element.tagName === 'H2') {
+        return {
+          level: 2,
+        };
+      }
+      if (element.tagName === 'H3') {
+        return {
+          level: 3,
+        };
+      }
+      if (element.tagName === 'H4') {
+        return {
+          level: 4,
+        };
+      }
+      if (element.tagName === 'H5') {
+        return {
+          level: 5,
+        };
+      }
+      if (element.tagName === 'H6') {
+        return {
+          level: 6,
+        };
+      }
       return undefined;
     },
   },
