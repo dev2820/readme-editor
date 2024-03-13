@@ -32,6 +32,7 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 - [ ] 스택 블럭 이미지 삽입 기능 구현
 - [ ] align에 대해 raw 코드를 통해 동작할 수 있게 구현
 - [ ] table 블럭 직접 구현
+- [ ] formatting toolbar 손보기
 
 ### API
 
