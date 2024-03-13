@@ -4,15 +4,15 @@ export const lightTheme = {
   colors: {
     editor: {
       text: '#222222',
-      background: '#f5f5f4',
+      background: '#ffffff',
     },
     menu: {
       text: '#222222',
-      background: '#f5f5f4',
+      background: '#ffffff',
     },
     tooltip: {
       text: '#222222',
-      background: '#f5f5f4',
+      background: '#ffffff',
     },
     hovered: {
       text: '#222222',
@@ -24,7 +24,7 @@ export const lightTheme = {
     },
     disabled: {
       text: '#cccccc',
-      background: '#f5f5f4',
+      background: '#ffffff',
     },
     shadow: '#f3f4f6',
     border: '#d1d5db',

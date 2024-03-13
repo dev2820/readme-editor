@@ -120,7 +120,10 @@ export const _BlockEditor = (
   }, [editor, initMarkdown, postPath]);
 
   return (
-    <div className={cn('bg-#f5f5f4', className)} {...props}>
+    <div
+      className={cn('bg-white border-1 border-grey-200 rounded-lg', className)}
+      {...props}
+    >
       <BlockNoteView
         editor={editor}
         onChange={onChangeContent}
