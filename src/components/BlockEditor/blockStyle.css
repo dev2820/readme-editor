@@ -1,3 +1,7 @@
+.bn-container {
+  color: rgb(31, 35, 40);
+}
+
 .heading h1,
 .heading h2,
 .heading h3,
@@ -96,4 +100,40 @@ blockquote {
   position: absolute;
   color: rgba(0, 0, 0, 0.14);
   content: 'Quote';
+}
+
+.bn-block-outer:not([data-prev-type])
+  > .bn-block
+  > .bn-block-content[data-content-type='numberedListItem']:before {
+  content: var(--index);
+  font-variant-numeric: tabular-nums;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: start;
+  text-align-last: start;
+  text-indent: 0px;
+  text-size-adjust: 100%;
+  width: 24px;
+  direction: rtl;
+}
+.bn-block-outer:not([data-prev-type])
+  > .bn-block
+  > .bn-block-content[data-content-type='numberedListItem']:after {
+  content: '.';
+  position: absolute;
+  font-variant-numeric: tabular-nums;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: start;
+  text-align-last: start;
+  left: 24px;
+}
+.bn-block-content[data-content-type='numberedListItem'] {
+  gap: 6px;
+  position: relative;
+}
+.bn-block-content[data-content-type='numberedListItem']
+  .bn-inline-content:has(> .ProseMirror-trailingBreak)::before {
+  content: 'List';
+  font-style: normal;
 }
