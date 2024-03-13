@@ -71,3 +71,12 @@
   color: rgba(0, 0, 0, 0.34);
   content: 'Heading6';
 }
+
+code {
+  padding: 0.2rem 0.4rem;
+  margin: 0;
+  font-size: 85%;
+  white-space: break-spaces;
+  background-color: rgba(175, 184, 193, 0.2);
+  border-radius: 6px;
+}
