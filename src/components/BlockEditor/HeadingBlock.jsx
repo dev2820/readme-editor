@@ -22,7 +22,7 @@ export const insertHeading1Block = (editor) => ({
         level: 1,
       },
     };
-    editor.insertBlocks([headingBlock], currentBlock, 'after');
+    editor.updateBlock(currentBlock, headingBlock);
   },
 });
 
@@ -40,7 +40,7 @@ export const insertHeading2Block = (editor) => ({
         level: 2,
       },
     };
-    editor.insertBlocks([headingBlock], currentBlock, 'after');
+    editor.updateBlock(currentBlock, headingBlock);
   },
 });
 
@@ -58,7 +58,7 @@ export const insertHeading3Block = (editor) => ({
         level: 3,
       },
     };
-    editor.insertBlocks([headingBlock], currentBlock, 'after');
+    editor.updateBlock(currentBlock, headingBlock);
   },
 });
 
@@ -76,7 +76,7 @@ export const insertHeading4Block = (editor) => ({
         level: 4,
       },
     };
-    editor.insertBlocks([headingBlock], currentBlock, 'after');
+    editor.updateBlock(currentBlock, headingBlock);
   },
 });
 
@@ -94,7 +94,7 @@ export const insertHeading5Block = (editor) => ({
         level: 5,
       },
     };
-    editor.insertBlocks([headingBlock], currentBlock, 'after');
+    editor.updateBlock(currentBlock, headingBlock);
   },
 });
 
@@ -112,7 +112,7 @@ export const insertHeading6Block = (editor) => ({
         level: 6,
       },
     };
-    editor.insertBlocks([headingBlock], currentBlock, 'after');
+    editor.updateBlock(currentBlock, headingBlock);
   },
 });
 
