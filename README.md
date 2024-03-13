@@ -24,12 +24,14 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
   - [ ] 사이즈 조절시 raw code로 파싱하게 설정
 - [ ] nesting에서 동작해야하는 것들 구현
 - [ ] br 파싱 안되는 것들 확인
+- [ ] table 블럭 파싱 확인
 
 ### Advanced
 
 - [ ] 캡션이 있으면 figure로 파싱
 - [ ] 스택 블럭 이미지 삽입 기능 구현
 - [ ] align에 대해 raw 코드를 통해 동작할 수 있게 구현
+- [ ] table 블럭 직접 구현
 
 ### API
 
