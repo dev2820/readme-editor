@@ -45,5 +45,6 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 
 ### 기타
 
+- [ ] 아이콘 어울리는거 쓰고, https://lucide.dev/guide/packages/lucide 로 교체
 - [ ] 그냥 raw html로 때려 박아도 되지 않을까?
 - [ ] 앱 하단에 SEO
