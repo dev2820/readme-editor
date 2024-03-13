@@ -1,0 +1,73 @@
+.heading h1,
+.heading h2,
+.heading h3,
+.heading h4,
+.heading h5,
+.heading h6 {
+  display: block;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.heading h1 {
+  padding-bottom: 0.3rem;
+  font-size: 2rem;
+  border-bottom: 1px solid rgb(216, 222, 228);
+}
+
+.heading h2 {
+  padding-bottom: 0.3rem;
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgb(216, 222, 228);
+}
+
+.heading h3 {
+  font-size: 1.25rem;
+}
+
+.heading h4 {
+  font-size: 1rem;
+}
+
+.heading h5 {
+  font-size: 0.875rem;
+}
+
+.heading h6 {
+  font-size: 0.85rem;
+  color: rgb(101, 109, 118);
+}
+
+[data-content-type='heading-block'] h1:has(.ProseMirror-trailingBreak)::before {
+  position: absolute;
+  color: rgba(0, 0, 0, 0.34);
+  content: 'Heading1';
+}
+
+[data-content-type='heading-block'] h2:has(.ProseMirror-trailingBreak)::before {
+  position: absolute;
+  color: rgba(0, 0, 0, 0.34);
+  content: 'Heading2';
+}
+[data-content-type='heading-block'] h3:has(.ProseMirror-trailingBreak)::before {
+  position: absolute;
+  color: rgba(0, 0, 0, 0.34);
+  content: 'Heading3';
+}
+[data-content-type='heading-block'] h4:has(.ProseMirror-trailingBreak)::before {
+  position: absolute;
+  color: rgba(0, 0, 0, 0.34);
+  content: 'Heading4';
+}
+[data-content-type='heading-block'] h5:has(.ProseMirror-trailingBreak)::before {
+  position: absolute;
+  color: rgba(0, 0, 0, 0.34);
+  content: 'Heading5';
+}
+[data-content-type='heading-block'] h6:has(.ProseMirror-trailingBreak)::before {
+  position: absolute;
+  color: rgba(0, 0, 0, 0.34);
+  content: 'Heading6';
+}

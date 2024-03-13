@@ -17,7 +17,17 @@ import { cn } from '@/libs/utils';
 import { omit } from '@/utils';
 
 import { CodeBlock, insertCodeBlock } from './CodeBlock';
+import {
+  HeadingBlock,
+  insertHeading1Block,
+  insertHeading2Block,
+  insertHeading3Block,
+  insertHeading4Block,
+  insertHeading5Block,
+  insertHeading6Block,
+} from './HeadingBlock';
 import { ImageBlock, insertImageBlock } from './ImageBlock';
+import './blockStyle.css';
 import { blockTraverse } from './blockTraverse';
 import { htmlToMarkdown } from './htmlToMarkdown';
 import { markdownToHtml } from './markdownToHtml';
@@ -25,8 +35,9 @@ import { darkTheme, lightTheme } from './theme';
 
 const blockSchema = BlockNoteSchema.create({
   blockSpecs: {
-    ...omit(defaultBlockSpecs, 'image'),
-    // ...omit(defaultBlockSpecs),
+    // ...omit(defaultBlockSpecs, 'image'),
+    ...omit(defaultBlockSpecs, 'image', 'heading'),
+    'heading-block': HeadingBlock,
     'code-block': CodeBlock,
     'image-block': ImageBlock,
   },
@@ -37,6 +48,12 @@ const getCustomSlashMenuItems = (editor) => {
     ...getDefaultReactSlashMenuItems(editor),
     insertCodeBlock(editor),
     insertImageBlock(editor),
+    insertHeading1Block(editor),
+    insertHeading2Block(editor),
+    insertHeading3Block(editor),
+    insertHeading4Block(editor),
+    insertHeading5Block(editor),
+    insertHeading6Block(editor),
   ];
 };
 
