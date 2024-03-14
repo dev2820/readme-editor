@@ -16,6 +16,13 @@ export default defineConfig({
     presetWebFonts({
       provider: 'google',
       fonts: {
+        sans: [
+          'BlinkMacSystemFont',
+          'Segoe IO',
+          'Noto Sans',
+          'Apple Color Emoji',
+          'Segoe UI Emoji',
+        ],
         mono: ['Fira Code', 'Fira Mono:400,700'],
       },
     }),

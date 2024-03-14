@@ -18,7 +18,6 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 - [ ] 기본적인 블럭 스타일 만들기
 - [ ] 코드 블럭 만들기
   - [ ] 일단은 코드미러 때고 모노스페이스 폰트만 먹여서
-- [ ] 링크 스타일 적용
 - [ ] 이미지 블럭
   - [ ] 사이즈 조절시 raw code로 파싱하게 설정
 - [ ] nesting에서 동작해야하는 것들 구현
@@ -48,3 +47,4 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 - [ ] 아이콘 어울리는거 쓰고, https://lucide.dev/guide/packages/lucide 로 교체
 - [ ] 그냥 raw html로 때려 박아도 되지 않을까?
 - [ ] 앱 하단에 SEO
+- [ ] 아이콘 Apple Color Emoji 적용(하는지 확인)
