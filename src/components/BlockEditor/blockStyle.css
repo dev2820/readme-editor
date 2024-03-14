@@ -137,3 +137,11 @@ blockquote {
   content: 'List';
   font-style: normal;
 }
+
+[data-content-type='divider-block'] hr {
+  height: 0.25rem;
+  padding: 0;
+  margin: 24px 0;
+  background-color: rgb(208, 215, 222);
+  border: 0;
+}

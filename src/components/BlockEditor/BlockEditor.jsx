@@ -17,6 +17,7 @@ import { cn } from '@/libs/utils';
 import { omit } from '@/utils';
 
 import { CodeBlock, insertCodeBlock } from './CodeBlock';
+import { DividerBlock, insertDividerBlock } from './DividerBlock';
 import {
   HeadingBlock,
   insertHeading1Block,
@@ -42,6 +43,7 @@ const blockSchema = BlockNoteSchema.create({
     'quote-block': QuoteBlock,
     'code-block': CodeBlock,
     'image-block': ImageBlock,
+    'divider-block': DividerBlock,
   },
 });
 
@@ -57,6 +59,7 @@ const getCustomSlashMenuItems = (editor) => {
     insertHeading5Block(editor),
     insertHeading6Block(editor),
     insertQuoteBlock(editor),
+    insertDividerBlock(editor),
   ];
 };
 
