@@ -20,7 +20,7 @@ export const insertQuoteBlock = (editor) => ({
       type: 'quote-block',
       props: {},
     };
-    editor.insertBlocks([quoteBlock], currentBlock, 'after');
+    editor.updateBlock(currentBlock, quoteBlock);
   },
 });
 
