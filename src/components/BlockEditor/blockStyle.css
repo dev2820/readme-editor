@@ -156,3 +156,38 @@ blockquote {
   color: rgb(9, 105, 218);
   text-decoration-color: rgb(9, 105, 218);
 }
+
+.bn-block-content[data-content-type='bulletListItem'] {
+  position: relative;
+  gap: 0.5rem;
+  left: 16px;
+}
+.bn-block-outer:not([data-prev-type])
+  > .bn-block
+  > .bn-block-content[data-content-type='bulletListItem']:before {
+  content: '●';
+  margin-top: 8px;
+  font-size: 8px;
+}
+
+[data-content-type='bulletListItem']
+  ~ .bn-block-group
+  > .bn-block-outer:not([data-prev-type])
+  > .bn-block
+  > .bn-block-content[data-content-type='bulletListItem']:before {
+  content: '○';
+  font-size: 8px;
+  margin-top: 8px;
+}
+
+[data-content-type='bulletListItem']
+  ~ .bn-block-group
+  [data-content-type='bulletListItem']
+  ~ .bn-block-group
+  > .bn-block-outer:not([data-prev-type])
+  > .bn-block
+  > .bn-block-content[data-content-type='bulletListItem']:before {
+  content: '■';
+  font-size: 8px;
+  margin-top: 8px;
+}
