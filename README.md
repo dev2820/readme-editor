@@ -39,6 +39,7 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
   - [ ] 아이콘 어울리는거 쓰고, https://lucide.dev/guide/packages/lucide 로 교체
 - [ ] color text 메뉴 불가능하게 제거하기
 - [ ] unocss theme 설정 (font size...)
+- [ ] 이미지 확대해보기 기능
 
 ### API
 

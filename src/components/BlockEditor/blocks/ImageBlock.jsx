@@ -4,7 +4,6 @@ import { FileUploader } from 'react-drag-drop-files';
 import * as Icon from 'react-feather';
 
 import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
 import { useImageStore } from '@/hooks/useImageStore';
 
 export const insertImageBlock = (editor) => ({
@@ -15,10 +14,10 @@ export const insertImageBlock = (editor) => ({
   icon: <Icon.Image size={18} />,
   onItemClick: () => {
     const currentBlock = editor.getTextCursorPosition().block;
-    const imgBlock = {
+    const block = {
       type: 'image-block',
     };
-    editor.insertBlocks([imgBlock], currentBlock, 'after');
+    editor.updateBlock(currentBlock, block);
   },
 });
 
@@ -30,13 +29,18 @@ export const ImageBlock = createReactBlockSpec(
         default: 'left',
         values: ['left', 'center', 'right'],
       },
+      caption: {
+        default: '',
+      },
+      src: {
+        default: '',
+      },
     },
     content: 'none',
   },
   {
     render: ({ block, contentRef }) => {
-      const src = '';
-      const caption = '';
+      const { caption, align, src } = block.props;
       const blockId = block.id;
 
       return (
@@ -44,6 +48,7 @@ export const ImageBlock = createReactBlockSpec(
           ref={contentRef}
           src={src}
           caption={caption}
+          align={align}
           blockId={blockId}
         ></ImageViewer>
       );
@@ -77,24 +82,6 @@ export const ImageBlock = createReactBlockSpec(
     },
   },
 );
-
-function ImageSelector({ onSelectImage }) {
-  const handleChangeFile = (file) => {
-    onSelectImage(file);
-  };
-
-  return (
-    <div className="[&_label[for='image']]:w-full [&_label[for='image']]:max-w-full [&_label[for='image']]:h-20 [&_label[for='image']]:hover:bg-grey-200">
-      <FileUploader
-        name="image"
-        types={['jpg', 'jpeg', 'png', 'gif']}
-        label="Upload or drop a image file right here"
-        hoverTitle="+ Drop here"
-        handleChange={handleChangeFile}
-      ></FileUploader>
-    </div>
-  );
-}
 
 function _ImageViewer({ src = '', blockId, caption, ...props }, ref) {
   /**
@@ -159,13 +146,13 @@ function _ImageViewer({ src = '', blockId, caption, ...props }, ref) {
             />
           </WidthResizable>
           <figcaption>
-            <Input
+            <input
               type="text"
               value={imageCaption ?? ''}
               placeholder="add caption"
-              className="border-0"
+              className="border-0 outline-none color-grey-400"
               onChange={handleCaption}
-            ></Input>
+            ></input>
           </figcaption>
         </figure>
       )}
@@ -174,6 +161,24 @@ function _ImageViewer({ src = '', blockId, caption, ...props }, ref) {
 }
 
 const ImageViewer = forwardRef(_ImageViewer);
+
+function ImageSelector({ onSelectImage }) {
+  const handleChangeFile = (file) => {
+    onSelectImage(file);
+  };
+
+  return (
+    <div className="[&_label[for='image']]:w-full [&_label[for='image']]:max-w-full [&_label[for='image']]:h-20 [&_label[for='image']]:hover:bg-grey-200">
+      <FileUploader
+        name="image"
+        types={['jpg', 'jpeg', 'png', 'gif']}
+        label="Upload or drop a image file right here"
+        hoverTitle="+ Drop here"
+        handleChange={handleChangeFile}
+      ></FileUploader>
+    </div>
+  );
+}
 
 const WidthResizable = ({ width = 200, onResize, children }) => {
   const elRef = useRef(null);
