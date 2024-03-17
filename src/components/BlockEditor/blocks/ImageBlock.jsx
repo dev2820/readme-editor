@@ -1,4 +1,3 @@
-import { defaultProps } from '@blocknote/core';
 import { createReactBlockSpec } from '@blocknote/react';
 import { forwardRef, useRef, useState } from 'react';
 import { FileUploader } from 'react-drag-drop-files';
@@ -27,7 +26,10 @@ export const ImageBlock = createReactBlockSpec(
   {
     type: 'image-block',
     propSchema: {
-      ...defaultProps,
+      align: {
+        default: 'left',
+        values: ['left', 'center', 'right'],
+      },
     },
     content: 'none',
   },
@@ -86,7 +88,7 @@ function ImageSelector({ onSelectImage }) {
       <FileUploader
         name="image"
         types={['jpg', 'jpeg', 'png', 'gif']}
-        label="Upload ro drop a image file right here"
+        label="Upload or drop a image file right here"
         hoverTitle="+ Drop here"
         handleChange={handleChangeFile}
       ></FileUploader>
