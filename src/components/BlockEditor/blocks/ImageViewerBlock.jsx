@@ -1,38 +1,23 @@
 import { createReactBlockSpec } from '@blocknote/react';
 import { forwardRef, useRef, useState } from 'react';
-import { FileUploader } from 'react-drag-drop-files';
-import * as Icon from 'react-feather';
 
 import { Button } from '@/components/ui/Button';
-import { setImage } from '@/utils/storage';
 
-export const insertImageBlock = (editor) => ({
-  title: 'Image',
-  subtext: 'Used to insert a image block',
-  aliases: ['image', 'img'],
-  group: 'Media',
-  icon: <Icon.Image size={18} />,
-  onItemClick: () => {
-    const currentBlock = editor.getTextCursorPosition().block;
-    const block = {
-      type: 'image-block',
-    };
-    editor.updateBlock(currentBlock, block);
-  },
-});
-
-export const ImageBlock = createReactBlockSpec(
+export const ImageViewerBlock = createReactBlockSpec(
   {
-    type: 'image-block',
+    type: 'image-viewer-block',
     propSchema: {
       align: {
         default: 'left',
         values: ['left', 'center', 'right'],
       },
-      caption: {
+      src: {
         default: '',
       },
-      src: {
+      width: {
+        default: 0,
+      },
+      alt: {
         default: '',
       },
     },
@@ -40,42 +25,46 @@ export const ImageBlock = createReactBlockSpec(
   },
   {
     render: ({ block, contentRef }) => {
-      const { caption, align, src } = block.props;
-      const blockId = block.id;
+      const { src, align, width, alt } = block.props;
 
       return (
         <ImageViewer
           ref={contentRef}
           src={src}
-          caption={caption}
+          width={width}
           align={align}
-          blockId={blockId}
+          alt={alt}
         ></ImageViewer>
       );
     },
     toExternalHTML: ({ block, contentRef }) => {
       const blockId = block.id;
+      const { src, alt, align } = block.props;
+      console.log(block.props);
       const $block = document.querySelector(`[data-id="${blockId}"]`);
       const $image = $block.querySelector(`img`);
       const $captionInput = $block.querySelector(`input[type="text"]`);
 
       if (!$image) return <br />;
-      return (
-        <figure ref={contentRef}>
-          <img src={$image.src} alt={$image.getAttribute('alt')}></img>
-          <figcaption>{$captionInput.value}</figcaption>
-        </figure>
-      );
+
+      if ($captionInput.value) {
+        return (
+          <figure ref={contentRef}>
+            <img src={src} alt={alt} align={align}></img>
+            <figcaption>{$captionInput.value}</figcaption>
+          </figure>
+        );
+      }
+
+      return <img src={src} alt={alt} align={align}></img>;
     },
     parse: (element) => {
+      /**
+       * TODO: image 파싱 구현
+       */
       if (element.tagName === 'FIGURE') {
         const caption = element.querySelector('figcaption').textContent ?? '';
         const src = element.querySelector('img').getAttribute('src') ?? '';
-
-        return {
-          caption,
-          src,
-        };
       }
 
       return undefined;
@@ -83,19 +72,16 @@ export const ImageBlock = createReactBlockSpec(
   },
 );
 
-function _ImageViewer({ src = '', blockId, caption, ...props }, ref) {
+function _ImageViewer({ alt, width, src, align, ...props }, ref) {
   /**
    * 이미지 선택기가 이미지를 선택했다. -> 이미지를 보여준다.
    * 이미지 선택기가 이미지를 선택하지 않았다 -> 이미지 선택기를 보여준다.
    * 이미지는 원본 가로사이즈를 유지해야한다.
    * 중앙 정렬을 선택했음을 전달받고 그에 따라 이미지의 위치를 결정해야한다.
    */
-
-  let originImageWidth = useRef(0);
-  const [imageUrl, setImageUrl] = useState(src);
-  const [imageName, setImageName] = useState('');
-  const [imageCaption, setImageCaption] = useState(caption);
-  const [imageWidth, setImageWidth] = useState(0);
+  const originImageWidth = useRef(width);
+  const [imageCaption, setImageCaption] = useState('');
+  const [imageWidth, setImageWidth] = useState(width);
 
   function handleCaption(evt) {
     const newCaption = evt.target.value;
@@ -105,79 +91,37 @@ function _ImageViewer({ src = '', blockId, caption, ...props }, ref) {
   function handleResize(size) {
     setImageWidth(size);
   }
-  async function handlePickImage(file) {
-    const url = window.URL.createObjectURL(file);
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const img = new Image();
-      img.onload = () => {
-        /**
-         * TODO: image 사이즈가 최대 editor를 벗어나지 않도록
-         */
-        setImageWidth(img.width);
-        originImageWidth.current = img.width;
-      };
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-    setImageUrl(url);
-    setImageName(file.name);
-    setImage(blockId, file);
-  }
 
   function rollbackOriginImageSize() {
     setImageWidth(originImageWidth.current);
   }
+
   return (
-    <div {...props} ref={ref}>
-      {imageUrl === '' ? (
-        <ImageSelector onSelectImage={handlePickImage}></ImageSelector>
-      ) : (
-        <figure>
-          <Button onClick={rollbackOriginImageSize}>To original size</Button>
-          <WidthResizable width={imageWidth} onResize={handleResize}>
-            <img
-              className="w-full"
-              data-width={imageWidth}
-              src={imageUrl}
-              alt={imageName}
-              data-url={imageUrl}
-            />
-          </WidthResizable>
-          <figcaption>
-            <input
-              type="text"
-              value={imageCaption ?? ''}
-              placeholder="add caption"
-              className="border-0 outline-none color-grey-400"
-              onChange={handleCaption}
-            ></input>
-          </figcaption>
-        </figure>
-      )}
-    </div>
+    <figure {...props} ref={ref}>
+      <Button onClick={rollbackOriginImageSize}>To original size</Button>
+      <WidthResizable width={imageWidth} onResize={handleResize}>
+        <img
+          className="w-full"
+          data-width={imageWidth}
+          src={src}
+          alt={alt}
+          align={align}
+        />
+      </WidthResizable>
+      <figcaption>
+        <input
+          type="text"
+          value={imageCaption ?? ''}
+          placeholder="add caption"
+          className="border-0 outline-none color-grey-400"
+          onChange={handleCaption}
+        ></input>
+      </figcaption>
+    </figure>
   );
 }
 
 const ImageViewer = forwardRef(_ImageViewer);
-
-function ImageSelector({ onSelectImage }) {
-  const handleChangeFile = (file) => {
-    onSelectImage(file);
-  };
-
-  return (
-    <div className="[&_label[for='image']]:w-full [&_label[for='image']]:max-w-full [&_label[for='image']]:h-20 [&_label[for='image']]:hover:bg-grey-200">
-      <FileUploader
-        name="image"
-        types={['jpg', 'jpeg', 'png', 'gif']}
-        label="Upload or drop a image file right here"
-        hoverTitle="+ Drop here"
-        handleChange={handleChangeFile}
-      ></FileUploader>
-    </div>
-  );
-}
 
 const WidthResizable = ({ width = 200, onResize, children }) => {
   const elRef = useRef(null);

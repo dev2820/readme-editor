@@ -1,13 +1,13 @@
 const imageStorage = {};
 
-export const getImage = (key) => {
+export const fetchImage = (key) => {
   return imageStorage[key];
 };
 
-export const setImage = (key, file) => {
+export const uploadImage = (key, file) => {
   imageStorage[key] = file;
 };
 
-export const getAllImages = () => {
+export const fetchAllImage = () => {
   return Object.values(imageStorage);
 };

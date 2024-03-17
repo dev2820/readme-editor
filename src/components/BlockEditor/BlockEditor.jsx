@@ -21,7 +21,7 @@ import {
   insertHeading4Block,
   insertHeading5Block,
   insertHeading6Block,
-  insertImageBlock,
+  insertImageSeletorBlock,
   insertQuoteBlock,
 } from './blocks';
 import { darkTheme, lightTheme } from './theme';
@@ -30,7 +30,7 @@ const getCustomSlashMenuItems = (editor) => {
   return [
     ...getDefaultReactSlashMenuItems(editor),
     insertCodeBlock(editor),
-    insertImageBlock(editor),
+    insertImageSeletorBlock(editor),
     insertHeading1Block(editor),
     insertHeading2Block(editor),
     insertHeading3Block(editor),

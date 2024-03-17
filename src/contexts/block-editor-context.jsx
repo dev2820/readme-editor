@@ -8,7 +8,8 @@ import {
   CodeBlock,
   DividerBlock,
   HeadingBlock,
-  ImageBlock,
+  ImageSelectorBlock,
+  ImageViewerBlock,
   QuoteBlock,
 } from '@/components/BlockEditor/blocks';
 import { omit } from '@/utils';
@@ -29,7 +30,8 @@ const blockSchema = BlockNoteSchema.create({
     'heading-block': HeadingBlock,
     'quote-block': QuoteBlock,
     'code-block': CodeBlock,
-    'image-block': ImageBlock,
+    'image-viewer-block': ImageViewerBlock,
+    'image-selector-block': ImageSelectorBlock,
     'divider-block': DividerBlock,
   },
 });
@@ -68,7 +70,7 @@ const initialContent = [
     },
   },
   {
-    type: 'image-block',
+    type: 'image-selector-block',
   },
   {
     type: 'heading-block',
