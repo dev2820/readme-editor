@@ -21,6 +21,9 @@ export const ImageViewerBlock = createReactBlockSpec(
       width: {
         default: 0,
       },
+      originWidth: {
+        default: 0,
+      },
       name: {
         default: '',
       },
@@ -28,16 +31,33 @@ export const ImageViewerBlock = createReactBlockSpec(
     content: 'none',
   },
   {
-    render: ({ block, contentRef }) => {
-      const { src, align, width, name } = block.props;
+    render: ({ block, contentRef, editor }) => {
+      const { src, align, width, originWidth, name } = block.props;
+
+      const handleChangeWidth = (newWidth) => {
+        const currentBlock = editor.getTextCursorPosition().block;
+        const block = {
+          type: 'image-viewer-block',
+          props: {
+            src,
+            align,
+            width: newWidth,
+            originWidth,
+            name,
+          },
+        };
+        editor.updateBlock(currentBlock, block);
+      };
 
       return (
         <ImageViewer
           ref={contentRef}
           src={src}
           width={width}
+          originWidth={originWidth}
           align={align}
           alt={name}
+          onChangeWidth={handleChangeWidth}
         ></ImageViewer>
       );
     },
@@ -76,10 +96,11 @@ export const ImageViewerBlock = createReactBlockSpec(
   },
 );
 
-function _ImageViewer({ alt, width, src, ...props }, ref) {
-  const originImageWidth = useRef(width);
+function _ImageViewer(
+  { alt, width, originWidth, src, onChangeWidth, ...props },
+  ref,
+) {
   const [imageCaption, setImageCaption] = useState('');
-  const [imageWidth, setImageWidth] = useState(width);
 
   function handleCaption(evt) {
     const newCaption = evt.target.value;
@@ -87,24 +108,18 @@ function _ImageViewer({ alt, width, src, ...props }, ref) {
   }
 
   function handleResize(size) {
-    setImageWidth(size);
+    onChangeWidth(size);
   }
 
   function rollbackOriginImageSize() {
-    setImageWidth(originImageWidth.current);
+    onChangeWidth(originWidth);
   }
 
   return (
     <figure {...props} ref={ref}>
       <Button onClick={rollbackOriginImageSize}>To original size</Button>
-      <WidthResizable width={imageWidth} onResize={handleResize}>
-        <img
-          className="w-full"
-          data-width={imageWidth}
-          src={src}
-          alt={alt}
-          width={imageWidth}
-        />
+      <WidthResizable width={width} onResize={handleResize}>
+        <img className="w-full" src={src} alt={alt} width={width} />
       </WidthResizable>
       <figcaption>
         <input
