@@ -2,9 +2,8 @@ import { defaultProps } from '@blocknote/core';
 import { createReactBlockSpec } from '@blocknote/react';
 import * as Icon from 'react-feather';
 
+import { CodeEditor } from '@/components/CodeEditor';
 import { isNil } from '@/utils/type';
-
-import { CodeEditor } from '../CodeEditor';
 
 /**
  * TODO: 블럭을 움직이면 코드가 초기화되는 버그가 있음

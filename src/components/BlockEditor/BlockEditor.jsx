@@ -16,21 +16,25 @@ import { forwardRef, useEffect, useImperativeHandle } from 'react';
 import { cn } from '@/libs/utils';
 import { omit } from '@/utils';
 
-import { CodeBlock, insertCodeBlock } from './CodeBlock';
-import { DividerBlock, insertDividerBlock } from './DividerBlock';
+import './blockStyle.css';
+import { blockTraverse } from './blockTraverse';
 import {
+  CodeBlock,
+  DividerBlock,
   HeadingBlock,
+  ImageBlock,
+  QuoteBlock,
+  insertCodeBlock,
+  insertDividerBlock,
   insertHeading1Block,
   insertHeading2Block,
   insertHeading3Block,
   insertHeading4Block,
   insertHeading5Block,
   insertHeading6Block,
-} from './HeadingBlock';
-import { ImageBlock, insertImageBlock } from './ImageBlock';
-import { QuoteBlock, insertQuoteBlock } from './QuoteBlock';
-import './blockStyle.css';
-import { blockTraverse } from './blockTraverse';
+  insertImageBlock,
+  insertQuoteBlock,
+} from './blocks';
 import { htmlToMarkdown } from './htmlToMarkdown';
 import { markdownToHtml } from './markdownToHtml';
 import { darkTheme, lightTheme } from './theme';
