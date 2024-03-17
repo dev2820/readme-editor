@@ -17,7 +17,6 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 
 - [ ] 기본적인 블럭 스타일 만들기
 - [ ] 코드 블럭 만들기
-  - [ ] 모노스페이스 폰트 먹이기
   - [ ] prism 먹이기
   - [ ] 더 많은 언어 extension 설치
   - [ ] 코드 옮기기 버그 해결
@@ -52,4 +51,4 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 ### 기타
 
 - [ ] 그냥 raw html로 때려 박아도 되지 않을까?
-- [ ] 아이콘 Apple Color Emoji 적용(하는지 확인)
+- [ ] 이모지 입력: 아이콘 Apple Color Emoji 적용(하는지 확인)
