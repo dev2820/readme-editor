@@ -18,10 +18,10 @@ export const insertCodeBlock = (editor) => ({
   icon: <Icon.Code size={18} />,
   onItemClick: () => {
     const currentBlock = editor.getTextCursorPosition().block;
-    const codeBlock = {
+    const block = {
       type: 'code-block',
     };
-    editor.insertBlocks([codeBlock], currentBlock, 'after');
+    editor.updateBlock(currentBlock, block);
   },
 });
 
@@ -36,6 +36,7 @@ export const CodeBlock = createReactBlockSpec(
   {
     render: ({ block, contentRef }) => {
       const { lang = 'js', code = '' } = block.props;
+
       return (
         <CodeEditor
           className="code-editor"
