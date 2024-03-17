@@ -1,5 +1,5 @@
 import { createReactBlockSpec } from '@blocknote/react';
-import { forwardRef, useRef, useState } from 'react';
+import { forwardRef, useRef } from 'react';
 
 import { Button } from '@/components/ui/Button';
 
@@ -27,13 +27,15 @@ export const ImageViewerBlock = createReactBlockSpec(
       name: {
         default: '',
       },
+      caption: {
+        default: '',
+      },
     },
     content: 'none',
   },
   {
     render: ({ block, contentRef, editor }) => {
-      const { src, align, width, originWidth, name } = block.props;
-
+      const { src, align, width, originWidth, caption, name } = block.props;
       const handleChangeWidth = (newWidth) => {
         const currentBlock = editor.getTextCursorPosition().block;
         const block = {
@@ -44,6 +46,23 @@ export const ImageViewerBlock = createReactBlockSpec(
             width: newWidth,
             originWidth,
             name,
+            caption,
+          },
+        };
+        editor.updateBlock(currentBlock, block);
+      };
+
+      const handleChangeCaption = (newCaption) => {
+        const currentBlock = editor.getTextCursorPosition().block;
+        const block = {
+          type: 'image-viewer-block',
+          props: {
+            src,
+            align,
+            width,
+            originWidth,
+            name,
+            caption: newCaption,
           },
         };
         editor.updateBlock(currentBlock, block);
@@ -57,7 +76,9 @@ export const ImageViewerBlock = createReactBlockSpec(
           originWidth={originWidth}
           align={align}
           alt={name}
+          caption={caption}
           onChangeWidth={handleChangeWidth}
+          onChangeCaption={handleChangeCaption}
         ></ImageViewer>
       );
     },
@@ -97,16 +118,22 @@ export const ImageViewerBlock = createReactBlockSpec(
 );
 
 function _ImageViewer(
-  { alt, width, originWidth, src, onChangeWidth, ...props },
+  {
+    alt,
+    width,
+    originWidth,
+    src,
+    caption,
+    onChangeWidth,
+    onChangeCaption,
+    ...props
+  },
   ref,
 ) {
-  const [imageCaption, setImageCaption] = useState('');
-
   function handleCaption(evt) {
     const newCaption = evt.target.value;
-    setImageCaption(newCaption);
+    onChangeCaption(newCaption);
   }
-
   function handleResize(size) {
     onChangeWidth(size);
   }
@@ -124,7 +151,7 @@ function _ImageViewer(
       <figcaption>
         <input
           type="text"
-          value={imageCaption ?? ''}
+          value={caption}
           placeholder="add caption"
           className="border-0 outline-none color-grey-400"
           onChange={handleCaption}
