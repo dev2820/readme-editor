@@ -3,6 +3,10 @@ import { forwardRef, useRef, useState } from 'react';
 
 import { Button } from '@/components/ui/Button';
 
+/**
+ * TODO: 중앙 정렬, 파싱
+ */
+
 export const ImageViewerBlock = createReactBlockSpec(
   {
     type: 'image-viewer-block',
@@ -50,13 +54,13 @@ export const ImageViewerBlock = createReactBlockSpec(
       if ($captionInput.value) {
         return (
           <figure ref={contentRef}>
-            <img src={src} alt={alt} align={align}></img>
+            <img src={src} alt={alt} align={align} width={$image.width}></img>
             <figcaption>{$captionInput.value}</figcaption>
           </figure>
         );
       }
 
-      return <img src={src} alt={alt} align={align}></img>;
+      return <img src={src} alt={alt} align={align} width={$image.width}></img>;
     },
     parse: (element) => {
       /**
@@ -72,13 +76,7 @@ export const ImageViewerBlock = createReactBlockSpec(
   },
 );
 
-function _ImageViewer({ alt, width, src, align, ...props }, ref) {
-  /**
-   * 이미지 선택기가 이미지를 선택했다. -> 이미지를 보여준다.
-   * 이미지 선택기가 이미지를 선택하지 않았다 -> 이미지 선택기를 보여준다.
-   * 이미지는 원본 가로사이즈를 유지해야한다.
-   * 중앙 정렬을 선택했음을 전달받고 그에 따라 이미지의 위치를 결정해야한다.
-   */
+function _ImageViewer({ alt, width, src, ...props }, ref) {
   const originImageWidth = useRef(width);
   const [imageCaption, setImageCaption] = useState('');
   const [imageWidth, setImageWidth] = useState(width);
@@ -105,7 +103,7 @@ function _ImageViewer({ alt, width, src, align, ...props }, ref) {
           data-width={imageWidth}
           src={src}
           alt={alt}
-          align={align}
+          width={imageWidth}
         />
       </WidthResizable>
       <figcaption>
