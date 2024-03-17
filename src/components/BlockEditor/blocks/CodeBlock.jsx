@@ -1,7 +1,9 @@
 import { createReactBlockSpec } from '@blocknote/react';
+import Prism from 'prismjs';
 import { forwardRef } from 'react';
 import * as Icon from 'react-feather';
 
+import '@/assets/prism.css';
 import { CodeEditorModal } from '@/components/modal/CodeEditorModal';
 import { Button } from '@/components/ui/Button';
 import { useDialog } from '@/hooks/use-dialog';
@@ -113,6 +115,11 @@ const Code = forwardRef(
       openCodeEditor();
     };
 
+    const codeHtml = Prism.highlight(
+      code,
+      Prism.languages.javascript,
+      'javascript',
+    );
     return (
       <div className={cn('relative', className)} {...props} ref={ref}>
         <div className="absolute right-1 top-1 flex">
@@ -125,7 +132,10 @@ const Code = forwardRef(
           </Button>
         </div>
         <pre>
-          <code className={`language-${lang}`}>{code}</code>
+          <code
+            className={`language-${lang}`}
+            dangerouslySetInnerHTML={{ __html: codeHtml }}
+          ></code>
         </pre>
       </div>
     );

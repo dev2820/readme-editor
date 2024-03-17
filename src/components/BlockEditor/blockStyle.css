@@ -236,7 +236,7 @@
   background: transparent;
   font-size: 100%;
 }
-.bn-container [data-content-type='code-block'] code {
+.bn-container [data-content-type='code-block'] code * {
   font-family: 'ui-monospace', SFMono-Regular, 'SF Mono', Menlo, Consolas,
     'Liberation Mono', monospace;
 }

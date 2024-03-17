@@ -27,6 +27,7 @@
     "jszip": "^3.10.1",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.352.0",
+    "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-drag-drop-files": "^2.3.10",
