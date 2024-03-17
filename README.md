@@ -15,16 +15,16 @@
 
 https://gist.github.com/ihoneymon/652be052a0727ad59601
 
-- [ ] 기본적인 블럭 스타일 만들기
 - [ ] 코드 블럭 만들기
-  - [ ] prism 먹이기
   - [ ] 더 많은 언어 extension 설치
 - [ ] 이미지 블럭
   - [ ] 사이즈 조절시 raw code로 파싱하게 설정
-- [ ] nesting에서 동작해야하는 것들 구현
-- [ ] br 파싱 안되는 것들 확인
+  - [ ] 이미지 블럭 꾸미기
+  - [ ] 이미지 align 기능 만들기
 - [ ] table 블럭 파싱 확인
 - [ ] checkbox 블럭 구현
+- [ ] 파싱 로직 점검
+  - [ ] 파싱 테스트용 파일 만들기
 
 ### Advanced
 
