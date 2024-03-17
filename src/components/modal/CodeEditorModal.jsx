@@ -14,7 +14,6 @@ import { useDialog } from '@/hooks/use-dialog';
 
 /**
  * Confirm, Alert 등 추출해내기
- * lang selector 만들기
  */
 
 export const CodeEditorModal = () => {
