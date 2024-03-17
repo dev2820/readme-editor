@@ -80,6 +80,9 @@ export const _BlockEditor = ({ onChangeContent, className, ...props }, ref) => {
         },
       },
       {
+        type: 'image-block',
+      },
+      {
         type: 'heading-block',
         content: 'Heading1',
         props: {
