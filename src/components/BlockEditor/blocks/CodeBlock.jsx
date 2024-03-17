@@ -1,5 +1,5 @@
 import { createReactBlockSpec } from '@blocknote/react';
-import { forwardRef, useState } from 'react';
+import { forwardRef } from 'react';
 import * as Icon from 'react-feather';
 
 import { CodeEditorModal } from '@/components/modal/CodeEditorModal';
@@ -33,8 +33,8 @@ export const CodeBlock = createReactBlockSpec(
     type: 'code-block',
     propSchema: {
       lang: {
-        default: '',
-        values: ['', 'js', 'ts'],
+        default: 'js',
+        values: ['js', 'ts'],
       },
       code: {
         default: '',
@@ -43,15 +43,28 @@ export const CodeBlock = createReactBlockSpec(
     content: 'none',
   },
   {
-    render: ({ block, contentRef }) => {
+    render: ({ block, contentRef, editor }) => {
       const { lang = '', code = '' } = block.props;
-      /**
-       * 코드 블럭이 보인다.
-       * 언어 변경이 가능하다.
-       * 모달을 열어 코드 수정이 가능하다.
-       *
-       */
-      return <Code initLang={lang} initCode={code} ref={contentRef}></Code>;
+      const handleChangeCode = (code, lang) => {
+        const currentBlock = editor.getTextCursorPosition().block;
+        const block = {
+          type: 'code-block',
+          props: {
+            lang,
+            code,
+          },
+        };
+        editor.updateBlock(currentBlock, block);
+      };
+
+      return (
+        <Code
+          lang={lang}
+          code={code}
+          ref={contentRef}
+          onChangeCode={handleChangeCode}
+        ></Code>
+      );
     },
     toExternalHTML: ({ block, contentRef }) => {
       const blockId = block.id;
@@ -83,39 +96,40 @@ export const CodeBlock = createReactBlockSpec(
   },
 );
 
-const Code = forwardRef(({ initLang, initCode, className, ...props }, ref) => {
-  const dialog = useDialog();
-  const [code, setCode] = useState(initCode);
-  const [lang, setLang] = useState(initLang);
+const Code = forwardRef(
+  ({ lang, code, className, onChangeCode, ...props }, ref) => {
+    const dialog = useDialog();
 
-  const openCodeEditor = () => {
-    dialog.open(CodeEditorModal.displayName, {
-      lang,
-      code,
-      onConfirm: (code, lang) => {
-        setCode(code);
-        setLang(lang);
-      },
-    });
-  };
-  const onClickEdit = () => {
-    openCodeEditor();
-  };
+    const openCodeEditor = () => {
+      dialog.open(CodeEditorModal.displayName, {
+        lang,
+        code,
+        onConfirm: (code, lang) => {
+          onChangeCode(code, lang);
+        },
+      });
+    };
+    const onClickEdit = () => {
+      openCodeEditor();
+    };
 
-  return (
-    <div className={cn('relative', className)} {...props} ref={ref}>
-      <div className="absolute right-1 top-1 flex">
-        <Button variant="ghost" onClick={onClickEdit} className="h-5 px-2 py-1">
-          Edit
-        </Button>
+    return (
+      <div className={cn('relative', className)} {...props} ref={ref}>
+        <div className="absolute right-1 top-1 flex">
+          <Button
+            variant="ghost"
+            onClick={onClickEdit}
+            className="h-5 px-2 py-1"
+          >
+            Edit
+          </Button>
+        </div>
+        <pre>
+          <code className={`language-${lang}`}>{code}</code>
+        </pre>
       </div>
-      <pre>
-        <code className={`language-${lang}`} data-lang={lang}>
-          {code}
-        </code>
-      </pre>
-    </div>
-  );
-});
+    );
+  },
+);
 
 Code.displayName = 'code';
