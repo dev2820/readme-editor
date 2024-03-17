@@ -13,8 +13,7 @@ import {
 import '@blocknote/react/style.css';
 import { forwardRef, useImperativeHandle } from 'react';
 
-import { cn } from '@/libs/utils';
-import { omit } from '@/utils';
+import { cn, omit } from '@/utils';
 
 import './blockStyle.css';
 import {
@@ -141,7 +140,7 @@ export const _BlockEditor = ({ onChangeContent, className, ...props }, ref) => {
       },
       {
         type: 'quote-block',
-        content: 'hello\nworld',
+        content: 'hello world',
       },
       {
         type: 'paragraph',
