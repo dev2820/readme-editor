@@ -225,7 +225,7 @@
   border-radius: 6px;
 }
 .bn-container [data-content-type='code-block'] pre > code {
-  display: inline;
+  display: block;
   max-width: auto;
   overflow: visible;
   line-height: inherit;

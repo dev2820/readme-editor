@@ -1,10 +1,10 @@
-import { defaultProps } from '@blocknote/core';
 import { createReactBlockSpec } from '@blocknote/react';
 import { forwardRef, useState } from 'react';
 import * as Icon from 'react-feather';
 
-import { CodeEditor } from '@/components/CodeEditor';
+import { CodeEditorModal } from '@/components/modal/CodeEditorModal';
 import { Button } from '@/components/ui/Button';
+import { useDialog } from '@/hooks/use-dialog';
 import { cn } from '@/utils';
 import { isNil } from '@/utils/type';
 
@@ -51,23 +51,12 @@ export const CodeBlock = createReactBlockSpec(
        * 모달을 열어 코드 수정이 가능하다.
        *
        */
-      return (
-        <Code initLang={lang} initCode={code} ref={contentRef}></Code>
-        // <CodeEditor
-        //   className="code-editor"
-        //   data-lang="js"
-        //   lang={lang}
-        //   initCode={code}
-        //   ref={contentRef}
-        // ></CodeEditor>
-      );
+      return <Code initLang={lang} initCode={code} ref={contentRef}></Code>;
     },
     toExternalHTML: ({ block, contentRef }) => {
       const blockId = block.id;
-      const $code = document.querySelector(
-        `[data-id="${blockId}"] .code-editor`,
-      );
-      const code = $code.dataset['code'];
+      const $code = document.querySelector(`[data-id="${blockId}"] code`);
+      const code = $code.textContent;
       const lang = $code.dataset['lang'];
 
       return (
@@ -95,22 +84,35 @@ export const CodeBlock = createReactBlockSpec(
 );
 
 const Code = forwardRef(({ initLang, initCode, className, ...props }, ref) => {
+  const dialog = useDialog();
   const [code, setCode] = useState(initCode);
-  console.log(initLang, initCode);
-  const handleClickEdit = () => {};
+  const [lang, setLang] = useState(initLang);
+
+  const openCodeEditor = () => {
+    dialog.open(CodeEditorModal.displayName, {
+      lang,
+      code,
+      onConfirm: (code, lang) => {
+        setCode(code);
+        setLang(lang);
+      },
+    });
+  };
+  const onClickEdit = () => {
+    openCodeEditor();
+  };
+
   return (
     <div className={cn('relative', className)} {...props} ref={ref}>
-      <div className="absolute right-1 top-1">
-        <Button
-          variant="ghost"
-          className="h-5 px-2 py-1"
-          onClick={handleClickEdit}
-        >
+      <div className="absolute right-1 top-1 flex">
+        <Button variant="ghost" onClick={onClickEdit} className="h-5 px-2 py-1">
           Edit
         </Button>
       </div>
       <pre>
-        <code>{code}</code>
+        <code className={`language-${code}`} data-lang={code}>
+          {code}
+        </code>
       </pre>
     </div>
   );
