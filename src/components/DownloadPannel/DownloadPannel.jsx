@@ -2,16 +2,15 @@ import JSZip from 'jszip';
 
 import { Button } from '@/components/ui/Button';
 import { useBlockEditor } from '@/hooks/use-block-editor';
-import { useImageStore } from '@/hooks/useImageStore';
 import { downloadFile } from '@/utils';
+import { getAllImages } from '@/utils/storage';
 
 export const DownloadPannel = () => {
-  const { imageCollection } = useImageStore();
   const { toMarkdown } = useBlockEditor();
 
   async function handleDownloadMarkdown() {
     const content = await toMarkdown();
-    const images = Object.values(imageCollection);
+    const images = getAllImages();
 
     const zip = new JSZip();
     zip.file('index.md', content);
@@ -28,8 +27,9 @@ export const DownloadPannel = () => {
   }
 
   const handleDebug = async () => {
+    const images = getAllImages();
     const content = await toMarkdown();
-    console.log(content, imageCollection);
+    console.log(content, images);
   };
 
   return (

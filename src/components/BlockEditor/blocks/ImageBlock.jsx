@@ -4,7 +4,7 @@ import { FileUploader } from 'react-drag-drop-files';
 import * as Icon from 'react-feather';
 
 import { Button } from '@/components/ui/Button';
-import { useImageStore } from '@/hooks/useImageStore';
+import { setImage } from '@/utils/storage';
 
 export const insertImageBlock = (editor) => ({
   title: 'Image',
@@ -90,7 +90,6 @@ function _ImageViewer({ src = '', blockId, caption, ...props }, ref) {
    * 이미지는 원본 가로사이즈를 유지해야한다.
    * 중앙 정렬을 선택했음을 전달받고 그에 따라 이미지의 위치를 결정해야한다.
    */
-  const { addImage } = useImageStore();
 
   let originImageWidth = useRef(0);
   const [imageUrl, setImageUrl] = useState(src);
@@ -123,7 +122,7 @@ function _ImageViewer({ src = '', blockId, caption, ...props }, ref) {
     reader.readAsDataURL(file);
     setImageUrl(url);
     setImageName(file.name);
-    addImage(blockId, file);
+    setImage(blockId, file);
   }
 
   function rollbackOriginImageSize() {

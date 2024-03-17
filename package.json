@@ -40,8 +40,7 @@
     "tailwind-merge": "^2.2.1",
     "turndown": "^7.1.2",
     "turndown-plugin-gfm": "^1.0.2",
-    "unified": "^11.0.4",
-    "zustand": "^4.5.2"
+    "unified": "^11.0.4"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
