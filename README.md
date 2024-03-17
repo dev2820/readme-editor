@@ -24,7 +24,6 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 - [ ] br 파싱 안되는 것들 확인
 - [ ] table 블럭 파싱 확인
 - [ ] checkbox 블럭 구현
-- [ ] color text 메뉴 불가능하게 제거하기
 
 ### Advanced
 
@@ -33,6 +32,10 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 - [ ] align에 대해 raw 코드를 통해 동작할 수 있게 구현
 - [ ] table 블럭 직접 구현
 - [ ] formatting toolbar 손보기
+- [ ] 앱 하단에 SEO
+- [ ] SlashMenu 정리
+  - [ ] 아이콘 어울리는거 쓰고, https://lucide.dev/guide/packages/lucide 로 교체
+- [ ] color text 메뉴 불가능하게 제거하기
 
 ### API
 
@@ -43,7 +46,5 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 
 ### 기타
 
-- [ ] 아이콘 어울리는거 쓰고, https://lucide.dev/guide/packages/lucide 로 교체
 - [ ] 그냥 raw html로 때려 박아도 되지 않을까?
-- [ ] 앱 하단에 SEO
 - [ ] 아이콘 Apple Color Emoji 적용(하는지 확인)
