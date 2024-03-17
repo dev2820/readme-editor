@@ -19,7 +19,6 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 - [ ] 코드 블럭 만들기
   - [ ] prism 먹이기
   - [ ] 더 많은 언어 extension 설치
-  - [ ] 코드 옮기기 버그 해결
 - [ ] 이미지 블럭
   - [ ] 사이즈 조절시 raw code로 파싱하게 설정
 - [ ] nesting에서 동작해야하는 것들 구현
