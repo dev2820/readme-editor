@@ -11,13 +11,12 @@ import {
   useCreateBlockNote,
 } from '@blocknote/react';
 import '@blocknote/react/style.css';
-import { forwardRef, useEffect, useImperativeHandle } from 'react';
+import { forwardRef, useImperativeHandle } from 'react';
 
 import { cn } from '@/libs/utils';
 import { omit } from '@/utils';
 
 import './blockStyle.css';
-import { blockTraverse } from './blockTraverse';
 import {
   CodeBlock,
   DividerBlock,
@@ -36,7 +35,6 @@ import {
   insertQuoteBlock,
 } from './blocks';
 import { htmlToMarkdown } from './htmlToMarkdown';
-import { markdownToHtml } from './markdownToHtml';
 import { darkTheme, lightTheme } from './theme';
 
 const blockSchema = BlockNoteSchema.create({
@@ -67,12 +65,89 @@ const getCustomSlashMenuItems = (editor) => {
   ];
 };
 
-export const _BlockEditor = (
-  { initMarkdown, postPath, onChangeContent, className, ...props },
-  ref,
-) => {
+export const _BlockEditor = ({ onChangeContent, className, ...props }, ref) => {
   const editor = useCreateBlockNote({
     schema: blockSchema,
+    initialContent: [
+      {
+        type: 'heading-block',
+        content: 'Heading1',
+        props: {
+          level: 1,
+        },
+      },
+      {
+        type: 'heading-block',
+        content: 'Heading2',
+        props: {
+          level: 2,
+        },
+      },
+      {
+        type: 'heading-block',
+        content: 'Heading3',
+        props: {
+          level: 3,
+        },
+      },
+      {
+        type: 'heading-block',
+        content: 'Heading4',
+        props: {
+          level: 4,
+        },
+      },
+      {
+        type: 'heading-block',
+        content: 'Heading5',
+        props: {
+          level: 5,
+        },
+      },
+      {
+        type: 'heading-block',
+        content: 'Heading6',
+        props: {
+          level: 6,
+        },
+      },
+      {
+        type: 'bulletListItem',
+        content: 'Bullet List Item',
+      },
+      {
+        type: 'numberedListItem',
+        content: 'Numbered List Item',
+      },
+      {
+        type: 'table',
+        content: {
+          type: 'tableContent',
+          rows: [
+            {
+              cells: ['Table Cell', 'Table Cell', 'Table Cell'],
+            },
+            {
+              cells: ['Table Cell', 'Table Cell', 'Table Cell'],
+            },
+            {
+              cells: ['Table Cell', 'Table Cell', 'Table Cell'],
+            },
+          ],
+        },
+      },
+      {
+        type: 'divider-block',
+      },
+      {
+        type: 'quote-block',
+        content: 'hello\nworld',
+      },
+      {
+        type: 'paragraph',
+        content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
+      },
+    ],
   });
   useImperativeHandle(
     ref,
@@ -90,41 +165,6 @@ export const _BlockEditor = (
     },
     [editor],
   );
-
-  useEffect(() => {
-    if (editor) {
-      const getBlocks = async () => {
-        const html = await markdownToHtml(initMarkdown);
-        const blocks = await editor.tryParseHTMLToBlocks(html);
-        blockTraverse(
-          blocks,
-          (block) => {
-            const fullPath = new URL(block.props.url, 'media:' + postPath + '/')
-              .href;
-            block.props.url = fullPath;
-          },
-          {
-            recursive: true,
-            onlyType: ['image'],
-          },
-        );
-        blockTraverse(
-          blocks,
-          (block) => {
-            if (block.content.length === 1 && block.content[0].text === '\n') {
-              block.content[0].text = '';
-            }
-          },
-          {
-            recursive: true,
-            onlyType: ['paragraph'],
-          },
-        );
-        editor.replaceBlocks(editor.document, blocks);
-      };
-      getBlocks();
-    }
-  }, [editor, initMarkdown, postPath]);
 
   return (
     <div
