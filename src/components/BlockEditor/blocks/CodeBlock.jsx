@@ -1,8 +1,11 @@
 import { defaultProps } from '@blocknote/core';
 import { createReactBlockSpec } from '@blocknote/react';
+import { forwardRef, useState } from 'react';
 import * as Icon from 'react-feather';
 
 import { CodeEditor } from '@/components/CodeEditor';
+import { Button } from '@/components/ui/Button';
+import { cn } from '@/utils';
 import { isNil } from '@/utils/type';
 
 /**
@@ -29,22 +32,34 @@ export const CodeBlock = createReactBlockSpec(
   {
     type: 'code-block',
     propSchema: {
-      ...defaultProps,
+      lang: {
+        default: '',
+        values: ['', 'js', 'ts'],
+      },
+      code: {
+        default: '',
+      },
     },
     content: 'none',
   },
   {
     render: ({ block, contentRef }) => {
-      const { lang = 'js', code = '' } = block.props;
-
+      const { lang = '', code = '' } = block.props;
+      /**
+       * 코드 블럭이 보인다.
+       * 언어 변경이 가능하다.
+       * 모달을 열어 코드 수정이 가능하다.
+       *
+       */
       return (
-        <CodeEditor
-          className="code-editor"
-          data-lang="js"
-          lang={lang}
-          initCode={code}
-          ref={contentRef}
-        ></CodeEditor>
+        <Code initLang={lang} initCode={code} ref={contentRef}></Code>
+        // <CodeEditor
+        //   className="code-editor"
+        //   data-lang="js"
+        //   lang={lang}
+        //   initCode={code}
+        //   ref={contentRef}
+        // ></CodeEditor>
       );
     },
     toExternalHTML: ({ block, contentRef }) => {
@@ -78,3 +93,27 @@ export const CodeBlock = createReactBlockSpec(
     },
   },
 );
+
+const Code = forwardRef(({ initLang, initCode, className, ...props }, ref) => {
+  const [code, setCode] = useState(initCode);
+  console.log(initLang, initCode);
+  const handleClickEdit = () => {};
+  return (
+    <div className={cn('relative', className)} {...props} ref={ref}>
+      <div className="absolute right-1 top-1">
+        <Button
+          variant="ghost"
+          className="h-5 px-2 py-1"
+          onClick={handleClickEdit}
+        >
+          Edit
+        </Button>
+      </div>
+      <pre>
+        <code>{code}</code>
+      </pre>
+    </div>
+  );
+});
+
+Code.displayName = 'code';

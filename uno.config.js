@@ -51,7 +51,7 @@ export default defineConfig({
       primaryForeground: colors.white,
       secondary: colors.green[200],
       secondaryForeground: colors.black,
-      accent: colors.emerald[500],
+      accent: colors.grey[200],
       accentForeground: colors.black,
       background: colors.grey[100],
       foreground: colors.black,

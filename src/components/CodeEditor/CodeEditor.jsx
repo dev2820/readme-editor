@@ -28,6 +28,7 @@ function _CodeEditor({ lang = 'js', initCode = '', className, ...props }, ref) {
         theme={dracula}
         extensions={[extensionMap[lang]]}
         onChange={handleChangeCode}
+        autoFocus={true}
       />
     </div>
   );

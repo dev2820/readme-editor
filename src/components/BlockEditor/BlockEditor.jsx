@@ -69,6 +69,17 @@ export const _BlockEditor = ({ onChangeContent, className, ...props }, ref) => {
     schema: blockSchema,
     initialContent: [
       {
+        type: 'paragraph',
+        content: 'playground',
+      },
+      {
+        type: 'code-block',
+        props: {
+          lang: 'js',
+          code: 'const a = "hello world";',
+        },
+      },
+      {
         type: 'heading-block',
         content: 'Heading1',
         props: {

@@ -214,3 +214,25 @@
   font-size: 8px;
   margin-top: 8px;
 }
+
+.bn-container [data-content-type='code-block'] pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  color: rgb(31, 35, 40);
+  background-color: rgb(246, 248, 250);
+  border-radius: 6px;
+}
+.bn-container [data-content-type='code-block'] pre > code {
+  display: inline;
+  max-width: auto;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  font-size: 100%;
+}
