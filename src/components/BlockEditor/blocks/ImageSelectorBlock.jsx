@@ -41,7 +41,7 @@ export const ImageSelectorBlock = createReactBlockSpec(
           props: {
             src: imgUrl,
             width,
-            alt: image.name,
+            name: image.name,
           },
         };
         editor.updateBlock(currentBlock, block);

@@ -6,10 +6,10 @@ import { downloadFile } from '@/utils';
 import { fetchAllImage } from '@/utils/storage';
 
 export const DownloadPannel = () => {
-  const { toMarkdown } = useBlockEditor();
+  const blockEditor = useBlockEditor();
 
   async function handleDownloadMarkdown() {
-    const content = await toMarkdown();
+    const content = await blockEditor.toMarkdown();
     const images = fetchAllImage();
 
     const zip = new JSZip();
@@ -28,7 +28,7 @@ export const DownloadPannel = () => {
 
   const handleDebug = async () => {
     const images = fetchAllImage();
-    const content = await toMarkdown();
+    const content = await blockEditor.toMarkdown();
     console.log(content, images);
   };
 

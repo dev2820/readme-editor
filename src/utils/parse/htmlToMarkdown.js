@@ -62,16 +62,10 @@ turndownService.use([strikethrough, underline, figure]);
 turndownService.addRule('image', {
   filter: ['img'],
   replacement(_, node) {
-    const urlToImage = new URL(node.src);
-    // const filename = getFilenameFromUrl(node.src);
-    const filename = node.src;
+    const alt = node.alt;
+    const src = node.getAttribute('src');
 
-    if (urlToImage.protocol === 'media:') {
-      // TODO: media 프로토콜 상수화하여 이용할 것
-      return `![${filename}](./${filename})`;
-    }
-
-    return `![${filename}](${node.src})`;
+    return `![${alt}](${src})`;
   },
 });
 

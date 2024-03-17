@@ -44,6 +44,7 @@ export const BlockEditorProvider = ({ children }) => {
 
   const toMarkdown = async () => {
     const html = await editor.blocksToHTMLLossy(editor.document);
+    console.log(html);
     const markdown = await htmlToMarkdown(html);
     return markdown;
   };

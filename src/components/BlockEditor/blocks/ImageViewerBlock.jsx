@@ -21,7 +21,7 @@ export const ImageViewerBlock = createReactBlockSpec(
       width: {
         default: 0,
       },
-      alt: {
+      name: {
         default: '',
       },
     },
@@ -29,7 +29,7 @@ export const ImageViewerBlock = createReactBlockSpec(
   },
   {
     render: ({ block, contentRef }) => {
-      const { src, align, width, alt } = block.props;
+      const { src, align, width, name } = block.props;
 
       return (
         <ImageViewer
@@ -37,30 +37,30 @@ export const ImageViewerBlock = createReactBlockSpec(
           src={src}
           width={width}
           align={align}
-          alt={alt}
+          alt={name}
         ></ImageViewer>
       );
     },
     toExternalHTML: ({ block, contentRef }) => {
       const blockId = block.id;
-      const { src, alt, align } = block.props;
-      console.log(block.props);
+      const { name } = block.props;
       const $block = document.querySelector(`[data-id="${blockId}"]`);
       const $image = $block.querySelector(`img`);
       const $captionInput = $block.querySelector(`input[type="text"]`);
 
       if (!$image) return <br />;
 
+      const relativeUrl = `./images/${name}`;
       if ($captionInput.value) {
         return (
           <figure ref={contentRef}>
-            <img src={src} alt={alt} align={align} width={$image.width}></img>
+            <img src={relativeUrl} alt={name} width={$image.width}></img>
             <figcaption>{$captionInput.value}</figcaption>
           </figure>
         );
       }
 
-      return <img src={src} alt={alt} align={align} width={$image.width}></img>;
+      return <img src={relativeUrl} alt={name} width={$image.width}></img>;
     },
     parse: (element) => {
       /**
