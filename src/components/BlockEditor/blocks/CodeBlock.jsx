@@ -110,7 +110,7 @@ const Code = forwardRef(({ initLang, initCode, className, ...props }, ref) => {
         </Button>
       </div>
       <pre>
-        <code className={`language-${code}`} data-lang={code}>
+        <code className={`language-${lang}`} data-lang={lang}>
           {code}
         </code>
       </pre>
