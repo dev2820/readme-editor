@@ -53,7 +53,7 @@
 
 .bn-container
   [data-content-type='heading-block']
-  h1:has(.ProseMirror-trailingBreak)::before {
+  h1:has(.ProseMirror-trailingBreak:only-child)::before {
   position: absolute;
   color: rgba(0, 0, 0, 0.34);
   content: 'Heading1';
@@ -61,35 +61,35 @@
 
 .bn-container
   [data-content-type='heading-block']
-  h2:has(.ProseMirror-trailingBreak)::before {
+  h2:has(.ProseMirror-trailingBreak:only-child)::before {
   position: absolute;
   color: rgba(0, 0, 0, 0.34);
   content: 'Heading2';
 }
 .bn-container
   [data-content-type='heading-block']
-  h3:has(.ProseMirror-trailingBreak)::before {
+  h3:has(.ProseMirror-trailingBreak:only-child)::before {
   position: absolute;
   color: rgba(0, 0, 0, 0.34);
   content: 'Heading3';
 }
 .bn-container
   [data-content-type='heading-block']
-  h4:has(.ProseMirror-trailingBreak)::before {
+  h4:has(.ProseMirror-trailingBreak:only-child)::before {
   position: absolute;
   color: rgba(0, 0, 0, 0.34);
   content: 'Heading4';
 }
 .bn-container
   [data-content-type='heading-block']
-  h5:has(.ProseMirror-trailingBreak)::before {
+  h5:has(.ProseMirror-trailingBreak:only-child)::before {
   position: absolute;
   color: rgba(0, 0, 0, 0.34);
   content: 'Heading5';
 }
 .bn-container
   [data-content-type='heading-block']
-  h6:has(.ProseMirror-trailingBreak)::before {
+  h6:has(.ProseMirror-trailingBreak:only-child)::before {
   position: absolute;
   color: rgba(0, 0, 0, 0.34);
   content: 'Heading6';
@@ -115,7 +115,9 @@
   color: rgb(101, 109, 118);
   border-left: 0.25rem solid rgb(208, 215, 222);
 }
-[data-content-type='quote-block'] :has(.ProseMirror-trailingBreak)::before {
+.bn-container
+  [data-content-type='quote-block']
+  :has(.ProseMirror-trailingBreak:only-child)::before {
   position: absolute;
   color: rgba(0, 0, 0, 0.14);
   content: 'Quote';
@@ -155,7 +157,7 @@
 }
 .bn-container
   .bn-block-content[data-content-type='numberedListItem']
-  .bn-inline-content:has(> .ProseMirror-trailingBreak)::before {
+  .bn-inline-content:has(> .ProseMirror-trailingBreak:only-child)::before {
   content: 'List';
   font-style: normal;
 }
