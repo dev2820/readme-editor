@@ -32,10 +32,16 @@ export const DownloadPannel = () => {
     console.log(content, images);
   };
 
+  const handleCopyMarkdown = async () => {
+    const content = await blockEditor.toMarkdown();
+    navigator.clipboard.writeText(content);
+  };
+
   return (
     <>
       <Button onClick={handleDownloadMarkdown}>Download</Button>
       <Button onClick={handleDebug}>(_debug) show markdown</Button>
+      <Button onClick={handleCopyMarkdown}>Copy Markdown</Button>
     </>
   );
 };
