@@ -15,9 +15,7 @@ function App() {
               <DownloadPannel></DownloadPannel>
             </div>
             <div className="flex flex-row justify-center overflow-hidden">
-              <div className="w-200 h-160 overflow-auto">
-                <BlockEditor className="h-full"></BlockEditor>
-              </div>
+              <BlockEditor className="w-200 h-160 overflow-auto"></BlockEditor>
             </div>
           </main>
         </BlockEditorProvider>

@@ -23,7 +23,6 @@ const defaultValue = {
 };
 
 export const BlockEditorContext = createContext(defaultValue);
-
 const blockSchema = BlockNoteSchema.create({
   blockSpecs: {
     ...omit(defaultBlockSpecs, 'image', 'heading'),
