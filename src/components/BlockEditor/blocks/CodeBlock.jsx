@@ -39,7 +39,7 @@ export const CodeBlock = createReactBlockSpec(
         values: ['js', 'ts'],
       },
       code: {
-        default: '',
+        default: '// code block is empty',
       },
     },
     content: 'none',
