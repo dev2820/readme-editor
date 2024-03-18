@@ -75,7 +75,6 @@ export const CodeBlock = createReactBlockSpec(
       const code = $code.textContent;
       const lang = $code.dataset['lang'];
 
-      console.log(lang);
       return (
         <pre ref={contentRef}>
           <code className={`language-${lang}`}>{code}</code>
