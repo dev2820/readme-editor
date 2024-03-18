@@ -14,7 +14,7 @@ export const insertDividerBlock = (editor) => ({
     const block = {
       type: 'divider-block',
     };
-    editor.updateBlock(currentBlock, block);
+    editor.insertBlocks([block], currentBlock, 'before');
   },
 });
 
