@@ -46,7 +46,8 @@ export const CodeBlock = createReactBlockSpec(
   },
   {
     render: ({ block, contentRef, editor }) => {
-      const { lang = '', code = '' } = block.props;
+      const { lang, code } = block.props;
+
       const handleChangeCode = (code, lang) => {
         const currentBlock = editor.getTextCursorPosition().block;
         const block = {
@@ -74,6 +75,7 @@ export const CodeBlock = createReactBlockSpec(
       const code = $code.textContent;
       const lang = $code.dataset['lang'];
 
+      console.log(lang);
       return (
         <pre ref={contentRef}>
           <code className={`language-${lang}`}>{code}</code>
@@ -134,6 +136,7 @@ const Code = forwardRef(
         <pre>
           <code
             className={`language-${lang}`}
+            data-lang={lang}
             dangerouslySetInnerHTML={{ __html: codeHtml }}
           ></code>
         </pre>
