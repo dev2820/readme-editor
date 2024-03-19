@@ -37,6 +37,7 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 - [ ] color text 메뉴 불가능하게 제거하기
 - [ ] unocss theme 설정 (font size...)
 - [ ] 이미지 확대해보기 기능
+- [ ] 커스텀 체크박스 기능
 
 ### API
 
