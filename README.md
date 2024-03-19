@@ -21,17 +21,15 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
   - [ ] 사이즈 조절시 raw code로 파싱하게 설정
   - [ ] 이미지 블럭 꾸미기
   - [ ] 이미지 align 기능 만들기
+- [ ] 외부 이미지 블럭 만들기
 - [ ] table 블럭 파싱 확인
-- [ ] checkbox 블럭 구현
 - [ ] 파싱 로직 점검
   - [ ] 파싱 테스트용 파일 만들기
 
 ### Advanced
 
 - [ ] 캡션이 있으면 figure로 파싱
-- [ ] 스택 블럭 이미지 삽입 기능 구현
 - [ ] align에 대해 raw 코드를 통해 동작할 수 있게 구현
-- [ ] table 블럭 직접 구현
 - [ ] formatting toolbar 손보기
 - [ ] 앱 하단에 SEO
 - [ ] SlashMenu 정리
@@ -43,7 +41,6 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 ### API
 
 - [ ] README.md 파일 읽어오기
-- [ ] commit 만들고 API로 push하기
 
 ### 실험
 
@@ -51,3 +48,8 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 
 - [ ] 그냥 raw html로 때려 박아도 되지 않을까?
 - [ ] 이모지 입력: 아이콘 Apple Color Emoji 적용(하는지 확인)
+
+### 나중에
+
+- [ ] checkbox 블럭 구현 (BlockNote에서 지원할때까지 기다리는게 좋을 듯 함)
+- [ ] commit 만들고 API로 push하기 (규모가 큰 작업이라 미룸 - github login을 달아야할지도)
