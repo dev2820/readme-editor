@@ -57,7 +57,9 @@ export const CodeEditorModal = () => {
                 <SelectValue placeholder="Select Language" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="js">Javascript</SelectItem>
+                <SelectItem value="js" defaultValue>
+                  Javascript
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>

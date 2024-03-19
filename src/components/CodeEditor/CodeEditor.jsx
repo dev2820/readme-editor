@@ -1,4 +1,4 @@
-import { javascript } from '@codemirror/lang-javascript';
+import { langs } from '@uiw/codemirror-extensions-langs';
 import { githubLight } from '@uiw/codemirror-theme-github';
 import CodeMirror from '@uiw/react-codemirror';
 import { forwardRef } from 'react';
@@ -6,7 +6,7 @@ import { forwardRef } from 'react';
 import { cn } from '@/libs/utils';
 
 const extensionMap = {
-  js: javascript({ jsx: true }),
+  js: langs.tsx(),
 };
 
 function _CodeEditor(
