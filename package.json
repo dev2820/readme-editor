@@ -12,8 +12,8 @@
     "format": "pnpm exec prettier . --write"
   },
   "dependencies": {
-    "@blocknote/core": "^0.12.0",
-    "@blocknote/react": "^0.12.0",
+    "@blocknote/core": "^0.12.1",
+    "@blocknote/react": "^0.12.2",
     "@codemirror/lang-javascript": "^6.2.2",
     "@microflash/remark-figure-caption": "^2.0.2",
     "@radix-ui/react-dialog": "^1.0.5",
