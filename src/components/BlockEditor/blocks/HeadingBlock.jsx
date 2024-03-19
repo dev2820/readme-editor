@@ -3,11 +3,6 @@ import { createReactBlockSpec } from '@blocknote/react';
 import { forwardRef } from 'react';
 import * as Icon from 'react-feather';
 
-/**
- * TODO: 블럭을 움직이면 코드가 초기화되는 버그가 있음
- * TODO: 언어 바꿀 수 있게 해야함
- */
-
 export const insertHeading1Block = (editor) => ({
   title: 'Heading1 Block',
   subtext: 'Used to insert a heading1 block',
