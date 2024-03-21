@@ -1,19 +1,23 @@
 import { createReactBlockSpec } from '@blocknote/react';
 import Prism from 'prismjs';
-import { forwardRef } from 'react';
+import { forwardRef, useState } from 'react';
 import * as Icon from 'react-feather';
 
 import '@/assets/prism.css';
 import { CodeEditorModal } from '@/components/modal/CodeEditorModal';
 import { Button } from '@/components/ui/Button';
-import { useDialog } from '@/hooks/use-dialog';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/Dialog';
 import { cn } from '@/utils';
 import { isNil } from '@/utils/type';
-
-/**
- * TODO: 블럭을 움직이면 코드가 초기화되는 버그가 있음
- * TODO: 언어 바꿀 수 있게 해야함
- */
 
 export const insertCodeBlock = (editor) => ({
   title: 'Code Block',
@@ -48,7 +52,7 @@ export const CodeBlock = createReactBlockSpec(
     render: ({ block, contentRef, editor }) => {
       const { lang, code } = block.props;
 
-      const handleChangeCode = (code, lang) => {
+      const handleChange = (code, lang) => {
         const currentBlock = editor.getTextCursorPosition().block;
         const block = {
           type: 'code-block',
@@ -65,7 +69,7 @@ export const CodeBlock = createReactBlockSpec(
           lang={lang}
           code={code}
           ref={contentRef}
-          onChangeCode={handleChangeCode}
+          onChange={handleChange}
         ></Code>
       );
     },
@@ -100,42 +104,67 @@ export const CodeBlock = createReactBlockSpec(
 );
 
 const Code = forwardRef(
-  ({ lang, code, className, onChangeCode, ...props }, ref) => {
-    const dialog = useDialog();
-
-    const openCodeEditor = () => {
-      dialog.open(CodeEditorModal.displayName, {
-        lang,
-        code,
-        onConfirm: (code, lang) => {
-          onChangeCode(code, lang);
-        },
-      });
-    };
-    const onClickEdit = () => {
-      openCodeEditor();
-    };
-
+  ({ lang: _lang, code: _code, className, onChange, ...props }, ref) => {
+    const [code, setCode] = useState(_code);
+    const [lang, setLang] = useState(_lang);
     const codeHtml = Prism.highlight(
-      code,
+      _code,
       Prism.languages.javascript,
-      'javascript',
+      langMap[_lang],
     );
+
+    const handleClickConfirm = () => {
+      onChange(code, lang);
+    };
+    const handleChangeCode = (code) => {
+      setCode(code);
+    };
+    const handleChangeLang = (lang) => {
+      setLang(lang);
+    };
+    const handleChangeOpen = () => {
+      setCode(_code);
+      setLang(_lang);
+    };
     return (
       <div className={cn('relative', className)} {...props} ref={ref}>
         <div className="absolute right-1 top-1 flex">
-          <Button
-            variant="ghost"
-            onClick={onClickEdit}
-            className="h-5 px-2 py-1"
-          >
-            Edit
-          </Button>
+          <Dialog onOpenChange={handleChangeOpen}>
+            <DialogTrigger asChild>
+              <Button variant="ghost" className="h-5 px-2 py-1">
+                Edit
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="flex flex-col">
+              <DialogHeader>
+                <DialogTitle>Edit Code Block Here</DialogTitle>
+                <DialogDescription>
+                  Edit Code and change language
+                </DialogDescription>
+              </DialogHeader>
+              <CodeEditorModal
+                code={code}
+                lang={lang}
+                onChangeCode={handleChangeCode}
+                onChangeLang={handleChangeLang}
+              ></CodeEditorModal>
+              <DialogFooter>
+                {/* <DialogClose asChild>
+                  <Button onClick={handleClickClose} variant="ghost">
+                    Close
+                  </Button>
+                </DialogClose> */}
+                <DialogClose asChild>
+                  <Button onClick={handleClickConfirm}>Apply</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
         <pre>
           <code
-            className={`language-${lang}`}
-            data-lang={lang}
+            className={`language-${_lang}`}
+            data-lang={_lang}
             dangerouslySetInnerHTML={{ __html: codeHtml }}
           ></code>
         </pre>
@@ -145,3 +174,10 @@ const Code = forwardRef(
 );
 
 Code.displayName = 'code';
+
+const langMap = {
+  js: 'javascript',
+  ts: 'typescript',
+  jsx: 'javascript',
+  tsx: 'typescript',
+};

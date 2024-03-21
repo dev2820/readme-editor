@@ -55,7 +55,6 @@ function _CodeEditor(
         width={`${width}px`}
         options={{
           tabSize: 2,
-          lineNumbers: true,
           autoCloseBrackets: true,
         }}
         extensions={[...extensionMap[lang]]}
