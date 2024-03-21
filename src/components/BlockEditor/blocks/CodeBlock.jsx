@@ -36,7 +36,7 @@ export const CodeBlock = createReactBlockSpec(
     propSchema: {
       lang: {
         default: 'js',
-        values: ['js', 'ts'],
+        values: ['js', 'ts', 'jsx', 'tsx'],
       },
       code: {
         default: '// code block is empty',

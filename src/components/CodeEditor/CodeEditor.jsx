@@ -12,6 +12,18 @@ const extensionMap = {
     langs.javascript(),
     langs.javascript().language.data.of({ autocomplete: completeJSDoc }),
   ],
+  ts: [
+    langs.typescript(),
+    langs.typescript().language.data.of({ autocomplete: completeJSDoc }),
+  ],
+  jsx: [
+    langs.jsx(),
+    langs.jsx().language.data.of({ autocomplete: completeJSDoc }),
+  ],
+  tsx: [
+    langs.tsx(),
+    langs.tsx().language.data.of({ autocomplete: completeJSDoc }),
+  ],
 };
 
 function _CodeEditor(

@@ -60,6 +60,9 @@ export const CodeEditorModal = () => {
                 <SelectItem value="js" defaultValue>
                   Javascript
                 </SelectItem>
+                <SelectItem value="ts">Typescript</SelectItem>
+                <SelectItem value="jsx">JSX</SelectItem>
+                <SelectItem value="tsx">TSX</SelectItem>
               </SelectContent>
             </Select>
           </div>
