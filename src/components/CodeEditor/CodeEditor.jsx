@@ -5,8 +5,13 @@ import { forwardRef } from 'react';
 
 import { cn } from '@/libs/utils';
 
+import { completeJSDoc } from './jsdoc';
+
 const extensionMap = {
-  js: langs.tsx(),
+  js: [
+    langs.javascript(),
+    langs.javascript().language.data.of({ autocomplete: completeJSDoc }),
+  ],
 };
 
 function _CodeEditor(
@@ -36,7 +41,12 @@ function _CodeEditor(
         theme={githubLight}
         height={`${height}px`}
         width={`${width}px`}
-        extensions={[extensionMap[lang]]}
+        options={{
+          tabSize: 2,
+          lineNumbers: true,
+          autoCloseBrackets: true,
+        }}
+        extensions={[...extensionMap[lang]]}
         onChange={handleChangeCode}
         autoFocus={true}
       />
