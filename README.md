@@ -13,6 +13,8 @@
 
 ### 블럭 & 인라인
 
+- [ ] prosemirror + tiptap으로 직접 구현?
+
 https://gist.github.com/ihoneymon/652be052a0727ad59601
 
 - [ ] 코드 블럭 만들기
@@ -21,6 +23,8 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
   - [ ] 사이즈 조절시 raw code로 파싱하게 설정
   - [ ] 이미지 블럭 꾸미기
   - [ ] 이미지 align 기능 만들기
+- [ ] details 블럭
+- [ ] github note 블럭
 - [ ] 외부 이미지 블럭 만들기
 - [ ] table 블럭 파싱 확인
 - [ ] 파싱 로직 점검
