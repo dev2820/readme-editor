@@ -1,6 +1,5 @@
 import { BlockEditor } from './components/BlockEditor';
 import { DownloadPannel } from './components/DownloadPannel/DownloadPannel';
-import { CodeEditorModal } from './components/modal/CodeEditorModal';
 import { BlockEditorProvider } from './contexts/block-editor-context';
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
           </div>
         </main>
       </BlockEditorProvider>
-      <CodeEditorModal></CodeEditorModal>
     </>
   );
 }
