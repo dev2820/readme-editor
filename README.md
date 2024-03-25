@@ -58,3 +58,10 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 
 - [ ] checkbox 블럭 구현 (BlockNote에서 지원할때까지 기다리는게 좋을 듯 함)
 - [ ] commit 만들고 API로 push하기 (규모가 큰 작업이라 미룸 - github login을 달아야할지도)
+
+### TipTap
+
+https://tiptap.dev/docs/editor/api/nodes
+https://github.com/ueberdosis/tiptap/blob/main/packages/extension-blockquote/src/blockquote.ts
+
+https://tiptap.dev/docs/editor/guide/custom-extensions

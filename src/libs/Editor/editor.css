@@ -1,0 +1,9 @@
+.tiptap > * + * {
+  margin-top: 0.75rem;
+}
+
+.tiptap a {
+  cursor: pointer;
+  text-decoration: underline solid;
+  color: blue;
+}
