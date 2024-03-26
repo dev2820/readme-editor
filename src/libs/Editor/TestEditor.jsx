@@ -1,10 +1,11 @@
 import Link from '@tiptap/extension-link';
-import { EditorContent, FloatingMenu, useEditor } from '@tiptap/react';
+import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { useRef } from 'react';
 
 import { BubbleMenu } from './components/BubbleMenu';
 import './editor.css';
+import { CommandsPlugin } from './plugins/CommandsPlugin';
 
 const extensions = [
   StarterKit.configure({
@@ -15,6 +16,7 @@ const extensions = [
   Link.configure({
     protocols: ['https', 'http'],
   }),
+  CommandsPlugin,
 ];
 
 const content = '<p>Hello World!</p>';
@@ -30,7 +32,6 @@ export function TestEditor({ ...props }) {
       <div ref={containerRef} {...props}>
         <EditorContent editor={editor}></EditorContent>
       </div>
-      <FloatingMenu editor={editor}>This is the floating menu</FloatingMenu>
       {editor && (
         <BubbleMenu editor={editor} containerRef={containerRef}></BubbleMenu>
       )}
