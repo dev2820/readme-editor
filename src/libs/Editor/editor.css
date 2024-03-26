@@ -7,3 +7,27 @@
   text-decoration: underline solid;
   color: blue;
 }
+
+.tiptap h1 {
+  font-size: 2rem;
+}
+
+.tiptap h2 {
+  font-size: 1.5rem;
+}
+
+.tiptap h3 {
+  font-size: 1.25rem;
+}
+
+.tiptap h4 {
+  font-size: 1rem;
+}
+
+.tiptap h5 {
+  font-size: 0.875rem;
+}
+
+.tiptap h6 {
+  font-size: 0.85rem;
+}
