@@ -24,6 +24,7 @@ import { BubbleMenu } from './components/BubbleMenu';
 import { Blockquote } from './components/nodes/blockquote';
 import { BulletList } from './components/nodes/bullet-list';
 import { CodeBlock } from './components/nodes/code-block';
+import { ExternalImage } from './components/nodes/external-image';
 import { Heading } from './components/nodes/heading';
 import { HorizontalRule } from './components/nodes/horizontal-rule';
 import { ListItem } from './components/nodes/list-item';
@@ -33,7 +34,7 @@ import { TaskItem } from './components/nodes/task-item';
 import { TaskList } from './components/nodes/task-list';
 import './editor.css';
 import { getCurrentBlock } from './getCurrentBlock';
-import { CommandsPlugin } from './plugins/CommandsPlugin';
+import { Commands } from './plugins/CommandsPlugin';
 
 const lowlight = createLowlight(common);
 lowlight.register({ css, js, ts, html });
@@ -59,6 +60,7 @@ const extensions = [
   CodeBlock.configure({
     lowlight,
   }),
+  ExternalImage,
   Bold,
   Strike,
   Italic, // FIXME: 현재 폰트에서 italic이 보이지 않는 문제가 있으니 확인 (폰트가 로드 안된건지 inter의 문제인지 확인 필요함)
@@ -69,11 +71,13 @@ const extensions = [
       if (node.type.name === 'heading') {
         return `header${node.attrs.level}`;
       }
-
+      /**
+       * TODO: 각 node에 맞는 placeholder 추가
+       */
       return 'Can you add some further context?';
     },
   }),
-  CommandsPlugin,
+  Commands,
   History.configure({
     newGroupDelay: 300,
   }),
@@ -84,7 +88,7 @@ const extensions = [
     width: 2,
   }),
 ];
-// TODO: add mark (code also)
+
 const content = '<p>Hello World!</p>';
 
 export function TestEditor({ ...props }) {

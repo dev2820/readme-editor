@@ -5,7 +5,7 @@ import tippy from 'tippy.js';
 
 import { CommandsView } from '../components/CommandsView';
 
-export const CommandsPlugin = Extension.create({
+export const Commands = Extension.create({
   name: 'insertMenu',
   addProseMirrorPlugins() {
     return [
@@ -205,19 +205,24 @@ export const CommandsPlugin = Extension.create({
               },
             },
             {
-              title: 'Image',
+              title: 'External Image',
               attrs: {
-                'data-test-id': 'insert-image',
+                'data-test-id': 'insert-external-image',
               },
               command: ({ editor }) => {
                 const selection = editor.view.state.selection;
                 const from = selection.$from.posAtIndex(0);
                 const to = selection.$from.posAtIndex(1);
+                const src = window.prompt('input image url');
+
                 editor
                   .chain()
                   .focus()
                   .deleteRange({ from, to })
-                  .insertContentAt(from, { type: 'imagePlaceholder' })
+                  .insertContentAt(from, {
+                    type: 'external-image',
+                    attrs: { src },
+                  })
                   .run();
               },
             },
@@ -238,11 +243,9 @@ export const CommandsPlugin = Extension.create({
                   .run();
               },
             },
-          ]
-            .filter((item) => {
-              return item.title.toLowerCase().startsWith(query.toLowerCase());
-            })
-            .slice(0, 10);
+          ].filter((item) => {
+            return item.title.toLowerCase().startsWith(query.toLowerCase());
+          });
         },
         startOfLine: true,
         allow: ({ state }) => {

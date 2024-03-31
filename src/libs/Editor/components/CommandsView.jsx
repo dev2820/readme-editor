@@ -63,6 +63,7 @@ export class CommandsView extends Component {
 
   render() {
     const { items } = this.props;
+
     return (
       <div className="insert-menu">
         {items.map((item, index) => {
