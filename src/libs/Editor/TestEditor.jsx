@@ -1,3 +1,4 @@
+import Bold from '@tiptap/extension-bold';
 import Document from '@tiptap/extension-document';
 import Dropcursor from '@tiptap/extension-dropcursor';
 // import Focus from '@tiptap/extension-focus';
@@ -57,6 +58,7 @@ const extensions = [
   CodeBlock.configure({
     lowlight,
   }),
+  Bold,
   Strike,
   Italic,
   Underline,
