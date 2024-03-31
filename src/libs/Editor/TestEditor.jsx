@@ -1,6 +1,6 @@
 import Document from '@tiptap/extension-document';
 import Dropcursor from '@tiptap/extension-dropcursor';
-import Focus from '@tiptap/extension-focus';
+// import Focus from '@tiptap/extension-focus';
 import HardBreak from '@tiptap/extension-hard-break';
 import History from '@tiptap/extension-history';
 import Link from '@tiptap/extension-link';
@@ -69,7 +69,9 @@ const extensions = [
   History.configure({
     newGroupDelay: 300,
   }),
-  Focus,
+  // Focus.configure({
+  //   mode: 'deepest',
+  // }),
   Dropcursor.configure({
     width: 2,
   }),
@@ -103,9 +105,11 @@ export function TestEditor({ ...props }) {
             duration: 100,
             getReferenceClientRect: () => {
               const $block = getCurrentBlock(editor);
-              const rect = $block.getBoundingClientRect();
+              const rect = $block?.getBoundingClientRect();
+              const $root = editor.view.dom;
+              const rootX = $root.getBoundingClientRect().x;
 
-              return rect;
+              return new DOMRect(rootX, rect.y, rect.width, rect.height);
             },
             placement: 'left-start',
           }}

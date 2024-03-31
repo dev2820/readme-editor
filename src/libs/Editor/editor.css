@@ -39,10 +39,15 @@
   height: 0;
   pointer-events: none;
 }
-
-.tiptap *.has-focus {
+/* 
+.tiptap *.has-focus::before {
+  position: absolute;
+  content: '';
+  width: 600px;
+  left: 0;
+  height: 24px;
   background: rgba(0, 0, 255, 0.1);
-}
+} */
 
 .tiptap > ul {
   list-style-type: disc !important;
@@ -52,6 +57,7 @@
   list-style-type: circle;
 }
 .tiptap ul {
+  position: relative;
   padding-left: 2.5rem;
   list-style-type: square;
 }
