@@ -1,4 +1,5 @@
 import Document from '@tiptap/extension-document';
+import Focus from '@tiptap/extension-focus';
 import History from '@tiptap/extension-history';
 import Link from '@tiptap/extension-link';
 import Placeholder from '@tiptap/extension-placeholder';
@@ -39,6 +40,7 @@ const extensions = [
   History.configure({
     newGroupDelay: 300,
   }),
+  Focus,
 ];
 
 const content = '<p>Hello World!</p>';
