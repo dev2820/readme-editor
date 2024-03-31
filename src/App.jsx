@@ -1,6 +1,6 @@
 import { TestEditor } from '@/libs/Editor/TestEditor';
 
-import { BlockEditor } from './components/BlockEditor';
+// import { BlockEditor } from './components/BlockEditor';
 import { DownloadPannel } from './components/DownloadPannel/DownloadPannel';
 import { BlockEditorProvider } from './contexts/block-editor-context';
 
@@ -13,9 +13,9 @@ function App() {
           <div className="flex flex-row justify-center gap-4">
             <DownloadPannel></DownloadPannel>
           </div>
-          <div className="flex flex-row justify-center overflow-hidden">
+          {/* <div className="flex flex-row justify-center overflow-hidden">
             <BlockEditor className="w-200 h-160 overflow-auto"></BlockEditor>
-          </div>
+          </div> */}
           <div className="flex flex-row justify-center overflow-hidden ">
             <TestEditor className="w-200 border-1"></TestEditor>
           </div>

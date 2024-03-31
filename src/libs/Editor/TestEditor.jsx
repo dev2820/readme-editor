@@ -1,5 +1,6 @@
 import Document from '@tiptap/extension-document';
 import Link from '@tiptap/extension-link';
+import Placeholder from '@tiptap/extension-placeholder';
 import Text from '@tiptap/extension-text';
 import { FloatingMenu } from '@tiptap/react';
 import { EditorContent, useEditor } from '@tiptap/react';
@@ -24,21 +25,23 @@ const extensions = [
   Link.configure({
     protocols: ['https', 'http'],
   }),
+  Placeholder.configure({
+    placeholder: ({ node }) => {
+      if (node.type.name === 'heading') {
+        return `header${node.attrs.level}`;
+      }
+
+      return 'Can you add some further context?';
+    },
+  }),
   CommandsPlugin,
 ];
 
 const content = '<p>Hello World!</p>';
 
-function shouldShowFloatingMenu({ editor, view, state, oldState }) {
-  const notChangableNodes = [
-    'imageNode',
-    'imagePlaceholder',
-    'videoNode',
-    'videoPlaceholder',
-  ];
-
+function shouldShowFloatingMenu({ editor }) {
   if (isNil(editor)) return false;
-  return notChangableNodes.some((node) => editor.isActive(node)) ? false : true;
+  return true;
 }
 
 export function TestEditor({ ...props }) {
