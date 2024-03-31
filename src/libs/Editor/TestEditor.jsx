@@ -60,7 +60,7 @@ const extensions = [
   }),
   Bold,
   Strike,
-  Italic,
+  Italic, // FIXME: 현재 폰트에서 italic이 보이지 않는 문제가 있으니 확인 (폰트가 로드 안된건지 inter의 문제인지 확인 필요함)
   Underline,
   Placeholder.configure({
     placeholder: ({ node }) => {
