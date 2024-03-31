@@ -1,4 +1,5 @@
 import Document from '@tiptap/extension-document';
+import History from '@tiptap/extension-history';
 import Link from '@tiptap/extension-link';
 import Placeholder from '@tiptap/extension-placeholder';
 import Text from '@tiptap/extension-text';
@@ -35,6 +36,9 @@ const extensions = [
     },
   }),
   CommandsPlugin,
+  History.configure({
+    newGroupDelay: 300,
+  }),
 ];
 
 const content = '<p>Hello World!</p>';
