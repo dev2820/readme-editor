@@ -1,6 +1,7 @@
 import Document from '@tiptap/extension-document';
 import Dropcursor from '@tiptap/extension-dropcursor';
 import Focus from '@tiptap/extension-focus';
+import HardBreak from '@tiptap/extension-hard-break';
 import History from '@tiptap/extension-history';
 import Link from '@tiptap/extension-link';
 import Placeholder from '@tiptap/extension-placeholder';
@@ -40,6 +41,7 @@ const extensions = [
   BulletList,
   ListItem,
   Text,
+  HardBreak,
   Link.configure({
     protocols: ['https', 'http'],
   }),
