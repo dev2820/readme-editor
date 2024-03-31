@@ -26,6 +26,8 @@ import { HorizontalRule } from './components/nodes/horizontal-rule';
 import { ListItem } from './components/nodes/list-item';
 import { OrderedList } from './components/nodes/ordered-list';
 import { Paragraph } from './components/nodes/paragraph';
+import { TaskItem } from './components/nodes/task-item';
+import { TaskList } from './components/nodes/task-list';
 import './editor.css';
 import { getCurrentBlock } from './getCurrentBlock';
 import { CommandsPlugin } from './plugins/CommandsPlugin';
@@ -42,6 +44,10 @@ const extensions = [
   BulletList,
   OrderedList,
   ListItem,
+  TaskList,
+  TaskItem.configure({
+    nested: true,
+  }),
   Text,
   HardBreak,
   Link.configure({
@@ -90,7 +96,6 @@ export function TestEditor({ ...props }) {
       {editor && (
         <BubbleMenu editor={editor} containerRef={containerRef}></BubbleMenu>
       )}
-      {/* {editor && <ChangeMenu editor={editor}></ChangeMenu>} */}
       {editor && (
         <FloatingMenu
           editor={editor}

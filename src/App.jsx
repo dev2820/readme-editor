@@ -17,7 +17,7 @@ function App() {
             <BlockEditor className="w-200 h-160 overflow-auto"></BlockEditor>
           </div> */}
           <div className="flex flex-row justify-center overflow-hidden ">
-            <TestEditor className="w-200 border-1"></TestEditor>
+            <TestEditor className="w-150 border-1"></TestEditor>
           </div>
         </main>
       </BlockEditorProvider>

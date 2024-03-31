@@ -60,3 +60,12 @@
   list-style-type: decimal;
   padding-left: 2.5rem;
 }
+
+.tiptap ul[data-type='taskList'] > li {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: flex-start;
+  position: relative;
+  left: -1.25rem;
+}
