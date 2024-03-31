@@ -11,6 +11,17 @@
   border-radius: 6px;
 }
 
+.tiptap blockquote {
+  margin-top: 0;
+  margin-bottom: 16px;
+  padding: 0 1rem;
+  color: rgb(101, 109, 118);
+  border-left: 0.25rem solid rgb(208, 215, 222);
+}
+.tiptap > :last-child {
+  margin-bottom: 0;
+}
+
 .tiptap a {
   cursor: pointer;
   text-decoration: underline solid;
@@ -83,4 +94,30 @@
   align-items: flex-start;
   position: relative;
   left: -1.25rem;
+}
+
+.tiptap pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  color: rgb(31, 35, 40);
+  background-color: rgb(246, 248, 250);
+  border-radius: 6px;
+}
+.tiptap pre > code {
+  display: block;
+  max-width: auto;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  font-size: 100%;
+}
+.tiptap code * {
+  font-family: 'ui-monospace', SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
 }

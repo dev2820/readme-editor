@@ -223,6 +223,7 @@
   color: rgb(31, 35, 40);
   background-color: rgb(246, 248, 250);
   border-radius: 6px;
+  text-align: left;
 }
 .bn-container [data-content-type='code-block'] pre > code {
   display: block;
