@@ -3,9 +3,12 @@ import Dropcursor from '@tiptap/extension-dropcursor';
 // import Focus from '@tiptap/extension-focus';
 import HardBreak from '@tiptap/extension-hard-break';
 import History from '@tiptap/extension-history';
+import Italic from '@tiptap/extension-italic';
 import Link from '@tiptap/extension-link';
 import Placeholder from '@tiptap/extension-placeholder';
+import Strike from '@tiptap/extension-strike';
 import Text from '@tiptap/extension-text';
+import Underline from '@tiptap/extension-underline';
 import { FloatingMenu } from '@tiptap/react';
 import { EditorContent, useEditor } from '@tiptap/react';
 import css from 'highlight.js/lib/languages/css';
@@ -14,8 +17,6 @@ import ts from 'highlight.js/lib/languages/typescript';
 import html from 'highlight.js/lib/languages/xml';
 import { common, createLowlight } from 'lowlight';
 import { useRef } from 'react';
-
-import { isNil } from '@/utils';
 
 import { BubbleMenu } from './components/BubbleMenu';
 import { Blockquote } from './components/nodes/blockquote';
@@ -56,6 +57,9 @@ const extensions = [
   CodeBlock.configure({
     lowlight,
   }),
+  Strike,
+  Italic,
+  Underline,
   Placeholder.configure({
     placeholder: ({ node }) => {
       if (node.type.name === 'heading') {
@@ -76,13 +80,8 @@ const extensions = [
     width: 2,
   }),
 ];
-
+// TODO: add mark (code also)
 const content = '<p>Hello World!</p>';
-
-function shouldShowFloatingMenu({ editor }) {
-  if (isNil(editor)) return false;
-  return true;
-}
 
 export function TestEditor({ ...props }) {
   const containerRef = useRef();
@@ -113,7 +112,6 @@ export function TestEditor({ ...props }) {
             },
             placement: 'left-start',
           }}
-          shouldShow={shouldShowFloatingMenu}
         >
           <button
             onClick={() =>
