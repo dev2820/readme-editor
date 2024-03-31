@@ -43,3 +43,15 @@
 .tiptap *.has-focus {
   background: rgba(0, 0, 255, 0.1);
 }
+
+.tiptap > ul {
+  list-style-type: disc !important;
+}
+
+.tiptap > ul > li > ul {
+  list-style-type: circle;
+}
+.tiptap ul {
+  padding-left: 2.5rem;
+  list-style-type: square;
+}

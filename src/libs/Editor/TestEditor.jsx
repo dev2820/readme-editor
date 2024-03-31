@@ -1,8 +1,11 @@
+import Blockquote from '@tiptap/extension-blockquote';
+import BulletList from '@tiptap/extension-bullet-list';
 import Document from '@tiptap/extension-document';
 import Dropcursor from '@tiptap/extension-dropcursor';
 import Focus from '@tiptap/extension-focus';
 import History from '@tiptap/extension-history';
 import Link from '@tiptap/extension-link';
+import ListItem from '@tiptap/extension-list-item';
 import Placeholder from '@tiptap/extension-placeholder';
 import Text from '@tiptap/extension-text';
 import { FloatingMenu } from '@tiptap/react';
@@ -24,6 +27,9 @@ const extensions = [
   Paragraph,
   HorizontalRule,
   Heading,
+  Blockquote,
+  BulletList,
+  ListItem,
   Text,
   Link.configure({
     protocols: ['https', 'http'],
