@@ -1,26 +1,35 @@
-import Blockquote from '@tiptap/extension-blockquote';
-import BulletList from '@tiptap/extension-bullet-list';
 import Document from '@tiptap/extension-document';
 import Dropcursor from '@tiptap/extension-dropcursor';
 import Focus from '@tiptap/extension-focus';
 import History from '@tiptap/extension-history';
 import Link from '@tiptap/extension-link';
-import ListItem from '@tiptap/extension-list-item';
 import Placeholder from '@tiptap/extension-placeholder';
 import Text from '@tiptap/extension-text';
 import { FloatingMenu } from '@tiptap/react';
 import { EditorContent, useEditor } from '@tiptap/react';
+import css from 'highlight.js/lib/languages/css';
+import js from 'highlight.js/lib/languages/javascript';
+import ts from 'highlight.js/lib/languages/typescript';
+import html from 'highlight.js/lib/languages/xml';
+import { common, createLowlight } from 'lowlight';
 import { useRef } from 'react';
 
 import { isNil } from '@/utils';
 
 import { BubbleMenu } from './components/BubbleMenu';
+import { Blockquote } from './components/nodes/blockquote';
+import { BulletList } from './components/nodes/bullet-list';
+import { CodeBlock } from './components/nodes/code-block';
 import { Heading } from './components/nodes/heading';
 import { HorizontalRule } from './components/nodes/horizontal-rule';
+import { ListItem } from './components/nodes/list-item';
 import { Paragraph } from './components/nodes/paragraph';
 import './editor.css';
 import { getCurrentBlock } from './getCurrentBlock';
 import { CommandsPlugin } from './plugins/CommandsPlugin';
+
+const lowlight = createLowlight(common);
+lowlight.register({ css, js, ts, html });
 
 const extensions = [
   Document,
@@ -33,6 +42,9 @@ const extensions = [
   Text,
   Link.configure({
     protocols: ['https', 'http'],
+  }),
+  CodeBlock.configure({
+    lowlight,
   }),
   Placeholder.configure({
     placeholder: ({ node }) => {
