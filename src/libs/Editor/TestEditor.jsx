@@ -24,6 +24,7 @@ import { CodeBlock } from './components/nodes/code-block';
 import { Heading } from './components/nodes/heading';
 import { HorizontalRule } from './components/nodes/horizontal-rule';
 import { ListItem } from './components/nodes/list-item';
+import { OrderedList } from './components/nodes/ordered-list';
 import { Paragraph } from './components/nodes/paragraph';
 import './editor.css';
 import { getCurrentBlock } from './getCurrentBlock';
@@ -39,6 +40,7 @@ const extensions = [
   Heading,
   Blockquote,
   BulletList,
+  OrderedList,
   ListItem,
   Text,
   HardBreak,

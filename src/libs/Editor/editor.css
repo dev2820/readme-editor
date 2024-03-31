@@ -55,3 +55,8 @@
   padding-left: 2.5rem;
   list-style-type: square;
 }
+
+.tiptap ol {
+  list-style-type: decimal;
+  padding-left: 2.5rem;
+}
