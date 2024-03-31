@@ -1,3 +1,7 @@
+.tiptap {
+  outline: none;
+}
+
 .tiptap > * + * {
   margin-top: 0.75rem;
 }
