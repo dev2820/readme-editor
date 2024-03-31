@@ -1,4 +1,5 @@
 import Document from '@tiptap/extension-document';
+import Dropcursor from '@tiptap/extension-dropcursor';
 import Focus from '@tiptap/extension-focus';
 import History from '@tiptap/extension-history';
 import Link from '@tiptap/extension-link';
@@ -41,6 +42,9 @@ const extensions = [
     newGroupDelay: 300,
   }),
   Focus,
+  Dropcursor.configure({
+    width: 2,
+  }),
 ];
 
 const content = '<p>Hello World!</p>';
