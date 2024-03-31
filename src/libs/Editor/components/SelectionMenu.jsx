@@ -57,6 +57,16 @@ export function SelectionMenu({ editor, selectionType, setSelectionType }) {
           >
             link
           </button>
+          <button
+            type="button"
+            data-test-id="mark-code"
+            className={cn('border-1', {
+              'bg-grey': editor.isActive('code'),
+            })}
+            onClick={() => editor.chain().toggleCode().run()}
+          >
+            code
+          </button>
         </>
       );
     case 'link':

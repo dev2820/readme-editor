@@ -1,4 +1,5 @@
 import Bold from '@tiptap/extension-bold';
+import Code from '@tiptap/extension-code';
 import Document from '@tiptap/extension-document';
 import Dropcursor from '@tiptap/extension-dropcursor';
 // import Focus from '@tiptap/extension-focus';
@@ -62,6 +63,7 @@ const extensions = [
   Strike,
   Italic, // FIXME: 현재 폰트에서 italic이 보이지 않는 문제가 있으니 확인 (폰트가 로드 안된건지 inter의 문제인지 확인 필요함)
   Underline,
+  Code,
   Placeholder.configure({
     placeholder: ({ node }) => {
       if (node.type.name === 'heading') {

@@ -23,6 +23,7 @@ export function BubbleMenu({ editor, containerRef }) {
         duration: 100,
         appendTo: containerRef.current,
       }}
+      className="bg-white"
     >
       <SelectionMenu
         editor={editor}
