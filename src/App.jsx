@@ -2,12 +2,12 @@ import { TestEditor } from '@/libs/Editor/TestEditor';
 
 // import { BlockEditor } from './components/BlockEditor';
 import { DownloadPannel } from './components/DownloadPannel/DownloadPannel';
-import { BlockEditorProvider } from './contexts/block-editor-context';
+import { EditorProvider } from './libs/Editor/contexts/editor-context';
 
 function App() {
   return (
     <>
-      <BlockEditorProvider>
+      <EditorProvider>
         <main className="w-full">
           <h1 className="text-center">Online Block Base Markdown Editor</h1>
           <div className="flex flex-row justify-center gap-4">
@@ -23,7 +23,7 @@ function App() {
             <TestEditor className="w-150 border-1"></TestEditor>
           </div>
         </main>
-      </BlockEditorProvider>
+      </EditorProvider>
     </>
   );
 }
