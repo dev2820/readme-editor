@@ -146,3 +146,16 @@
   font-family: 'ui-monospace', SFMono-Regular, 'SF Mono', Menlo, Consolas,
     'Liberation Mono', monospace;
 }
+
+/**
+ * horizontal-rule
+ */
+
+.tiptap [data-type='horizontal-rule'] {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #d0d7de;
+  border: 0;
+  overflow: hidden;
+}

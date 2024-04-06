@@ -33,6 +33,7 @@ export const HorizontalRule = Node.create({
       'hr',
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
         'data-id': node.attrs['data-id'],
+        'data-type': 'horizontal-rule',
       }),
     ];
   },
