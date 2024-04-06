@@ -32,28 +32,49 @@
   color: blue;
 }
 
-.tiptap h1 {
-  font-size: 2rem;
+/**
+ * heading
+ */
+
+.tiptap [data-type='heading'] {
+  display: block;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
 }
 
-.tiptap h2 {
-  font-size: 1.5rem;
+.tiptap [data-type='heading']:first-child {
+  margin-top: 0 !important;
 }
 
-.tiptap h3 {
-  font-size: 1.25rem;
+.tiptap h1[data-type='heading'] {
+  font-size: 2em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid rgb(216, 222, 228);
 }
 
-.tiptap h4 {
-  font-size: 1rem;
+.tiptap h2[data-type='heading'] {
+  font-size: 1.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid rgb(216, 222, 228);
 }
 
-.tiptap h5 {
-  font-size: 0.875rem;
+.tiptap h3[data-type='heading'] {
+  font-size: 1.25em;
 }
 
-.tiptap h6 {
-  font-size: 0.85rem;
+.tiptap h4[data-type='heading'] {
+  font-size: 1em;
+}
+
+.tiptap h5[data-type='heading'] {
+  font-size: 0.875em;
+}
+
+.tiptap h6[data-type='heading'] {
+  font-size: 0.85em;
+  color: #636c76;
 }
 
 .tiptap *.is-empty::before {
