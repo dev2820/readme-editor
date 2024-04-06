@@ -1,5 +1,8 @@
 .tiptap {
   outline: none;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
 }
 
 .tiptap > * + * {
@@ -14,6 +17,15 @@
   background-color: rgba(175, 184, 193, 0.2);
   border-radius: 6px;
 }
+/**
+ * paragraph
+ */
+.tiptap [data-type='paragraph'] {
+  margin-bottom: 16px;
+}
+/**
+ * blockquote
+ */
 
 .tiptap blockquote {
   margin-top: 0;
@@ -22,8 +34,11 @@
   color: rgb(101, 109, 118);
   border-left: 0.25rem solid rgb(208, 215, 222);
 }
-.tiptap > :last-child {
+.tiptap blockquote > :last-child {
   margin-bottom: 0;
+}
+.tiptap blockquote > :first-child {
+  margin-top: 0;
 }
 
 .tiptap a {
@@ -94,22 +109,34 @@
   background: rgba(0, 0, 255, 0.1);
 } */
 
-.tiptap > ul {
+/**
+ * bullet list
+ */
+.tiptap > ul[data-type='bullet-list'] {
   list-style-type: disc !important;
 }
 
-.tiptap > ul > li > ul {
+.tiptap > ul[data-type='bullet-list'] > li > ul[data-type='bullet-list'] {
   list-style-type: circle;
 }
-.tiptap ul {
+.tiptap ul[data-type='bullet-list'] {
   position: relative;
-  padding-left: 2.5rem;
+  padding-left: 2rem;
   list-style-type: square;
 }
+.tiptap ul[data-type='bullet-list'] p {
+  margin-bottom: 0;
+}
 
-.tiptap ol {
+/**
+ * ordered-list
+ */
+.tiptap ol[data-type='ordered-list'] {
   list-style-type: decimal;
-  padding-left: 2.5rem;
+  padding-left: 2rem;
+}
+.tiptap ol[data-type='ordered-list'] p {
+  margin-bottom: 0;
 }
 
 .tiptap ul[data-type='taskList'] > li {

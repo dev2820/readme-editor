@@ -36,6 +36,7 @@ export const Paragraph = Node.create({
       'p',
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
         'data-id': node.attrs['data-id'],
+        'data-type': 'paragraph',
       }),
       0,
     ];
