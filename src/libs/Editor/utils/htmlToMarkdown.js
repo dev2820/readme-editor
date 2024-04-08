@@ -47,6 +47,21 @@ function figure(turndownService) {
   });
 }
 
+function taskItem(turndownService) {
+  turndownService.addRule('li', {
+    filter: ['li'],
+    replacement: function (content, node) {
+      const type = node.getAttribute('data-type');
+      console.log(content, node);
+      if (type && type === 'taskItem') {
+        return `[] `;
+      }
+
+      return content;
+    },
+  });
+}
+
 const turndownService = new TurndownService({
   headingStyle: 'atx',
   fence: '```',
@@ -58,7 +73,7 @@ const turndownService = new TurndownService({
   },
 });
 
-turndownService.use([strikethrough, underline, figure]);
+turndownService.use([strikethrough, underline, figure, taskItem]);
 turndownService.addRule('image', {
   filter: ['img'],
   replacement(_, node) {
