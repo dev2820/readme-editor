@@ -15,7 +15,7 @@ export const inputRegex =
  * 참조: https://tiptap.dev/docs/editor/guide/node-views/react
  */
 export const InternalImage = Node.create({
-  name: 'internal-image',
+  name: 'internalImage',
 
   addOptions() {
     return {
@@ -70,6 +70,7 @@ export const InternalImage = Node.create({
       'img',
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
         'data-id': node.attrs['data-id'],
+        'data-type': this.name,
       }),
     ];
   },

@@ -38,6 +38,7 @@ export const Blockquote = Node.create({
       'blockquote',
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
         'data-id': node.attrs['data-id'],
+        'data-type': this.name,
       }),
       0,
     ];

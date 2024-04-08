@@ -5,7 +5,7 @@ export const inputRegex =
   /(?:^|\s)(!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\))$/;
 
 export const ExternalImage = Node.create({
-  name: 'external-image',
+  name: 'externalImage',
 
   addOptions() {
     return {
@@ -60,6 +60,7 @@ export const ExternalImage = Node.create({
       'img',
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
         'data-id': node.attrs['data-id'],
+        'data-type': this.name,
       }),
     ];
   },

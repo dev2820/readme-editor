@@ -44,7 +44,7 @@ export const BulletList = Node.create({
       'ul',
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
         'data-id': node.attrs['data-id'],
-        'data-type': 'bullet-list',
+        'data-type': this.name,
       }),
       0,
     ];

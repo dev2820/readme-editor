@@ -44,7 +44,7 @@ export const TaskList = Node.create({
         this.options.HTMLAttributes,
         HTMLAttributes,
         {
-          'data-type': 'task-list',
+          'data-type': this.name,
         },
         {
           'data-id': node.attrs['data-id'],

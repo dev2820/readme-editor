@@ -34,6 +34,7 @@ export const CodeBlock = _CodeBlock.extend({
       {
         ...attrs,
         'data-id': node.attrs['data-id'],
+        'data-type': this.name,
       },
       children,
     ];

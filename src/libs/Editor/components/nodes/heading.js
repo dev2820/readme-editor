@@ -46,7 +46,7 @@ export const Heading = Node.create({
       `h${level}`,
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
         'data-id': node.attrs['data-id'],
-        'data-type': 'heading',
+        'data-type': this.name,
       }),
       0,
     ];

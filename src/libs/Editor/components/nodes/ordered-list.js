@@ -55,7 +55,7 @@ export const OrderedList = Node.create({
     const { start, ...attributesWithoutStart } = HTMLAttributes;
     const idAttr = {
       'data-id': node.attrs['data-id'],
-      'data-type': 'ordered-list',
+      'data-type': this.name,
     };
     return start === 1
       ? [

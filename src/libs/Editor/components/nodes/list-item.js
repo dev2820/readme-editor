@@ -9,6 +9,7 @@ export const ListItem = Node.create({
       HTMLAttributes: {},
       bulletListTypeName: 'bulletList',
       orderedListTypeName: 'orderedList',
+      taskListTypeName: 'taskList',
     };
   },
 
@@ -40,6 +41,7 @@ export const ListItem = Node.create({
       'li',
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
         'data-id': node.attrs['data-id'],
+        'data-type': this.name,
       }),
       0,
     ];
