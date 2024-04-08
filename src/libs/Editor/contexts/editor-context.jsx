@@ -33,6 +33,7 @@ import { TaskList } from '../components/nodes/task-list';
 import { Commands } from '../plugins/CommandsPlugin';
 import { htmlToMarkdown } from '../utils/htmlToMarkdown';
 import { markdownToHtml } from '../utils/markdownToHtml';
+import { getNodePlaceholder } from '../utils/node';
 
 const lowlight = createLowlight(common);
 lowlight.register({ css, js, ts, html });
@@ -65,15 +66,7 @@ const extensions = [
   Underline,
   Code,
   Placeholder.configure({
-    placeholder: ({ node }) => {
-      if (node.type.name === 'heading') {
-        return `header${node.attrs.level}`;
-      }
-      /**
-       * TODO: 각 node에 맞는 placeholder 추가
-       */
-      return 'Can you add some further context?';
-    },
+    placeholder: ({ node }) => getNodePlaceholder(node),
   }),
   Commands,
   History.configure({
