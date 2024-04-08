@@ -29,6 +29,7 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 - [ ] 파싱 로직 점검
   - [ ] 파싱 테스트용 파일 만들기
 - [ ] 다운로드 기능 구현
+- [ ] 코드블럭 언어 표시 기능
 
 ### Advanced
 
@@ -40,6 +41,8 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 - [ ] unocss theme 설정 (font size...)
 - [ ] 이미지 확대 보기 기능
 - [ ] 더 많은 이미지 블럭
+- [ ] 코드블럭 복사 기능
+- [ ] 코드블럭 언어 변경 기능
 - [ ] table 블럭
 
 ### API
