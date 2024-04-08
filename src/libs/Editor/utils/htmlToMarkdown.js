@@ -52,9 +52,11 @@ function taskItem(turndownService) {
     filter: ['li'],
     replacement: function (content, node) {
       const type = node.getAttribute('data-type');
-      console.log(content, node);
-      if (type && type === 'taskItem') {
-        return `[] `;
+      const isChecked = node.getAttribute('data-checked') === 'true';
+
+      if (type === 'taskItem') {
+        const leftPad = new Array(getParentUlTotal(node)).fill('\t').join('');
+        return `${leftPad}- [${isChecked ? 'x' : ' '}] ${content.trimStart()}`;
       }
 
       return content;
@@ -87,3 +89,25 @@ turndownService.addRule('image', {
 export async function htmlToMarkdown(html) {
   return turndownService.turndown(html);
 }
+
+const getParentUlTotal = (node, count = 0) => {
+  const parent = node.parentNode;
+  if (
+    parent.nodeName === 'UL' &&
+    parent.getAttribute('data-type') === 'taskList'
+  ) {
+    let ancest = parent;
+    while (
+      ancest.id !== 'turndown-root' &&
+      ancest.getAttribute('data-type') !== 'taskItem'
+    ) {
+      ancest = ancest.parentNode;
+    }
+    if (ancest.nodeName !== 'LI') {
+      return count;
+    } else {
+      return getParentUlTotal(ancest, count + 1);
+    }
+  }
+  return count;
+};
