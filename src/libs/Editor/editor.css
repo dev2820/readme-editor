@@ -9,6 +9,9 @@
   margin-top: 0.75rem;
 }
 
+/**
+ * code
+ */
 .tiptap code {
   padding: 0.2rem 0.4rem;
   margin: 0;
@@ -16,6 +19,10 @@
   white-space: break-spaces;
   background-color: rgba(175, 184, 193, 0.2);
   border-radius: 6px;
+}
+.tiptap code * {
+  font-family: 'ui-monospace', SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
 }
 /**
  * paragraph
@@ -139,15 +146,9 @@
   margin-bottom: 0;
 }
 
-.tiptap ul[data-type='taskList'] > li {
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  align-items: flex-start;
-  position: relative;
-  left: -1.25rem;
-}
-
+/**
+ * pre code
+ */
 .tiptap pre {
   padding: 16px;
   overflow: auto;
@@ -169,11 +170,26 @@
   background: transparent;
   font-size: 100%;
 }
-.tiptap code * {
-  font-family: 'ui-monospace', SFMono-Regular, 'SF Mono', Menlo, Consolas,
-    'Liberation Mono', monospace;
-}
 
+/**
+ * task-list
+ */
+.tiptap ul[data-type='task-list'] {
+  position: relative;
+  padding-left: 2rem;
+  list-style-type: square;
+}
+.tiptap ul[data-type='task-list'] > li {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: flex-start;
+  position: relative;
+  left: -1.25rem;
+}
+.tiptap ul[data-type='task-list'] p {
+  margin-bottom: 0;
+}
 /**
  * horizontal-rule
  */
