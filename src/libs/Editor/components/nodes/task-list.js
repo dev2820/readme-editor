@@ -37,7 +37,7 @@ export const TaskList = Node.create({
 
   renderHTML({ node, HTMLAttributes }) {
     node.attrs['data-id'] = nanoid();
-    console.log('render?');
+
     return [
       'ul',
       mergeAttributes(

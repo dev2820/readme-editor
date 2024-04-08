@@ -149,16 +149,16 @@ console.log(a)
 <h2>할 일 리스트 (taskList)</h2>
 <hr/>
 <ul data-type="taskList">
-  <li data-checked="true">
+  <li data-type="taskItem" data-checked="true">
     <label contenteditable="false">
-      <input type="checkbox" checked="checked">
+      <input type="checkbox" checked="true">
       <span></span>
     </label>
     <div>
       <p data-type="paragraph">todo 1</p>
     </div>
   </li>
-  <li data-checked="false">
+  <li data-type="taskItem" data-checked="false">
     <label contenteditable="false">
       <input type="checkbox">
       <span></span>
@@ -166,7 +166,7 @@ console.log(a)
     <div>
       <p data-type="paragraph">todo2</p>
       <ul data-type="taskList">
-        <li data-checked="false">
+        <li data-type="taskItem" data-checked="false">
           <label contenteditable="false">
             <input type="checkbox">
             <span></span>
@@ -175,7 +175,7 @@ console.log(a)
             <p data-type="paragraph">nested todo1</p>
           </div>
         </li>
-        <li data-checked="false">
+        <li data-type="taskItem" data-checked="false">
           <label contenteditable="false">
             <input type="checkbox">
             <span></span>
