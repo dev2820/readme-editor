@@ -6,7 +6,7 @@ import './editor.css';
 import { getCurrentBlock } from './getCurrentBlock';
 import { useEditor } from './hooks/use-editor';
 
-export function TestEditor({ ...props }) {
+export function TiptapEditor({ ...props }) {
   const containerRef = useRef();
   const { editor } = useEditor();
   return (
