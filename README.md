@@ -10,12 +10,10 @@
 - [ ] 마크다운 파일 이름 입력 input 만들기
 - [ ] 이미지 폴더 이름 입력 input 만들기
 - [ ] 마크다운 preview 기능 만들기
-- [ ] floatting menu에 삭제 버튼 달기
+- [ ] floatting menu에 삭제 버튼 달기 (next)
 - [ ] floatting menu에 교체 버튼 달기
 
 ### 블럭 & 인라인
-
-- [ ] 각 노드별 placeholder 만들기
 
 https://gist.github.com/ihoneymon/652be052a0727ad59601
 
@@ -24,7 +22,7 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
   - [ ] 이미지 align 기능 만들기
   - [ ] 이미지 블럭 꾸미기
   - [ ] 이미지 다운로드 기능
-- [ ] details 블럭
+- [ ] details 블럭 (try?)
 - [ ] github note 블럭
 - [ ] 파싱 로직 점검
   - [ ] 파싱 테스트용 파일 만들기
