@@ -9,3 +9,13 @@ export const getCurrentBlock = (editor) => {
     return document.querySelector(`[data-id="${id}"]`);
   }
 };
+
+export const getCurrentNode = (editor) => {
+  const selection = editor.state.selection;
+  const doc = editor.state.doc;
+  if (selection.$cursor) {
+    return doc.resolve(selection.$cursor.pos).parent;
+  } else if (selection.$focus) {
+    return doc.resolve(selection.$focus.pos).parent;
+  }
+};

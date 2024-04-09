@@ -2,7 +2,7 @@ import Bold from '@tiptap/extension-bold';
 import Code from '@tiptap/extension-code';
 import Document from '@tiptap/extension-document';
 import Dropcursor from '@tiptap/extension-dropcursor';
-// import Focus from '@tiptap/extension-focus';
+import Focus from '@tiptap/extension-focus';
 import HardBreak from '@tiptap/extension-hard-break';
 import History from '@tiptap/extension-history';
 import Italic from '@tiptap/extension-italic';
@@ -72,9 +72,9 @@ const extensions = [
   History.configure({
     newGroupDelay: 300,
   }),
-  // Focus.configure({
-  //   mode: 'deepest',
-  // }),
+  Focus.configure({
+    mode: 'shallowest',
+  }),
   Dropcursor.configure({
     width: 2,
   }),

@@ -106,15 +106,10 @@
   height: 0;
   pointer-events: none;
 }
-/* 
-.tiptap *.has-focus::before {
-  position: absolute;
-  content: '';
-  width: 600px;
-  left: 0;
-  height: 24px;
+
+.tiptap *.has-focus {
   background: rgba(0, 0, 255, 0.1);
-} */
+}
 
 /**
  * bullet list
@@ -201,4 +196,8 @@
   background-color: #d0d7de;
   border: 0;
   overflow: hidden;
+}
+
+.tiptap [data-type='horizontalRule'].has-focus {
+  background-color: rgba(0, 0, 255, 0.1);
 }
