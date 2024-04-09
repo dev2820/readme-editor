@@ -10,8 +10,6 @@
 - [ ] 마크다운 파일 이름 입력 input 만들기
 - [ ] 이미지 폴더 이름 입력 input 만들기
 - [ ] 마크다운 preview 기능 만들기
-- [ ] floatting menu에 삭제 버튼 달기 (next)
-- [ ] floatting menu에 교체 버튼 달기
 
 ### 블럭 & 인라인
 
