@@ -1,7 +1,7 @@
 import { Node, mergeAttributes, wrappingInputRule } from '@tiptap/core';
 import { nanoid } from 'nanoid';
 
-export const inputRegex = /^\s*>\s$/;
+export const inputRegex = /^\s*\|\s$/;
 
 export const Blockquote = Node.create({
   name: 'blockquote',
