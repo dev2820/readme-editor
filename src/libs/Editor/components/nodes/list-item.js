@@ -9,7 +9,6 @@ export const ListItem = Node.create({
       HTMLAttributes: {},
       bulletListTypeName: 'bulletList',
       orderedListTypeName: 'orderedList',
-      taskListTypeName: 'taskList',
     };
   },
 

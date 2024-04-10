@@ -6,8 +6,8 @@ export const TaskList = Node.create({
 
   addOptions() {
     return {
-      itemTypeName: 'taskItem',
       HTMLAttributes: {},
+      itemTypeName: 'taskItem',
     };
   },
 
