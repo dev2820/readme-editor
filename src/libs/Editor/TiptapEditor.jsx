@@ -8,6 +8,7 @@ import { useEditor } from './hooks/use-editor';
 export function TiptapEditor({ ...props }) {
   const containerRef = useRef();
   const { editor } = useEditor();
+
   return (
     <>
       <div ref={containerRef} {...props}>

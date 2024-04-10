@@ -201,3 +201,10 @@
 .tiptap [data-type='horizontalRule'].has-focus {
   background-color: rgba(0, 0, 255, 0.1);
 }
+
+/**
+ * details (FIXME)
+ */
+.tiptap [data-type='details'] {
+  border: 1px solid black;
+}
