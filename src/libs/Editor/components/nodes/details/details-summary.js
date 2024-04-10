@@ -36,7 +36,6 @@ export const DetailsSummary = Node.create({
 
   renderHTML({ node, HTMLAttributes }) {
     node.attrs['data-id'] = nanoid();
-    console.log(node.textContent.length);
     return [
       'summary',
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
