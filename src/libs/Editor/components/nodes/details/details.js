@@ -7,6 +7,7 @@ import { DetailsSummary } from './details-summary';
 export const inputRegex = /^\s*>\s$/;
 /**
  * TODO: summary, details의 placeholder를 씌워줘야함
+ * summary enter시 다음 줄로 개행 필요
  */
 export const Details = Node.create({
   name: 'details',
@@ -49,6 +50,11 @@ export const Details = Node.create({
               },
               {
                 type: DetailsContent.name,
+                content: [
+                  {
+                    type: 'paragraph',
+                  },
+                ],
               },
             ],
           });
@@ -158,29 +164,12 @@ export const Details = Node.create({
     return [
       new InputRule({
         find: inputRegex,
-        handler: ({ range, chain }) => {
-          chain()
-            .deleteRange(range)
-            .insertContent([
-              {
-                type: 'details',
-                content: [
-                  {
-                    type: 'detailsSummary',
-                  },
-                  {
-                    type: 'detailsContent',
-                    content: [
-                      {
-                        type: 'paragraph',
-                      },
-                    ],
-                  },
-                ],
-              },
-            ])
-            .focus(range.from)
-            .run();
+        handler: ({ range, chain, state }) => {
+          const parentType = state.selection.$cursor.parent.type.name;
+          if (parentType === DetailsSummary.name) {
+            return;
+          }
+          chain().deleteRange(range).insertDetails().focus(range.from).run();
         },
       }),
     ];
