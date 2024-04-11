@@ -92,6 +92,10 @@ const content = `
 
 <h1>Markdown 문법 예제</h1>
 
+<details>
+<summary>summary</summary>
+details
+</details>
 <h2>제목 (Headers)</h2>
 <hr/>
 <h1>H1</h1>

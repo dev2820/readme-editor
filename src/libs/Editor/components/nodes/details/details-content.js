@@ -14,7 +14,7 @@ export const DetailsContent = Node.create({
   group: 'block',
 
   content() {
-    return 'block+';
+    return 'block*';
   },
 
   addAttributes() {
