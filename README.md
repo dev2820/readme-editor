@@ -20,7 +20,6 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
   - [ ] 이미지 align 기능 만들기
   - [ ] 이미지 블럭 꾸미기
   - [ ] 이미지 다운로드 기능
-- [ ] details 블럭 (try?)
 - [ ] github note 블럭
 - [ ] 파싱 로직 점검
   - [ ] 파싱 테스트용 파일 만들기
