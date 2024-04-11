@@ -87,7 +87,7 @@ export const Details = Node.create({
           open: node.attrs.open ? true : null,
         },
       ),
-      ['button', '>'],
+      ['button', '▶'],
       ['div', {}, 0],
     ];
   },
@@ -126,7 +126,7 @@ export const Details = Node.create({
         }
       });
 
-      $toggle.textContent = '<';
+      $toggle.textContent = '▼';
       $toggle.contentEditable = false;
       $wrapper.append($toggle, $content);
 
@@ -146,11 +146,11 @@ export const Details = Node.create({
           );
           if (updatedNode.attrs.open) {
             $wrapper.setAttribute('data-open', 'true');
-            $toggle.textContent = '<';
+            $toggle.textContent = '▼';
             content.contentEditable = true;
           } else {
             $wrapper.removeAttribute('data-open');
-            $toggle.textContent = '>';
+            $toggle.textContent = '▶';
             content.contentEditable = false;
           }
 

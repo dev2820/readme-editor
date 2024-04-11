@@ -206,7 +206,18 @@
  * details (FIXME)
  */
 .tiptap [data-type='details'] {
-  border: 1px solid black;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.tiptap [data-type='details'] summary {
+  list-style: none;
+}
+.tiptap [data-type='details'] summary::-webkit-details-marker {
+  display: none;
+}
+.tiptap [data-type='details'] > div {
+  flex: 1;
 }
 .tiptap
   [data-type='details'][data-open='true']
