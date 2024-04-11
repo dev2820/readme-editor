@@ -64,6 +64,27 @@ function taskItem(turndownService) {
   });
 }
 
+function details(turndownService) {
+  turndownService.addRule('details', {
+    filter: ['details'],
+    replacement: function (content, node) {
+      return `<details ${node.open ? 'open="true"' : ''}>
+  ${content.trim()}
+</details>`;
+    },
+  });
+}
+function summary(turndownService) {
+  turndownService.addRule('summary', {
+    filter: ['summary'],
+    replacement: function (content) {
+      return `<summary>
+    ${content}
+  </summary>`;
+    },
+  });
+}
+
 const turndownService = new TurndownService({
   headingStyle: 'atx',
   fence: '```',
@@ -75,7 +96,14 @@ const turndownService = new TurndownService({
   },
 });
 
-turndownService.use([strikethrough, underline, figure, taskItem]);
+turndownService.use([
+  strikethrough,
+  underline,
+  figure,
+  taskItem,
+  details,
+  summary,
+]);
 turndownService.addRule('image', {
   filter: ['img'],
   replacement(_, node) {

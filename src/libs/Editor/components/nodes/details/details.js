@@ -68,14 +68,14 @@ export const Details = Node.create({
   isolating: true,
 
   parseHTML() {
-    return [{ tag: 'details', priority: 51 }];
+    return [{ tag: 'details', priority: 1000 }];
   },
 
   renderHTML({ node, HTMLAttributes }) {
     node.attrs['data-id'] = nanoid();
 
     return [
-      'div',
+      'details',
       mergeAttributes(
         this.options.HTMLAttributes,
         HTMLAttributes,
@@ -87,8 +87,7 @@ export const Details = Node.create({
           open: node.attrs.open ? true : null,
         },
       ),
-      ['button', '▶'],
-      ['div', {}, 0],
+      0,
     ];
   },
 
