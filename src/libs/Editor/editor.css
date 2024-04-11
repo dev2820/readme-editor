@@ -208,3 +208,14 @@
 .tiptap [data-type='details'] {
   border: 1px solid black;
 }
+.tiptap
+  [data-type='details'][data-open='true']
+  > div
+  > [data-type='detailsContent'] {
+  height: auto;
+  display: block;
+}
+.tiptap [data-type='details'] > div > [data-type='detailsContent'] {
+  height: 0;
+  display: none;
+}

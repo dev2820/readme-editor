@@ -87,78 +87,78 @@ export const Details = Node.create({
           open: node.attrs.open ? true : null,
         },
       ),
-      ['button', 'toggle'],
+      ['button', '>'],
       ['div', {}, 0],
     ];
   },
 
-  // addNodeView() {
-  //   return ({ node, HTMLAttributes, getPos, editor }) => {
-  //     const $details = document.createElement('details');
-  //     const $summary = document.createElement('summary');
-  //     // const $content = document.createElement('div');
+  addNodeView() {
+    return ({ HTMLAttributes, getPos, editor }) => {
+      const $wrapper = document.createElement('div');
+      const $toggle = document.createElement('button');
+      const $content = document.createElement('div');
 
-  //     $details.addEventListener('toggle', () => {
-  //       const { open } = $details;
+      Object.entries(this.options.HTMLAttributes).forEach(([key, value]) => {
+        $wrapper.setAttribute(key, value);
+      });
 
-  //       if (editor.isEditable && typeof getPos === 'function') {
-  //         editor
-  //           .chain()
-  //           .focus(undefined, { scrollIntoView: true })
-  //           .command(({ tr }) => {
-  //             const position = getPos();
-  //             const currentNode = tr.doc.nodeAt(position);
+      Object.entries(HTMLAttributes).forEach(([key, value]) => {
+        $wrapper.setAttribute(key, value);
+      });
 
-  //             tr.setNodeMarkup(position, undefined, {
-  //               ...currentNode?.attrs,
-  //               open,
-  //             });
+      $toggle.addEventListener('click', () => {
+        if (editor.isEditable && typeof getPos === 'function') {
+          const isOpen = $wrapper.dataset.open === 'true';
+          editor
+            .chain()
+            .focus(undefined, { scrollIntoView: true })
+            .command(({ tr }) => {
+              const position = getPos();
+              const currentNode = tr.doc.nodeAt(position);
+              tr.setNodeMarkup(position, undefined, {
+                ...currentNode?.attrs,
+                open: !isOpen,
+              });
 
-  //             return true;
-  //           })
-  //           .run();
-  //       }
-  //     });
+              return true;
+            })
+            .run();
+        }
+      });
 
-  //     // $summary.addEventListener('click', (event) => {
-  //     //   event.preventDefault();
-  //     // });
+      $toggle.textContent = '<';
+      $toggle.contentEditable = false;
+      $wrapper.append($toggle, $content);
 
-  //     Object.entries(this.options.HTMLAttributes).forEach(([key, value]) => {
-  //       $details.setAttribute(key, value);
-  //     });
+      $wrapper.setAttribute('data-id', nanoid());
+      $wrapper.setAttribute('data-open', 'true');
+      $wrapper.setAttribute('data-type', this.name);
 
-  //     $details.dataset.open = node.attrs.open;
-  //     if (node.attrs.open) {
-  //       $details.setAttribute('open', 'true');
-  //     }
+      return {
+        dom: $wrapper,
+        contentDOM: $content,
+        update: (updatedNode) => {
+          if (updatedNode.type !== this.type) {
+            return false;
+          }
+          const content = $content.querySelector(
+            '[data-type="detailsContent"]',
+          );
+          if (updatedNode.attrs.open) {
+            $wrapper.setAttribute('data-open', 'true');
+            $toggle.textContent = '<';
+            content.contentEditable = true;
+          } else {
+            $wrapper.removeAttribute('data-open');
+            $toggle.textContent = '>';
+            content.contentEditable = false;
+          }
 
-  //     $details.append($summary);
-
-  //     Object.entries(HTMLAttributes).forEach(([key, value]) => {
-  //       $details.setAttribute(key, value);
-  //     });
-
-  //     return {
-  //       dom: $details,
-  //       contentDom: $summary,
-  //       update: (updatedNode) => {
-  //         if (updatedNode.type !== this.type) {
-  //           return false;
-  //         }
-
-  //         $details.dataset.open = updatedNode.attrs.open;
-  //         if (updatedNode.attrs.open) {
-  //           $details.setAttribute('open', 'true');
-  //         } else {
-  //           $details.removeAttribute('open');
-  //         }
-
-  //         return true;
-  //       },
-  //     };
-  //   };
-  // },
+          return true;
+        },
+      };
+    };
+  },
 
   addInputRules() {
     return [
