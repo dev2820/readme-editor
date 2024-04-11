@@ -78,9 +78,7 @@ function summary(turndownService) {
   turndownService.addRule('summary', {
     filter: ['summary'],
     replacement: function (content) {
-      return `<summary>
-    ${content}
-  </summary>`;
+      return `<summary>${content}</summary>`;
     },
   });
 }
