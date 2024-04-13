@@ -88,7 +88,6 @@ function alert(turndownService) {
   turndownService.addRule('alert', {
     filter: ['blockquote'],
     replacement: function (content, node) {
-      console.log(content, node);
       if (node.dataset.type === 'alert') {
         const alertType = node.dataset.alert;
         return (
