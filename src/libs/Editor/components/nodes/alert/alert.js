@@ -13,7 +13,7 @@ export const Alert = Node.create({
     };
   },
 
-  content: 'block+',
+  content: 'block*',
 
   group: 'block',
 
@@ -45,12 +45,11 @@ export const Alert = Node.create({
     node.attrs['data-id'] = nanoid();
 
     return [
-      'div',
+      'blockquote',
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
         'data-id': node.attrs['data-id'],
         'data-type': this.name,
       }),
-      ['p', {}, 'Note'],
       0,
     ];
   },
@@ -80,6 +79,36 @@ export const Alert = Node.create({
   addKeyboardShortcuts() {
     return {
       'Mod-Shift-b': () => this.editor.commands.toggleAlert(),
+      Enter: ({ editor }) => {
+        console.log('enter', editor.view.state.selection.empty);
+        if (editor.view.state.selection.empty) {
+          editor.chain().focus().createParagraphNear().run();
+        }
+      },
+      Backspace: () => {
+        console.log('backspace');
+        const { empty, $anchor } = this.editor.state.selection;
+        const isAtStart = $anchor.pos === 1;
+
+        if (!empty || $anchor.node(-1).type.name !== this.name) {
+          return false;
+        }
+
+        if (
+          isAtStart ||
+          ($anchor.node(-1).childCount === 1 &&
+            !$anchor.parent.textContent.length)
+        ) {
+          return this.editor
+            .chain()
+            .deleteNode($anchor.node(-1).type)
+            .focus($anchor.pos - 2)
+            .insertContent({ type: 'paragraph' })
+            .run();
+        }
+
+        return false;
+      },
     };
   },
 
