@@ -42,3 +42,32 @@ https://tiptap.dev/docs/editor/api/nodes
 https://github.com/ueberdosis/tiptap/blob/main/packages/extension-blockquote/src/blockquote.ts
 
 https://tiptap.dev/docs/editor/guide/custom-extensions
+
+> [!NOTE]  
+> Highlights information that users should take into account, even when skimming.
+
+> [!TIP]
+> Optional information to help a user be more successful.
+
+> [!IMPORTANT]  
+> Crucial information necessary for users to succeed.
+
+> [!WARNING]  
+> Critical content demanding immediate user attention due to potential risks.
+
+> [!CAUTION]
+> Negative potential consequences of an action.
+
+출처: https://github.com/orgs/community/discussions/16925
+
+<details>
+  <summary>summary</summary>
+  details content
+
+## header2
+
+  <details>
+    <summary> nested header</summary>
+    nested contents
+  </details>
+</details>
