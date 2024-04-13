@@ -19,6 +19,7 @@ import html from 'highlight.js/lib/languages/xml';
 import { common, createLowlight } from 'lowlight';
 import { createContext } from 'react';
 
+import { Alert } from '../components/nodes/alert';
 import { Blockquote } from '../components/nodes/blockquote';
 import { BulletList } from '../components/nodes/bullet-list';
 import { CodeBlock } from '../components/nodes/code-block';
@@ -69,6 +70,7 @@ const extensions = [
   Details,
   DetailsSummary,
   DetailsContent,
+  Alert,
   Strike,
   Italic, // FIXME: 현재 폰트에서 italic이 보이지 않는 문제가 있으니 확인 (폰트가 로드 안된건지 inter의 문제인지 확인 필요함)
   Underline,

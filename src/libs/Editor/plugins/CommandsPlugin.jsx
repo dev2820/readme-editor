@@ -188,9 +188,9 @@ export const Commands = Extension.create({
               },
             },
             {
-              title: 'Callout',
+              title: 'Note Alert',
               attrs: {
-                'data-test-id': 'insert-callout',
+                'data-test-id': 'insert-alert',
               },
               command: ({ editor }) => {
                 const selection = editor.view.state.selection;
@@ -200,7 +200,75 @@ export const Commands = Extension.create({
                   .chain()
                   .focus()
                   .deleteRange({ from, to })
-                  .setCallout()
+                  .setAlert('note')
+                  .run();
+              },
+            },
+            {
+              title: 'Tip Alert',
+              attrs: {
+                'data-test-id': 'insert-alert',
+              },
+              command: ({ editor }) => {
+                const selection = editor.view.state.selection;
+                const from = selection.$from.posAtIndex(0);
+                const to = selection.$from.posAtIndex(1);
+                editor
+                  .chain()
+                  .focus()
+                  .deleteRange({ from, to })
+                  .setAlert('tip')
+                  .run();
+              },
+            },
+            {
+              title: 'Important Alert',
+              attrs: {
+                'data-test-id': 'insert-alert',
+              },
+              command: ({ editor }) => {
+                const selection = editor.view.state.selection;
+                const from = selection.$from.posAtIndex(0);
+                const to = selection.$from.posAtIndex(1);
+                editor
+                  .chain()
+                  .focus()
+                  .deleteRange({ from, to })
+                  .setAlert('important')
+                  .run();
+              },
+            },
+            {
+              title: 'Warning Alert',
+              attrs: {
+                'data-test-id': 'insert-alert',
+              },
+              command: ({ editor }) => {
+                const selection = editor.view.state.selection;
+                const from = selection.$from.posAtIndex(0);
+                const to = selection.$from.posAtIndex(1);
+                editor
+                  .chain()
+                  .focus()
+                  .deleteRange({ from, to })
+                  .setAlert('warning')
+                  .run();
+              },
+            },
+            {
+              title: 'Caution Alert',
+              attrs: {
+                'data-test-id': 'insert-alert',
+              },
+              command: ({ editor }) => {
+                const selection = editor.view.state.selection;
+                const from = selection.$from.posAtIndex(0);
+                const to = selection.$from.posAtIndex(1);
+                editor
+                  .chain()
+                  .focus()
+                  .deleteRange({ from, to })
+                  .setAlert('caution')
                   .run();
               },
             },
