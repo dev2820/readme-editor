@@ -80,13 +80,41 @@ export const Alert = Node.create({
     return {
       'Mod-Shift-b': () => this.editor.commands.toggleAlert(),
       Enter: ({ editor }) => {
-        console.log('enter', editor.view.state.selection.empty);
-        if (editor.view.state.selection.empty) {
-          editor.chain().focus().createParagraphNear().run();
+        // if (!this.options.exitOnTripleEnter) {
+        //   return false
+        // }
+
+        const { state } = editor;
+        const { selection } = state;
+        const { $from, $to, empty } = selection;
+
+        if (!empty || $from.node(-1).type !== this.type) {
+          return false;
         }
+
+        const isAtEnd = $from.parentOffset === $from.parent.nodeSize - 2;
+        const endsWithDoubleNewline = $from
+          .node(-1)
+          .content.content.map((content) => content.textContent)
+          .map((text) => (text === '' ? '\n' : text))
+          .join('')
+          .endsWith('\n\n');
+        if (!isAtEnd || !endsWithDoubleNewline) {
+          return false;
+        }
+
+        return editor
+          .chain()
+          .command(({ tr }) => {
+            tr.delete($from.pos - 2, $from.pos);
+
+            return true;
+          })
+          .insertContentAt($to.pos, { type: 'paragraph' })
+          .focus($to.pos + 1)
+          .run();
       },
       Backspace: () => {
-        console.log('backspace');
         const { empty, $anchor } = this.editor.state.selection;
         const isAtStart = $anchor.pos === 1;
 
