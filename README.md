@@ -6,7 +6,7 @@
 
 ### 에디터
 
-- [ ] frontmatter 기능 추가
+- [ ] frontmatter 기능 추가 (next)
 - [ ] 마크다운 파일 이름 입력 input 만들기
 - [ ] 마크다운 preview 기능 만들기
 
@@ -14,7 +14,6 @@
 
 https://gist.github.com/ihoneymon/652be052a0727ad59601
 
-- [ ] github note 블럭 (next)
 - [ ] 코드블럭 언어 표시 기능
 - [ ] 이미지 블럭
   - [ ] 이미지 업로드 기능 구현
