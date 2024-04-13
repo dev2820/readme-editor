@@ -74,6 +74,7 @@ function details(turndownService) {
     },
   });
 }
+
 function summary(turndownService) {
   turndownService.addRule('summary', {
     filter: ['summary'],
@@ -83,6 +84,29 @@ function summary(turndownService) {
   });
 }
 
+function alert(turndownService) {
+  turndownService.addRule('alert', {
+    filter: ['blockquote'],
+    replacement: function (content, node) {
+      console.log(content, node);
+      if (node.dataset.type === 'alert') {
+        const alertType = node.dataset.alert;
+        return (
+          `
+> ![${alertType}]
+>
+` +
+          content
+            .trim()
+            .split('\n')
+            .map((text) => '> ' + text)
+            .join('\n')
+        );
+      }
+      return content;
+    },
+  });
+}
 const turndownService = new TurndownService({
   headingStyle: 'atx',
   fence: '```',
@@ -101,6 +125,7 @@ turndownService.use([
   taskItem,
   details,
   summary,
+  alert,
 ]);
 turndownService.addRule('image', {
   filter: ['img'],
