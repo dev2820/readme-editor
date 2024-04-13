@@ -201,7 +201,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`),F=I,_=D),$===void 0&&(
 `.substring(0,i);return n+o+r}function K3(e){return e!=null&&(typeof e=="string"||e.nodeType&&(e.nodeType===1||e.nodeType===9||e.nodeType===11))}function q3(e){e.addRule("strikethrough",{filter:["del","s","strike"],replacement:function(t){return"~"+t+"~"}})}function G3(e){e.addRule("underline",{filter:["ins","u"],replacement:function(t){return`<u>${t}</u>`}})}function Z3(e){e.addRule("figure",{filter:["figure"],replacement:function(t,n){const r=n.querySelector("img"),i=n.querySelector("figcaption");if(r){const o=r.getAttribute("alt");return`![${(i==null?void 0:i.textContent)||o}](./images/${o})
 `}return t}})}function Y3(e){e.addRule("li",{filter:["li"],replacement:function(t,n){const r=n.getAttribute("data-type"),i=n.getAttribute("data-checked")==="true";return r==="taskItem"?`${new Array(zS(n)).fill("	").join("")}- [${i?"x":" "}] ${t.trimStart()}`:t}})}function Q3(e){e.addRule("details",{filter:["details"],replacement:function(t,n){return`<details ${n.open?'open="true"':""}>
   ${t.trim()}
-</details>`}})}function J3(e){e.addRule("summary",{filter:["summary"],replacement:function(t){return`<summary>${t}</summary>`}})}function X3(e){e.addRule("alert",{filter:["blockquote"],replacement:function(t,n){return console.log(t,n),n.dataset.type==="alert"?`
+</details>`}})}function J3(e){e.addRule("summary",{filter:["summary"],replacement:function(t){return`<summary>${t}</summary>`}})}function X3(e){e.addRule("alert",{filter:["blockquote"],replacement:function(t,n){return n.dataset.type==="alert"?`
 > ![${n.dataset.alert}]
 >
 `+t.trim().split(`
