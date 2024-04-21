@@ -47,16 +47,38 @@ function figure(turndownService) {
   });
 }
 
-function taskItem(turndownService) {
+function listItem(turndownService) {
   turndownService.addRule('li', {
     filter: ['li'],
     replacement: function (content, node) {
       const type = node.getAttribute('data-type');
-      const isChecked = node.getAttribute('data-checked') === 'true';
 
       if (type === 'taskItem') {
-        const leftPad = new Array(getParentUlTotal(node)).fill('\t').join('');
+        const isChecked = node.getAttribute('data-checked') === 'true';
+        const leftPad = new Array(getParentListTotal(node, 'taskItem'))
+          .fill('\t')
+          .join('');
         return `${leftPad}- [${isChecked ? 'x' : ' '}] ${content.trimStart()}`;
+      }
+
+      if (
+        node.parentNode.getAttribute('data-type') === 'bulletList' &&
+        type === 'listItem'
+      ) {
+        const leftPad = new Array(getParentListTotal(node, 'listItem'))
+          .fill('\t')
+          .join('');
+        return `${leftPad}- ${content.trimStart()}`;
+      }
+
+      if (
+        node.parentNode.getAttribute('data-type') === 'orderedList' &&
+        type === 'listItem'
+      ) {
+        const leftPad = new Array(getParentListTotal(node, 'listItem'))
+          .fill('\t')
+          .join('');
+        return `${leftPad}1. ${content.trimStart()}`;
       }
 
       return content;
@@ -121,7 +143,7 @@ turndownService.use([
   strikethrough,
   underline,
   figure,
-  taskItem,
+  listItem,
   details,
   summary,
   alert,
@@ -140,23 +162,25 @@ export async function htmlToMarkdown(html) {
   return turndownService.turndown(html);
 }
 
-const getParentUlTotal = (node, count = 0) => {
+const getParentListTotal = (node, itemType, count = 0) => {
   const parent = node.parentNode;
   if (
-    parent.nodeName === 'UL' &&
-    parent.getAttribute('data-type') === 'taskList'
+    (parent.nodeName === 'UL' &&
+      parent.getAttribute('data-type') === 'taskList') ||
+    parent.getAttribute('data-type') === 'orderedList' ||
+    parent.getAttribute('data-type') === 'bulletList'
   ) {
     let ancest = parent;
     while (
       ancest.id !== 'turndown-root' &&
-      ancest.getAttribute('data-type') !== 'taskItem'
+      ancest.getAttribute('data-type') !== itemType
     ) {
       ancest = ancest.parentNode;
     }
     if (ancest.nodeName !== 'LI') {
       return count;
     } else {
-      return getParentUlTotal(ancest, count + 1);
+      return getParentListTotal(ancest, itemType, count + 1);
     }
   }
   return count;
