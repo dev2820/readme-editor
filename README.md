@@ -26,6 +26,7 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 ### Advanced
 
 - [ ] 캡션이 있으면 figure로 파싱
+- [ ] orderedList 숫자 반환 어떻게 할지 고민좀
 - [ ] formatting toolbar 디자인 손보기
 - [ ] SlashMenu 디자인 손보기
   - [ ] 아이콘 어울리는거 쓰고, https://lucide.dev/guide/packages/lucide 로 교체
