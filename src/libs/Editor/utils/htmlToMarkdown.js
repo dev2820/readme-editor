@@ -92,7 +92,7 @@ function alert(turndownService) {
         const alertType = node.dataset.alert;
         return (
           `
-> ![${alertType}]
+> [!${alertType}]
 >
 ` +
           content
