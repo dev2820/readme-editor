@@ -15,8 +15,8 @@ function App() {
           <p className="text-center">
             공사중입니다. 기능이 제대로 동작하지 않을 가능성이 커요
           </p>
-          <div className="flex flex-row justify-center overflow-hidden ">
-            <TiptapEditor className="w-150 border-1"></TiptapEditor>
+          <div className="w-150">
+            <TiptapEditor className="border-1 p-4"></TiptapEditor>
           </div>
         </main>
       </EditorProvider>
