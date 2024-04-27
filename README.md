@@ -4,10 +4,6 @@
 
 ## TODO
 
-### 에디터
-
-- [ ] 마크다운 파일 이름 입력 input 만들기
-
 ### 블럭 & 인라인
 
 https://gist.github.com/ihoneymon/652be052a0727ad59601
