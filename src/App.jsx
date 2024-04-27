@@ -1,6 +1,5 @@
 import { TiptapEditor } from '@/libs/Editor';
 
-// import { BlockEditor } from './components/BlockEditor';
 import { DownloadPannel } from './components/DownloadPannel/DownloadPannel';
 import { EditorProvider } from './libs/Editor/contexts/editor-context';
 
@@ -13,9 +12,6 @@ function App() {
           <div className="flex flex-row justify-center gap-4">
             <DownloadPannel></DownloadPannel>
           </div>
-          {/* <div className="flex flex-row justify-center overflow-hidden">
-            <BlockEditor className="w-200 h-160 overflow-auto"></BlockEditor>
-          </div> */}
           <p className="text-center">
             공사중입니다. 기능이 제대로 동작하지 않을 가능성이 커요
           </p>
