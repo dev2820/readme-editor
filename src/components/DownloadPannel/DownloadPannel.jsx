@@ -1,19 +1,22 @@
 import JSZip from 'jszip';
 
 import { Button } from '@/components/ui/Button';
+import { useMetadata } from '@/hooks/use-metadata';
 import { useEditor } from '@/libs/Editor/hooks/use-editor';
 import { downloadFile } from '@/utils';
 import { fetchAllImage } from '@/utils/storage';
 
 export const DownloadPannel = () => {
-  const { toMarkdown } = useEditor();
+  const editor = useEditor();
+  const metadata = useMetadata();
 
   async function handleDownloadMarkdown() {
-    const content = await toMarkdown();
+    const content = await editor.toMarkdown();
+    const meta = metadata.toMarkdown();
     const images = fetchAllImage();
 
     const zip = new JSZip();
-    zip.file('index.md', content);
+    zip.file('index.md', `${meta}\n${content}`);
     if (images.length > 0) {
       const imagesFolder = zip.folder('images');
       images.forEach((image) => {
@@ -28,13 +31,15 @@ export const DownloadPannel = () => {
 
   const handleDebug = async () => {
     const images = fetchAllImage();
-    const content = await toMarkdown();
+    const content = await editor.toMarkdown();
     console.log(content, images);
   };
 
   const handleCopyMarkdown = async () => {
-    const content = await toMarkdown();
-    navigator.clipboard.writeText(content);
+    const content = await editor.toMarkdown();
+    const meta = metadata.toMarkdown();
+
+    navigator.clipboard.writeText(`${meta}\n${content}`);
   };
 
   return (

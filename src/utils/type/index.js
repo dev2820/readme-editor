@@ -13,3 +13,7 @@ export const isNil = (value) => {
 export const isError = (value) => {
   return value instanceof Error;
 };
+
+export const isString = (value) => {
+  return typeof value === 'string';
+};
