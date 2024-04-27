@@ -6,12 +6,7 @@
 
 ### 에디터
 
-- [ ] frontmatter 기능 추가 (next)
 - [ ] 마크다운 파일 이름 입력 input 만들기
-- [ ] 마크다운 preview 기능 만들기
-- [ ] 이미지 블럭
-  - [ ] 이미지 업로드 기능 구현
-  - [ ] 이미지 다운로드 기능 구현
 
 ### 블럭 & 인라인
 
@@ -24,10 +19,13 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
   - [ ] 이미지 블럭 꾸미기
   - [ ] 이미지 크기 조절 기능
 - [ ] 다운로드 기능 구현
+  - [ ] 이미지 다운로드 기능 구현
 - [ ] slashmenu 완성
 
 ### Advanced
 
+- [ ] 다운로드 옵션 강화 (mdx로 내보내기, 빈줄(<p>) 제거하기 등)
+- [ ] 마크다운 preview 기능 만들기
 - [ ] 캡션이 있으면 figure로 파싱
 - [ ] orderedList 숫자 반환 어떻게 할지 고민좀
 - [ ] formatting toolbar 디자인 손보기

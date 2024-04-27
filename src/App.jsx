@@ -12,9 +12,7 @@ function App() {
         <EditorProvider>
           <main className="w-full flex flex-col items-center">
             <h1 className="text-center">Online Block Base Markdown Editor</h1>
-            <div className="flex flex-row justify-center gap-4">
-              <DownloadPannel></DownloadPannel>
-            </div>
+            <DownloadPannel></DownloadPannel>
             <p className="text-center">
               공사중입니다. 기능이 제대로 동작하지 않을 가능성이 커요
             </p>
