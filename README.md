@@ -35,6 +35,7 @@ https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-wr
 
 - [ ] 머메이드를 어떻게 지원하는게 좋을까?
 - [ ] 주석 기능 지원
+- [ ] 이모지 기능 지원
 
 ### TipTap
 
