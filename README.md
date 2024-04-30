@@ -10,7 +10,6 @@ https://gist.github.com/ihoneymon/652be052a0727ad59601
 
 - [ ] 코드블럭 언어 표시 기능
 - [ ] slashmenu 완성
-- [ ] 이미지 붙여넣기 기능
 
 ### Advanced
 
