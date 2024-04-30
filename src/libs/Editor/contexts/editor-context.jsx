@@ -31,6 +31,7 @@ import {
 import { ExternalImage } from '../components/nodes/external-image';
 import { Heading } from '../components/nodes/heading';
 import { HorizontalRule } from '../components/nodes/horizontal-rule';
+import { InternalImage } from '../components/nodes/internal-image';
 import { ListItem } from '../components/nodes/list-item';
 import { OrderedList } from '../components/nodes/ordered-list';
 import { Paragraph } from '../components/nodes/paragraph';
@@ -66,6 +67,7 @@ const extensions = [
     lowlight,
   }),
   ExternalImage,
+  InternalImage,
   Bold,
   Details,
   DetailsSummary,
@@ -224,10 +226,60 @@ const defaultValue = {
 export const EditorContext = createContext(defaultValue);
 
 export const EditorProvider = ({ children }) => {
-  markdownToHtml('');
   const editor = useEditor({
     extensions,
     content,
+    editorProps: {
+      handleDrop: (view, event, slice, moved) => {
+        if (
+          !moved &&
+          event.dataTransfer &&
+          event.dataTransfer.files &&
+          event.dataTransfer.files[0]
+        ) {
+          const file = event.dataTransfer.files[0]; // the dropped file
+
+          const img = new Image();
+          const _URL = window.URL || window.webkitURL;
+          img.src = _URL.createObjectURL(file);
+          img.onload = function () {
+            // valid image so upload to server
+            // uploadImage will be your function to upload the image to the server or s3 bucket somewhere
+            uploadImage(file)
+              .then(function (url) {
+                let image = new Image();
+                image.src = url;
+                image.onload = function () {
+                  const { schema } = view.state;
+                  const coordinates = view.posAtCoords({
+                    left: event.clientX,
+                    top: event.clientY,
+                  });
+                  const node = schema.nodes.internalImage.create({
+                    src: url,
+                    alt: file.name,
+                    title: file.name,
+                  });
+                  const transaction = view.state.tr.insert(
+                    coordinates.pos,
+                    node,
+                  );
+                  return view.dispatch(transaction);
+                };
+              })
+              .catch(function (error) {
+                if (error) {
+                  window.alert(
+                    'There was a problem uploading your image, please try again.',
+                  );
+                }
+              });
+          };
+          return true;
+        }
+        return false; // not handled use default behaviour
+      },
+    },
   });
 
   const toMarkdown = async () => {
@@ -240,3 +292,8 @@ export const EditorProvider = ({ children }) => {
     </EditorContext.Provider>
   );
 };
+
+function uploadImage(file) {
+  const _URL = window.URL || window.webkitURL;
+  return Promise.resolve(_URL.createObjectURL(file));
+}
