@@ -9,7 +9,6 @@
 https://gist.github.com/ihoneymon/652be052a0727ad59601
 
 - [ ] 코드블럭 언어 표시 기능
-- [ ] slashmenu 완성
 
 ### Advanced
 

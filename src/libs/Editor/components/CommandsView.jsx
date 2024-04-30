@@ -65,7 +65,7 @@ export class CommandsView extends Component {
     const { items } = this.props;
 
     return (
-      <div className="insert-menu">
+      <div className="insert-menu shadow-xl bg-white">
         {items.map((item, index) => {
           return (
             <button
