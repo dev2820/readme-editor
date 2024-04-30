@@ -25,8 +25,8 @@ export const DownloadPannel = () => {
     zip.file(filename, `${meta}\n${content}`);
     if (images.length > 0) {
       const imagesFolder = zip.folder('images');
-      images.forEach((image) => {
-        imagesFolder.file(image.name, image);
+      images.forEach(([key, image]) => {
+        imagesFolder.file(key, image);
       });
     }
 

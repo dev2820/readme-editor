@@ -148,13 +148,19 @@ turndownService.use([
   summary,
   alert,
 ]);
+
 turndownService.addRule('image', {
   filter: ['img'],
   replacement(_, node) {
     const alt = node.alt;
     const src = node.getAttribute('src');
+    const type = node.dataset['type'];
 
-    return `![${alt}](${src})`;
+    if (type === 'internalImage') {
+      const key = node.dataset['imageKey'];
+      return `\n\n![${alt}](./images/${key})\n`;
+    }
+    return `\n\n![${alt}](${src})\n`;
   },
 });
 

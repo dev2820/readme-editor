@@ -9,5 +9,5 @@ export const uploadImage = (key, file) => {
 };
 
 export const fetchAllImage = () => {
-  return Object.values(imageStorage);
+  return Object.entries(imageStorage);
 };

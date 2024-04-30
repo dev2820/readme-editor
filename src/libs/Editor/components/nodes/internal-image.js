@@ -50,6 +50,10 @@ export const InternalImage = Node.create({
         default: '',
         rendered: false,
       },
+      'data-image-key': {
+        default: '',
+        rendered: true,
+      },
     };
   },
 

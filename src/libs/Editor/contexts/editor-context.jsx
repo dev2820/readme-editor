@@ -19,6 +19,8 @@ import html from 'highlight.js/lib/languages/xml';
 import { common, createLowlight } from 'lowlight';
 import { createContext } from 'react';
 
+import * as ImageStorage from '@/utils/storage';
+
 import { Alert } from '../components/nodes/alert';
 import { Blockquote } from '../components/nodes/blockquote';
 import { BulletList } from '../components/nodes/bullet-list';
@@ -39,7 +41,6 @@ import { TaskItem } from '../components/nodes/task-item';
 import { TaskList } from '../components/nodes/task-list';
 import { Commands } from '../plugins/CommandsPlugin';
 import { htmlToMarkdown } from '../utils/htmlToMarkdown';
-import { markdownToHtml } from '../utils/markdownToHtml';
 import { getNodePlaceholder } from '../utils/node';
 
 const lowlight = createLowlight(common);
@@ -237,44 +238,36 @@ export const EditorProvider = ({ children }) => {
           event.dataTransfer.files &&
           event.dataTransfer.files[0]
         ) {
-          const file = event.dataTransfer.files[0]; // the dropped file
-
-          const img = new Image();
-          const _URL = window.URL || window.webkitURL;
-          img.src = _URL.createObjectURL(file);
-          img.onload = function () {
-            // valid image so upload to server
-            // uploadImage will be your function to upload the image to the server or s3 bucket somewhere
-            uploadImage(file)
-              .then(function (url) {
-                let image = new Image();
-                image.src = url;
-                image.onload = function () {
-                  const { schema } = view.state;
-                  const coordinates = view.posAtCoords({
-                    left: event.clientX,
-                    top: event.clientY,
-                  });
-                  const node = schema.nodes.internalImage.create({
-                    src: url,
-                    alt: file.name,
-                    title: file.name,
-                  });
-                  const transaction = view.state.tr.insert(
-                    coordinates.pos,
-                    node,
-                  );
-                  return view.dispatch(transaction);
-                };
-              })
-              .catch(function (error) {
-                if (error) {
-                  window.alert(
-                    'There was a problem uploading your image, please try again.',
-                  );
-                }
-              });
-          };
+          const file = event.dataTransfer.files[0];
+          uploadImage(file)
+            .then(function (url) {
+              const fileKey = Date.now() + file.name;
+              ImageStorage.uploadImage(fileKey, file);
+              const image = new Image();
+              image.src = url;
+              image.onload = function () {
+                const { schema } = view.state;
+                const coordinates = view.posAtCoords({
+                  left: event.clientX,
+                  top: event.clientY,
+                });
+                const node = schema.nodes.internalImage.create({
+                  src: url,
+                  alt: file.name,
+                  title: file.name,
+                  'data-image-key': fileKey,
+                });
+                const transaction = view.state.tr.insert(coordinates.pos, node);
+                return view.dispatch(transaction);
+              };
+            })
+            .catch(function (error) {
+              if (error) {
+                window.alert(
+                  'There was a problem uploading your image, please try again.',
+                );
+              }
+            });
           return true;
         }
         return false; // not handled use default behaviour
@@ -294,6 +287,11 @@ export const EditorProvider = ({ children }) => {
 };
 
 function uploadImage(file) {
+  /**
+   * TODO: url을 저장한다. (-> 다운로드 테스트 필요)
+   */
   const _URL = window.URL || window.webkitURL;
-  return Promise.resolve(_URL.createObjectURL(file));
+  const url = _URL.createObjectURL(file);
+
+  return Promise.resolve(url);
 }
