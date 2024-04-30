@@ -6,7 +6,7 @@
 
 ### 블럭 & 인라인
 
-https://gist.github.com/ihoneymon/652be052a0727ad59601
+https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#headings
 
 - [ ] 코드블럭 언어 표시 기능
 
