@@ -19,8 +19,6 @@ import html from 'highlight.js/lib/languages/xml';
 import { common, createLowlight } from 'lowlight';
 import { createContext } from 'react';
 
-import * as ImageStorage from '@/utils/storage';
-
 import { Alert } from '../components/nodes/alert';
 import { Blockquote } from '../components/nodes/blockquote';
 import { BulletList } from '../components/nodes/bullet-list';
@@ -230,68 +228,19 @@ export const EditorProvider = ({ children }) => {
   const editor = useEditor({
     extensions,
     content,
-    editorProps: {
-      handleDrop: (view, event, slice, moved) => {
-        if (
-          !moved &&
-          event.dataTransfer &&
-          event.dataTransfer.files &&
-          event.dataTransfer.files[0]
-        ) {
-          const file = event.dataTransfer.files[0];
-          uploadImage(file)
-            .then(function (url) {
-              const fileKey = Date.now() + file.name;
-              ImageStorage.uploadImage(fileKey, file);
-              const image = new Image();
-              image.src = url;
-              image.onload = function () {
-                const { schema } = view.state;
-                const coordinates = view.posAtCoords({
-                  left: event.clientX,
-                  top: event.clientY,
-                });
-                const node = schema.nodes.internalImage.create({
-                  src: url,
-                  alt: file.name,
-                  title: file.name,
-                  'data-image-key': fileKey,
-                });
-                const transaction = view.state.tr.insert(coordinates.pos, node);
-                return view.dispatch(transaction);
-              };
-            })
-            .catch(function (error) {
-              if (error) {
-                window.alert(
-                  'There was a problem uploading your image, please try again.',
-                );
-              }
-            });
-          return true;
-        }
-        return false; // not handled use default behaviour
-      },
-    },
   });
 
   const toMarkdown = async () => {
     return await htmlToMarkdown(editor.getHTML());
   };
 
+  const toHTML = async () => {
+    return Promise.resolve(editor.getHTML());
+  };
+
   return (
-    <EditorContext.Provider value={{ editor, toMarkdown }}>
+    <EditorContext.Provider value={{ editor, toMarkdown, toHTML }}>
       {children}
     </EditorContext.Provider>
   );
 };
-
-function uploadImage(file) {
-  /**
-   * TODO: url을 저장한다. (-> 다운로드 테스트 필요)
-   */
-  const _URL = window.URL || window.webkitURL;
-  const url = _URL.createObjectURL(file);
-
-  return Promise.resolve(url);
-}

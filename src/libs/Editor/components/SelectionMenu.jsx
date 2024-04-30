@@ -78,7 +78,6 @@ export function SelectionMenu({ editor, selectionType, setSelectionType }) {
             type="text"
             placeholder="Insert link address"
             onKeyDown={(event) => {
-              console.log(editor);
               if (event.key === 'Enter') {
                 editor
                   .chain()

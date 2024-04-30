@@ -16,7 +16,15 @@ export const DownloadPannel = () => {
   async function handleDownloadMarkdown() {
     const content = await editor.toMarkdown();
     const meta = metadata.toMarkdown();
-    const images = fetchAllImage();
+    const parser = new DOMParser();
+    const dom = parser.parseFromString(await editor.toHTML(), 'text/html');
+    const $images = [...dom.querySelectorAll('img')];
+
+    const images = fetchAllImage().filter(([key]) => {
+      return (
+        $images.findIndex(($image) => $image.dataset['imageKey'] === key) > -1
+      );
+    });
     const filename = titleAsFilename.isOn
       ? `${metadata.title || 'index'}.md`
       : 'index.md';

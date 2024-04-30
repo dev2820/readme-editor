@@ -158,7 +158,7 @@ turndownService.addRule('image', {
 
     if (type === 'internalImage') {
       const key = node.dataset['imageKey'];
-      return `\n\n![${alt}](./images/${key})\n`;
+      return `\n\n![${alt}](./images/${replaceSpacesWith20(key)})\n`;
     }
     return `\n\n![${alt}](${src})\n`;
   },
@@ -191,3 +191,7 @@ const getParentListTotal = (node, itemType, count = 0) => {
   }
   return count;
 };
+
+function replaceSpacesWith20(str) {
+  return str.replace(/ /g, '%20');
+}
