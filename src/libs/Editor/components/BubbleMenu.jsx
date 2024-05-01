@@ -8,12 +8,6 @@ import { SelectionMenu } from './SelectionMenu';
  * @see https://tiptap.dev/docs/editor/api/extensions/bubble-menu
  */
 export function BubbleMenu({ editor, containerRef }) {
-  const [selectionType, setSelectionType] = useState(null); // "link"|null
-
-  useEffect(() => {
-    if (selectionType !== 'link') setSelectionType(null);
-  }, []);
-
   if (!editor || !containerRef.current) return null;
 
   return (
@@ -25,11 +19,7 @@ export function BubbleMenu({ editor, containerRef }) {
       }}
       className="bg-white"
     >
-      <SelectionMenu
-        editor={editor}
-        selectionType={selectionType}
-        setSelectionType={setSelectionType}
-      ></SelectionMenu>
+      <SelectionMenu editor={editor}></SelectionMenu>
     </_BubbleMenu>
   );
 }

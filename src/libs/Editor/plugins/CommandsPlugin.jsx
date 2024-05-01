@@ -294,28 +294,6 @@ export const Commands = Extension.create({
                   .run();
               },
             },
-            // {
-            //   title: 'Internal Image',
-            //   attrs: {
-            //     'data-test-id': 'insert-internal-image',
-            //   },
-            //   command: ({ editor }) => {
-            //     const selection = editor.view.state.selection;
-            //     const from = selection.$from.posAtIndex(0);
-            //     const to = selection.$from.posAtIndex(1);
-            //     const src = window.prompt('input image url');
-
-            //     editor
-            //       .chain()
-            //       .focus()
-            //       .deleteRange({ from, to })
-            //       .insertContentAt(from, {
-            //         type: 'external-image',
-            //         attrs: { src },
-            //       })
-            //       .run();
-            //   },
-            // },
           ].filter((item) => {
             return item.title.toLowerCase().startsWith(query.toLowerCase());
           });

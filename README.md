@@ -4,10 +4,6 @@
 
 ## TODO
 
-### Bug
-
-- [ ] Link 해제 버그 수정
-
 ### 블럭 & 인라인
 
 https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#headings
