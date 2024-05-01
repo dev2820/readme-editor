@@ -172,6 +172,10 @@
   background: transparent;
   font-size: 100%;
 }
+.tiptap pre > menu {
+  position: absolute;
+  right: 1rem;
+}
 
 /**
  * task-list

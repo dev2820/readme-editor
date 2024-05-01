@@ -7,6 +7,7 @@ export const Alert = ({ node }) => {
     <NodeViewWrapper
       className="react-component-with-content"
       data-type="alert"
+      data-id={node.attrs['data-id']}
       data-alert={alertType}
     >
       <p className="label" contentEditable={false}>

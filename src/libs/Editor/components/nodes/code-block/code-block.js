@@ -1,6 +1,8 @@
 import _CodeBlock from '@tiptap/extension-code-block';
+import { ReactNodeViewRenderer } from '@tiptap/react';
 import { nanoid } from 'nanoid';
 
+import { CodeBlock as CodeBlockComponent } from './CodeBlock';
 import { LowlightPlugin } from './lowlight-plugin.js';
 
 export const CodeBlock = _CodeBlock.extend({
@@ -38,6 +40,10 @@ export const CodeBlock = _CodeBlock.extend({
       },
       children,
     ];
+  },
+
+  addNodeView() {
+    return ReactNodeViewRenderer(CodeBlockComponent);
   },
 
   addProseMirrorPlugins() {
