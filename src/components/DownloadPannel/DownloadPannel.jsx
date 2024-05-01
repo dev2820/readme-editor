@@ -43,12 +43,6 @@ export const DownloadPannel = () => {
     });
   }
 
-  const handleDebug = async () => {
-    const images = fetchAllImage();
-    const content = await editor.toMarkdown();
-    console.log(content, images);
-  };
-
   const handleCopyMarkdown = async () => {
     const content = await editor.toMarkdown();
     const meta = metadata.toMarkdown();
@@ -60,7 +54,6 @@ export const DownloadPannel = () => {
     <>
       <div className="flex flex-row gap-4">
         <Button onClick={handleDownloadMarkdown}>Download</Button>
-        <Button onClick={handleDebug}>(_debug) show markdown</Button>
         <Button onClick={handleCopyMarkdown}>Copy Markdown</Button>
       </div>
       <div>
