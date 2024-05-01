@@ -29,9 +29,9 @@ export const CodeBlock = ({ node, editor, getPos }) => {
         const currentNode = tr.doc.nodeAt(position);
 
         const code = currentNode.content.content[0].text;
-        console.log(code);
 
         navigator.clipboard.writeText(code);
+        alert('copied!!');
       })
       .run();
   };
@@ -48,8 +48,8 @@ export const CodeBlock = ({ node, editor, getPos }) => {
             <select onChange={handleSelectLanguage}>
               <option value="js">js</option>
               <option value="ts">ts</option>
-              <option value="ts">css</option>
-              <option value="ts">html</option>
+              <option value="css">css</option>
+              <option value="html">html</option>
             </select>
           </li>
           <li>
