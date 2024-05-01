@@ -24,11 +24,14 @@ https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-wr
 
 - [ ] BubbleMenu 디자인 손보기
   - [ ] 일부 블럭에서 BubbleMenu 막기
-- [ ] SlashMenu 디자인 손보기
+- [ ] SlashMenu 디자인 손보기 (Next)
   - [ ] 아이콘 어울리는거 쓰고, https://lucide.dev/guide/packages/lucide 로 교체
 - [ ] ui 개선
 - [ ] Frontmatter를 선택적으로 추가할 수 있게 수정
-  - [ ] 토글 버튼 필요
+  - [ ] plus버튼으로 frontmatter를 추가할 수 있음
+  - [ ] 당연히 삭제도 가능함
+  - [ ] date 타입인지, text 타입인지 선택 가능
+  - [ ] frontmatter는 따라서 배열로 관리하도록 수정해야함
 
 #### 블럭 기능
 
