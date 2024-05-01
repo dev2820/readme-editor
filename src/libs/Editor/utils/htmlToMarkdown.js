@@ -58,7 +58,10 @@ function listItem(turndownService) {
         const leftPad = new Array(getParentListTotal(node, 'taskItem'))
           .fill('\t')
           .join('');
-        return `${leftPad}- [${isChecked ? 'x' : ' '}] ${content.trimStart()}`;
+        console.log(
+          `${leftPad}- [${isChecked ? 'x' : ' '}] ${content.trim()}\n`,
+        );
+        return `${leftPad}- [${isChecked ? 'x' : ' '}] ${content.trim()}\n`;
       }
 
       if (
@@ -68,7 +71,7 @@ function listItem(turndownService) {
         const leftPad = new Array(getParentListTotal(node, 'listItem'))
           .fill('\t')
           .join('');
-        return `${leftPad}- ${content.trimStart()}`;
+        return `${leftPad}- ${content.trim()}\n`;
       }
 
       if (
@@ -84,7 +87,7 @@ function listItem(turndownService) {
         const leftPad = new Array(getParentListTotal(node, 'listItem'))
           .fill('\t')
           .join('');
-        return `${leftPad}${prefix}. ${content.trimStart()}`;
+        return `${leftPad}${prefix}. ${content.trim()}\n`;
       }
 
       return content;
@@ -108,6 +111,24 @@ function summary(turndownService) {
     filter: ['summary'],
     replacement: function (content) {
       return `<summary>${content}</summary>`;
+    },
+  });
+}
+function paragraph(turndownService) {
+  turndownService.addRule('paragraph', {
+    filter: ['p'],
+    replacement: function (content) {
+      return content.trim() + '\n';
+    },
+  });
+}
+
+function list(turndownService) {
+  turndownService.addRule('list', {
+    filter: ['ol', 'ul'],
+    replacement: function (content) {
+      console.log(content);
+      return content.replace(/^\n+/, '');
     },
   });
 }
@@ -149,10 +170,12 @@ turndownService.use([
   strikethrough,
   underline,
   figure,
+  list,
   listItem,
   details,
   summary,
   alert,
+  paragraph,
 ]);
 
 turndownService.addRule('image', {
