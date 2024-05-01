@@ -8,8 +8,6 @@
 
 https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#headings
 
-- [ ] 코드블럭 언어 표시 기능
-
 ### Advanced
 
 - [ ] 다운로드 옵션 강화
@@ -18,11 +16,9 @@ https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-wr
   - [ ] 이미지를 <img> 태그로 파싱하기
 - [ ] 마크다운 preview 기능 만들기
 - [ ] 캡션이 있으면 figure로 파싱
-- [ ] orderedList 숫자 반환 어떻게 할지 고민좀
 - [ ] formatting toolbar 디자인 손보기
 - [ ] SlashMenu 디자인 손보기
   - [ ] 아이콘 어울리는거 쓰고, https://lucide.dev/guide/packages/lucide 로 교체
-- [ ] 코드블럭 언어 변경 기능
 - [ ] table 블럭
 - [ ] 앱 하단에 SEO
 - [ ] 주석을 어떻게 지원하는게 좋을까?

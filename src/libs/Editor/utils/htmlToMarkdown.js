@@ -75,10 +75,16 @@ function listItem(turndownService) {
         node.parentNode.getAttribute('data-type') === 'orderedList' &&
         type === 'listItem'
       ) {
+        const parent = node.parentNode;
+        const startIdx = parent.getAttribute('start');
+        const idx = Array.prototype.indexOf.call(parent.children, node);
+
+        const prefix = Number(startIdx ?? 1) + idx;
+
         const leftPad = new Array(getParentListTotal(node, 'listItem'))
           .fill('\t')
           .join('');
-        return `${leftPad}1. ${content.trimStart()}`;
+        return `${leftPad}${prefix}. ${content.trimStart()}`;
       }
 
       return content;
