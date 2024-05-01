@@ -89,13 +89,13 @@ export function FrontmatterPannel() {
               onSelect={handleChangeCreatedDate}
             ></Calendar>
             <label className="p-3 flex flex-row gap-2">
-              <Icon.Clock />
+              시간
               <input
                 type="time"
                 value={date.format(created, 'hh:mm:ss')}
                 step="1"
                 onChange={handleChangeCreatedTime}
-                className="color-white flex-1"
+                className="color-grey flex-1"
               />
             </label>
           </PopoverContent>
@@ -116,13 +116,13 @@ export function FrontmatterPannel() {
               onSelect={handleChangeModifiedDate}
             ></Calendar>
             <label className="p-3 flex flex-row gap-2">
-              <Icon.Clock />
+              시간
               <input
                 type="time"
                 value={date.format(modified, 'hh:mm')}
                 step="1"
                 onChange={handleChangeModifiedTime}
-                className="color-white flex-1"
+                className="color-grey flex-1"
               />
             </label>
           </PopoverContent>
