@@ -12,7 +12,7 @@ import { date } from '@/utils';
 
 import { TitleInput } from '../TitleInput';
 
-export function MetadataPannel() {
+export function FrontmatterPannel() {
   const { title, setTitle, created, setCreated, modified, setModified } =
     useMetadata();
 
@@ -109,7 +109,7 @@ export function MetadataPannel() {
               {date.format(modified, 'YYYY년 MM월 DD일 HH시 mm분 ss초')}
             </Button>
           </PopoverTrigger>
-          <PopoverContent>
+          <PopoverContent className="w-auto p-0">
             <Calendar
               mode="single"
               selected={modified}
