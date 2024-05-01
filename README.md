@@ -17,6 +17,7 @@ https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-wr
   - [ ] 빈줄 제거하기
   - [ ] 이미지를 <img> 태그로 파싱하기
   - [ ] 이미지를 <feature>태그로 파싱
+  - [ ] frontmatter 추가 여부 결정 기능
 - [ ] 마크다운 preview 기능 만들기
 
 #### 디자인
@@ -26,6 +27,8 @@ https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-wr
 - [ ] SlashMenu 디자인 손보기
   - [ ] 아이콘 어울리는거 쓰고, https://lucide.dev/guide/packages/lucide 로 교체
 - [ ] ui 개선
+- [ ] Frontmatter를 선택적으로 추가할 수 있게 수정
+  - [ ] 토글 버튼 필요
 
 #### 블럭 기능
 

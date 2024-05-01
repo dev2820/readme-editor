@@ -11,6 +11,7 @@ import { useMetadata } from '@/hooks/use-metadata';
 import { date } from '@/utils';
 
 import { TitleInput } from '../TitleInput';
+import { Input } from '../ui/Input';
 
 export function FrontmatterPannel() {
   const { title, setTitle, created, setCreated, modified, setModified } =
@@ -68,14 +69,17 @@ export function FrontmatterPannel() {
   };
   return (
     <>
-      <TitleInput
-        className="align-center w-full mb-4"
-        placeholder="Title"
-        value={title}
-        onChange={handleChangeTitle}
-      ></TitleInput>
-      <div>
-        created:{' '}
+      <div className="flex flex-row px-4">
+        <span className="w-32">title</span>
+        <Input
+          value={title}
+          onChange={handleChangeTitle}
+          placeholder="Title"
+          className="max-w-80"
+        ></Input>
+      </div>
+      <div className="flex flex-row px-4">
+        <span className="w-32">created</span>
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="ghost">
@@ -101,8 +105,8 @@ export function FrontmatterPannel() {
           </PopoverContent>
         </Popover>
       </div>
-      <div>
-        modified:{' '}
+      <div className="flex flex-row px-4">
+        <span className="w-32">modified</span>
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="ghost">

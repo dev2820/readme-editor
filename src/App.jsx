@@ -15,10 +15,10 @@ function App() {
             <h1 className="text-center">Online Block Base Markdown Editor</h1>
             <DownloadPannel></DownloadPannel>
 
-            <section className="w-150">
+            <section className="w-689px">
               <FrontmatterPannel></FrontmatterPannel>
             </section>
-            <div className="w-896px">
+            <div className="w-689px">
               <TiptapEditor className="border-1 p-4 rounded-lg"></TiptapEditor>
             </div>
           </main>
