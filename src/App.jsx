@@ -19,7 +19,7 @@ function App() {
             <section className="w-150">
               <MetadataPannel></MetadataPannel>
             </section>
-            <div className="w-150">
+            <div className="w-150 mb-100">
               <TiptapEditor className="border-1 p-4"></TiptapEditor>
             </div>
           </main>
