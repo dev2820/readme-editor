@@ -175,6 +175,16 @@
 .tiptap pre > menu {
   position: absolute;
   right: 1rem;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0.5rem;
+}
+.tiptap pre > menu button.copy {
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+}
+.tiptap pre > menu button.copy:hover {
+  background: rgba(0, 0, 0, 0.2);
 }
 
 /**
