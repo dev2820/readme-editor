@@ -1,6 +1,5 @@
-import * as Icon from 'lucide-react';
-
 import { Button } from '@/components/ui/Button';
+import * as Icon from '@/components/ui/Icon';
 import { Toggle } from '@/components/ui/Toggle';
 
 export function SelectionMenu({ editor }) {

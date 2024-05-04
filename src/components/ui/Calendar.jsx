@@ -1,8 +1,9 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { DayPicker } from 'react-day-picker';
 
 import { buttonVariants } from '@/components/ui/Button';
 import { cn } from '@/libs/utils';
+
+import { ChevronLeft, ChevronRight } from './Icon';
 
 function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
   return (

@@ -1,5 +1,3 @@
-import * as Icon from 'lucide-react';
-
 import { Button } from '@/components/ui/Button';
 import { Calendar } from '@/components/ui/Calendar';
 import {
@@ -10,7 +8,6 @@ import {
 import { useMetadata } from '@/hooks/use-metadata';
 import { date } from '@/utils';
 
-import { TitleInput } from '../TitleInput';
 import { Input } from '../ui/Input';
 
 export function FrontmatterPannel() {
