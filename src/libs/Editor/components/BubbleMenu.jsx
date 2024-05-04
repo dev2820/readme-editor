@@ -1,5 +1,4 @@
 import { BubbleMenu as _BubbleMenu } from '@tiptap/react';
-import { useEffect, useState } from 'react';
 
 import { SelectionMenu } from './SelectionMenu';
 
@@ -17,7 +16,7 @@ export function BubbleMenu({ editor, containerRef }) {
         duration: 100,
         appendTo: containerRef.current,
       }}
-      className="bg-white"
+      className="bg-white shadow-lg rounded"
     >
       <SelectionMenu editor={editor}></SelectionMenu>
     </_BubbleMenu>

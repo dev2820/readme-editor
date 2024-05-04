@@ -1,3 +1,6 @@
+import * as Icon from 'lucide-react';
+
+import { Toggle } from '@/components/ui/Toggle';
 import { cn } from '@/utils';
 
 export function SelectionMenu({ editor }) {
@@ -21,66 +24,48 @@ export function SelectionMenu({ editor }) {
 
   return (
     <>
-      <button
-        type="button"
-        data-test-id="mark-bold"
-        className={cn('border-1', {
-          'bg-grey': editor.isActive('bold'),
-        })}
+      <Toggle
+        size="sm"
+        pressed={editor.isActive('bold')}
         onClick={() => editor.chain().toggleBold().run()}
       >
-        bold
-      </button>
-      <button
-        type="button"
-        data-test-id="mark-italic"
-        className={cn('border-1', {
-          'bg-grey': editor.isActive('italic'),
-        })}
+        <Icon.Bold size="16" />
+      </Toggle>
+      <Toggle
+        size="sm"
+        pressed={editor.isActive('italic')}
         onClick={() => editor.chain().toggleItalic().run()}
       >
-        italic
-      </button>
-      <button
-        type="button"
-        data-test-id="mark-underline"
-        className={cn('border-1', {
-          'bg-grey': editor.isActive('underline'),
-        })}
+        <Icon.Italic size="16" />
+      </Toggle>
+      <Toggle
+        size="sm"
+        pressed={editor.isActive('underline')}
         onClick={() => editor.chain().toggleUnderline().run()}
       >
-        underline
-      </button>
-      <button
-        type="button"
-        data-test-id="mark-strike"
-        className={cn('border-1', {
-          'bg-grey': editor.isActive('strike'),
-        })}
+        <Icon.Underline size="16" />
+      </Toggle>
+      <Toggle
+        size="sm"
+        pressed={editor.isActive('strike')}
         onClick={() => editor.chain().toggleStrike().run()}
       >
-        strike
-      </button>
-      <button
-        type="button"
-        data-test-id="mark-link"
-        className={cn('border-1', {
-          'bg-grey': editor.isActive('link'),
-        })}
+        <Icon.Strikethrough size="16" />
+      </Toggle>
+      <Toggle
+        size="sm"
+        pressed={editor.isActive('link')}
         onClick={handleClickLink}
       >
-        link
-      </button>
-      <button
-        type="button"
-        data-test-id="mark-code"
-        className={cn('border-1', {
-          'bg-grey': editor.isActive('code'),
-        })}
+        <Icon.Link size="16" />
+      </Toggle>
+      <Toggle
+        size="sm"
+        pressed={editor.isActive('code')}
         onClick={() => editor.chain().toggleCode().run()}
       >
-        code
-      </button>
+        <Icon.Code size="16" />
+      </Toggle>
     </>
   );
 }
