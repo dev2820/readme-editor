@@ -10,6 +10,8 @@ https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-wr
 
 ### Advanced
 
+- [ ] 링크용 컴포넌트 분리 및 동작 개선
+
 #### optional 기능
 
 - [ ] 다운로드 옵션 강화
@@ -24,6 +26,7 @@ https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-wr
 
 - [ ] BubbleMenu 디자인 손보기
   - [ ] 일부 블럭에서 BubbleMenu 막기
+    - [ ] code block 내부에서 막기
 - [ ] SlashMenu 디자인 손보기 (Next)
   - [ ] 아이콘 어울리는거 쓰고, https://lucide.dev/guide/packages/lucide 로 교체
 - [ ] ui 개선
