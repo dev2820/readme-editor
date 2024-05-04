@@ -1,7 +1,7 @@
 import * as Icon from 'lucide-react';
 
+import { Button } from '@/components/ui/Button';
 import { Toggle } from '@/components/ui/Toggle';
-import { cn } from '@/utils';
 
 export function SelectionMenu({ editor }) {
   const handleClickLink = () => {
@@ -21,6 +21,35 @@ export function SelectionMenu({ editor }) {
       }
     }
   };
+
+  if (editor.isActive('horizontalRule')) {
+    return (
+      <Button variant="ghost" size="icon">
+        <Icon.Trash2
+          size="16"
+          onClick={() => editor.chain().deleteSelection().focus().run()}
+        />
+      </Button>
+    );
+  }
+
+  if (editor.isActive('internalImage')) {
+    /**
+     * TODO: Image에 대한 메뉴 만들기
+     * - 사이즈 조절 변경
+     *
+     */
+    return (
+      <>
+        <Button variant="ghost" size="icon">
+          <Icon.Trash2
+            size="16"
+            onClick={() => editor.chain().deleteSelection().focus().run()}
+          />
+        </Button>
+      </>
+    );
+  }
 
   return (
     <>

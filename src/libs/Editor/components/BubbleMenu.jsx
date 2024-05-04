@@ -16,7 +16,7 @@ export function BubbleMenu({ editor, containerRef }) {
         duration: 100,
         appendTo: containerRef.current,
       }}
-      className="bg-white shadow-lg rounded"
+      className="border-1 border-grey-200 bg-white shadow-lg rounded-lg"
     >
       <SelectionMenu editor={editor}></SelectionMenu>
     </_BubbleMenu>
