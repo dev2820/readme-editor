@@ -6,14 +6,16 @@ export function SelectionMenu({ editor }) {
       editor.chain().focus().toggleLink().run();
     } else {
       const url = window.prompt('url');
-      editor
-        .chain()
-        .focus()
-        .toggleLink({
-          href: url,
-          target: '_blank',
-        })
-        .run();
+      if (url) {
+        editor
+          .chain()
+          .focus()
+          .toggleLink({
+            href: url,
+            target: '_blank',
+          })
+          .run();
+      }
     }
   };
 
