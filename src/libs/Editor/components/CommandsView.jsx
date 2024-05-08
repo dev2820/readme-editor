@@ -65,23 +65,21 @@ export class CommandsView extends Component {
     const { items } = this.props;
 
     return (
-      <div className="insert-menu shadow-xl bg-white">
-        {items.map((item, index) => {
-          return (
+      <ul className="insert-menu shadow-lg rounded-lg bg-white w-64 max-h-64 overflow-y-scroll">
+        {items.map((item, index) => (
+          <li key={index}>
             <button
               type="button"
-              className={`border-1 ${
-                index === this.state.selectedIndex ? 'active' : ''
-              }`}
+              className={`w-full p-2 flex flex-row gap-2 items-center hover:bg-accent ${index === this.state.selectedIndex ? 'active' : ''}`}
               {...item.attrs}
-              key={index}
               onClick={() => this.selectItem(index)}
             >
-              {item.element || item.title}
+              {item.icon}
+              <b>{item.element || item.title}</b>
             </button>
-          );
-        })}
-      </div>
+          </li>
+        ))}
+      </ul>
     );
   }
 }

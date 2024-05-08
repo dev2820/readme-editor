@@ -3,6 +3,8 @@ import { ReactRenderer } from '@tiptap/react';
 import { Suggestion } from '@tiptap/suggestion';
 import tippy from 'tippy.js';
 
+import * as Icon from '@/components/ui/Icon';
+
 import { CommandsView } from '../components/CommandsView';
 
 export const Commands = Extension.create({
@@ -19,6 +21,9 @@ export const Commands = Extension.create({
           return [
             {
               title: 'Heading1',
+              icon: (
+                <Icon.Heading1 size="36" className="bg-white rounded-lg p-2" />
+              ),
               attrs: {
                 'data-test-id': 'insert-heading1',
               },
@@ -36,6 +41,9 @@ export const Commands = Extension.create({
             },
             {
               title: 'Heading2',
+              icon: (
+                <Icon.Heading2 size="36" className="bg-white rounded-lg p-2" />
+              ),
               attrs: {
                 'data-test-id': 'insert-heading2',
               },
@@ -53,6 +61,9 @@ export const Commands = Extension.create({
             },
             {
               title: 'Heading3',
+              icon: (
+                <Icon.Heading3 size="36" className="bg-white rounded-lg p-2" />
+              ),
               attrs: {
                 'data-test-id': 'insert-heading3',
               },
@@ -70,6 +81,9 @@ export const Commands = Extension.create({
             },
             {
               title: 'Heading4',
+              icon: (
+                <Icon.Heading4 size="36" className="bg-white rounded-lg p-2" />
+              ),
               attrs: {
                 'data-test-id': 'insert-heading4',
               },
@@ -87,6 +101,9 @@ export const Commands = Extension.create({
             },
             {
               title: 'Heading5',
+              icon: (
+                <Icon.Heading5 size="36" className="bg-white rounded-lg p-2" />
+              ),
               attrs: {
                 'data-test-id': 'insert-heading5',
               },
@@ -104,13 +121,16 @@ export const Commands = Extension.create({
             },
             {
               title: 'Heading6',
+              icon: (
+                <Icon.Heading6 size="36" className="bg-white rounded-lg p-2" />
+              ),
               attrs: {
                 'data-test-id': 'insert-heading6',
               },
               command: ({ editor }) => {
                 const selection = editor.view.state.selection;
-                const from = selection.$from.posAtIndex(0);
                 const to = selection.$from.posAtIndex(1);
+                const from = selection.$from.posAtIndex(0);
                 editor
                   .chain()
                   .focus()
@@ -121,6 +141,9 @@ export const Commands = Extension.create({
             },
             {
               title: 'Quote',
+              icon: (
+                <Icon.Quote size="36" className="bg-white rounded-lg p-2" />
+              ),
               attrs: {
                 'data-test-id': 'insert-quote',
               },
@@ -138,6 +161,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'Bullet List',
+              icon: <Icon.List size="36" className="bg-white rounded-lg p-2" />,
               attrs: {
                 'data-test-id': 'insert-bullet-list',
               },
@@ -155,6 +179,12 @@ export const Commands = Extension.create({
             },
             {
               title: 'Numbered List',
+              icon: (
+                <Icon.ListOrdered
+                  size="36"
+                  className="bg-white rounded-lg p-2"
+                />
+              ),
               attrs: {
                 'data-test-id': 'insert-ordered-list',
               },
@@ -171,7 +201,28 @@ export const Commands = Extension.create({
               },
             },
             {
+              title: 'Todo List',
+              icon: (
+                <Icon.ListTodo size="36" className="bg-white rounded-lg p-2" />
+              ),
+              attrs: {
+                'data-test-id': 'insert-ordered-list',
+              },
+              command: ({ editor }) => {
+                const selection = editor.view.state.selection;
+                const from = selection.$from.posAtIndex(0);
+                const to = selection.$from.posAtIndex(1);
+                editor
+                  .chain()
+                  .focus()
+                  .deleteRange({ from, to })
+                  .toggleTaskList()
+                  .run();
+              },
+            },
+            {
               title: 'Code Block',
+              icon: <Icon.Code size="36" className="bg-white rounded-lg p-2" />,
               attrs: {
                 'data-test-id': 'insert-code',
               },
@@ -189,6 +240,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'Note Alert',
+              icon: <Icon.Info size="36" className="bg-white rounded-lg p-2" />,
               attrs: {
                 'data-test-id': 'insert-alert',
               },
@@ -206,6 +258,9 @@ export const Commands = Extension.create({
             },
             {
               title: 'Tip Alert',
+              icon: (
+                <Icon.Lightbulb size="36" className="bg-white rounded-lg p-2" />
+              ),
               attrs: {
                 'data-test-id': 'insert-alert',
               },
@@ -223,6 +278,12 @@ export const Commands = Extension.create({
             },
             {
               title: 'Important Alert',
+              icon: (
+                <Icon.MessageSquareWarning
+                  size="36"
+                  className="bg-white rounded-lg p-2"
+                />
+              ),
               attrs: {
                 'data-test-id': 'insert-alert',
               },
@@ -240,6 +301,12 @@ export const Commands = Extension.create({
             },
             {
               title: 'Warning Alert',
+              icon: (
+                <Icon.TriangleAlert
+                  size="36"
+                  className="bg-white rounded-lg p-2"
+                />
+              ),
               attrs: {
                 'data-test-id': 'insert-alert',
               },
@@ -257,6 +324,12 @@ export const Commands = Extension.create({
             },
             {
               title: 'Caution Alert',
+              icon: (
+                <Icon.OctagonAlert
+                  size="36"
+                  className="bg-white rounded-lg p-2"
+                />
+              ),
               attrs: {
                 'data-test-id': 'insert-alert',
               },
@@ -274,6 +347,9 @@ export const Commands = Extension.create({
             },
             {
               title: 'External Image',
+              icon: (
+                <Icon.Image size="36" className="bg-white rounded-lg p-2" />
+              ),
               attrs: {
                 'data-test-id': 'insert-external-image',
               },
