@@ -30,11 +30,8 @@ https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-wr
 
 #### 디자인
 
-- [ ] BubbleMenu 디자인 손보기
-  - [ ] 일부 블럭에서 BubbleMenu 막기
-    - [ ] code block 내부에서 막기
 - [ ] SlashMenu 디자인 손보기 (Next)
-  - [ ] 아이콘 어울리는거 쓰고, https://lucide.dev/guide/packages/lucide 로 교체
+  - [ ] seperator 추가
 - [ ] ui 개선
 - [ ] Frontmatter를 선택적으로 추가할 수 있게 수정
   - [ ] plus버튼으로 frontmatter를 추가할 수 있음
