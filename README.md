@@ -1,6 +1,8 @@
-# online-block-base-markdown-editor
+# Readme Editor
 
-온라인 블럭베이스 마크다운 에디터
+![og_image](/docs/og_image.jpeg)
+
+온라인 블럭베이스 Readme 에디터
 
 ## TODO
 
