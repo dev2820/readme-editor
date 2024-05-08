@@ -142,7 +142,7 @@ export const Commands = Extension.create({
             {
               title: 'Quote',
               icon: (
-                <Icon.Quote size="36" className="bg-white rounded-lg p-2" />
+                <Icon.TextQuote size="36" className="bg-white rounded-lg p-2" />
               ),
               attrs: {
                 'data-test-id': 'insert-quote',
