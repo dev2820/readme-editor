@@ -1,8 +1,12 @@
 # Readme Editor
 
-![og_image](/docs/og_image.jpeg)
+<p align="center">
+<img src="./docs/og_image.jpeg" alt="readme_editor_og_image" width="256px" />
+</p>
 
+<p align="center">
 온라인 블럭베이스 Readme 에디터
+</p>
 
 ## TODO
 
