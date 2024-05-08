@@ -45,7 +45,11 @@ export const CodeBlock = ({ node, editor, getPos }) => {
       <pre>
         <menu className="label">
           <li>
-            <select onChange={handleSelectLanguage}>
+            <select
+              onChange={handleSelectLanguage}
+              key={attrs.language}
+              defaultValue={attrs.language}
+            >
               <option value="js">js</option>
               <option value="ts">ts</option>
               <option value="css">css</option>
