@@ -65,12 +65,12 @@ export class CommandsView extends Component {
     const { items } = this.props;
 
     return (
-      <ul className="insert-menu shadow-lg rounded-lg bg-white w-64 max-h-64 overflow-y-scroll">
+      <ul className="insert-menu shadow-lg rounded-lg bg-white w-64 p-2 max-h-64 overflow-y-scroll">
         {items.map((item, index) => (
           <li key={index}>
             <button
               type="button"
-              className={`w-full p-2 flex flex-row gap-2 items-center hover:bg-accent ${index === this.state.selectedIndex ? 'active' : ''}`}
+              className={`w-full p-2 flex flex-row gap-2 items-center rounded-lg hover:bg-accent ${index === this.state.selectedIndex ? 'active' : ''}`}
               {...item.attrs}
               onClick={() => this.selectItem(index)}
             >
