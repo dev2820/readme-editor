@@ -12,6 +12,7 @@ export const DownloadPannel = () => {
   const editor = useEditor();
   const metadata = useMetadata();
   const titleAsFilename = useToggle(false);
+  const includeFrontmatter = useToggle(false);
 
   async function handleDownloadMarkdown() {
     const content = await editor.toMarkdown();
@@ -45,7 +46,7 @@ export const DownloadPannel = () => {
 
   const handleCopyMarkdown = async () => {
     const content = await editor.toMarkdown();
-    const meta = metadata.toMarkdown();
+    const meta = includeFrontmatter.isOn ? metadata.toMarkdown() : '';
 
     navigator.clipboard.writeText(`${meta}\n${content}`);
   };
@@ -64,6 +65,14 @@ export const DownloadPannel = () => {
             className="mr-1"
           />
           use title as a filename
+        </label>
+        <label>
+          <Checkbox
+            value={includeFrontmatter.isOn}
+            onClick={includeFrontmatter.toggle}
+            className="mr-1"
+          />
+          include frontmatter
         </label>
       </div>
     </>
