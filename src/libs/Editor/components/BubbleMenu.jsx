@@ -9,6 +9,18 @@ import { SelectionMenu } from './SelectionMenu';
 export function BubbleMenu({ editor, containerRef }) {
   if (!editor || !containerRef.current) return null;
 
+  const handleShow = ({ editor }) => {
+    if (editor.state.selection.empty) {
+      return false;
+    }
+
+    if (editor.isActive('codeBlock')) {
+      return false;
+    }
+
+    return true;
+  };
+
   return (
     <_BubbleMenu
       editor={editor}
@@ -16,6 +28,7 @@ export function BubbleMenu({ editor, containerRef }) {
         duration: 100,
         appendTo: containerRef.current,
       }}
+      shouldShow={handleShow}
       className="border-1 border-grey-200 bg-white shadow-lg rounded-lg"
     >
       <SelectionMenu editor={editor}></SelectionMenu>
