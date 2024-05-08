@@ -16,7 +16,7 @@ https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-wr
 
 ### Advanced
 
-- [ ] 링크용 컴포넌트 분리 및 동작 개선
+- [ ] 링크용 컴포넌트 분리 및 동작 개선 (Next)
 
 #### optional 기능
 
