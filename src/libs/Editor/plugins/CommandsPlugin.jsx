@@ -201,7 +201,7 @@ export const Commands = Extension.create({
               },
             },
             {
-              title: 'Todo List',
+              title: 'Task List',
               icon: (
                 <Icon.ListTodo size="36" className="bg-white rounded-lg p-2" />
               ),
