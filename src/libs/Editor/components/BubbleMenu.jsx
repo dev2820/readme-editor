@@ -29,7 +29,7 @@ export function BubbleMenu({ editor, containerRef }) {
         appendTo: containerRef.current,
       }}
       shouldShow={handleShow}
-      className="border-1 border-grey-200 bg-white shadow-lg rounded-lg"
+      className="z-50 border-1 border-grey-200 bg-white shadow-md rounded-md"
     >
       <SelectionMenu editor={editor}></SelectionMenu>
     </_BubbleMenu>

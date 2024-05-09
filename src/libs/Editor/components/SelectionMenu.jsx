@@ -1,24 +1,47 @@
+import { useRef, useState } from 'react';
+
 import { Button } from '@/components/ui/Button';
 import * as Icon from '@/components/ui/Icon';
+import { Input } from '@/components/ui/Input';
+import { Label } from '@/components/ui/Label';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/Popover';
 import { Toggle } from '@/components/ui/Toggle';
 
 export function SelectionMenu({ editor }) {
-  const handleClickLink = () => {
-    if (editor.isActive('link')) {
-      editor.chain().focus().toggleLink().run();
-    } else {
-      const url = window.prompt('url');
-      if (url) {
-        editor
-          .chain()
-          .focus()
-          .toggleLink({
-            href: url,
-            target: '_blank',
-          })
-          .run();
-      }
+  const inputLinkRef = useRef(null);
+  const [href, setHref] = useState('');
+  const handleLinkPopoverOpenChange = (isOpen) => {
+    if (isOpen) {
+      setHref(getHref(editor));
     }
+  };
+  const handleChangeLinkInput = (e) => {
+    const newHref = e.target.value;
+    setHref(newHref);
+  };
+
+  const handleKeyDownLinkInput = (e) => {
+    if (e.key === 'Enter') {
+      editor.chain().focus().toggleLink({ href, target: '_blank' }).run();
+    }
+  };
+
+  const getHref = (editor) => {
+    if (!editor.isActive('link')) {
+      return '';
+    }
+    const node = editor.state.selection.$from.nodeAfter;
+    const linkMark = node.marks.find((mark) => mark.type.name === 'link');
+    const href = linkMark.attrs.href;
+    return href;
+  };
+
+  const handleRemoveLink = () => {
+    editor.chain().focus().toggleLink().run();
   };
 
   if (editor.isActive('horizontalRule')) {
@@ -80,13 +103,38 @@ export function SelectionMenu({ editor }) {
       >
         <Icon.Strikethrough size="16" />
       </Toggle>
-      <Toggle
-        size="sm"
-        pressed={editor.isActive('link')}
-        onClick={handleClickLink}
-      >
-        <Icon.Link size="16" />
-      </Toggle>
+      <Popover onOpenChange={handleLinkPopoverOpenChange}>
+        <PopoverTrigger asChild>
+          <span>
+            <Toggle size="sm" pressed={editor.isActive('link')}>
+              <Icon.Link size="16" />
+            </Toggle>
+          </span>
+        </PopoverTrigger>
+        <PopoverContent className="flex flex-col">
+          <Label htmlFor="url-link-input" className="mb-2">
+            URL
+          </Label>
+          <Input
+            id="url-link-input"
+            ref={inputLinkRef}
+            className="mb-2"
+            value={href}
+            onChange={handleChangeLinkInput}
+            onKeyDown={handleKeyDownLinkInput}
+          ></Input>
+          {editor.isActive('link') ? (
+            <>
+              <Button size="sm" onClick={handleRemoveLink}>
+                <Icon.Trash size="16" className="mr-1" />
+                Remove Link
+              </Button>
+            </>
+          ) : (
+            <></>
+          )}
+        </PopoverContent>
+      </Popover>
       <Toggle
         size="sm"
         pressed={editor.isActive('code')}
