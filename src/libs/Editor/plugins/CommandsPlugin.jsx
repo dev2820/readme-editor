@@ -21,6 +21,7 @@ export const Commands = Extension.create({
           return [
             {
               title: 'Heading1',
+              group: 'Title',
               icon: (
                 <Icon.Heading1 size="36" className="bg-white rounded-lg p-2" />
               ),
@@ -41,6 +42,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'Heading2',
+              group: 'Title',
               icon: (
                 <Icon.Heading2 size="36" className="bg-white rounded-lg p-2" />
               ),
@@ -61,6 +63,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'Heading3',
+              group: 'Title',
               icon: (
                 <Icon.Heading3 size="36" className="bg-white rounded-lg p-2" />
               ),
@@ -81,6 +84,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'Heading4',
+              group: 'Title',
               icon: (
                 <Icon.Heading4 size="36" className="bg-white rounded-lg p-2" />
               ),
@@ -101,6 +105,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'Heading5',
+              group: 'Title',
               icon: (
                 <Icon.Heading5 size="36" className="bg-white rounded-lg p-2" />
               ),
@@ -121,6 +126,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'Heading6',
+              group: 'Title',
               icon: (
                 <Icon.Heading6 size="36" className="bg-white rounded-lg p-2" />
               ),
@@ -140,27 +146,8 @@ export const Commands = Extension.create({
               },
             },
             {
-              title: 'Quote',
-              icon: (
-                <Icon.TextQuote size="36" className="bg-white rounded-lg p-2" />
-              ),
-              attrs: {
-                'data-test-id': 'insert-quote',
-              },
-              command: ({ editor }) => {
-                const selection = editor.view.state.selection;
-                const from = selection.$from.posAtIndex(0);
-                const to = selection.$from.posAtIndex(1);
-                editor
-                  .chain()
-                  .focus()
-                  .deleteRange({ from, to })
-                  .setBlockquote()
-                  .run();
-              },
-            },
-            {
               title: 'Bullet List',
+              group: 'List',
               icon: <Icon.List size="36" className="bg-white rounded-lg p-2" />,
               attrs: {
                 'data-test-id': 'insert-bullet-list',
@@ -179,6 +166,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'Numbered List',
+              group: 'List',
               icon: (
                 <Icon.ListOrdered
                   size="36"
@@ -202,6 +190,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'Task List',
+              group: 'List',
               icon: (
                 <Icon.ListTodo size="36" className="bg-white rounded-lg p-2" />
               ),
@@ -221,7 +210,29 @@ export const Commands = Extension.create({
               },
             },
             {
+              title: 'Quote',
+              group: 'Block',
+              icon: (
+                <Icon.TextQuote size="36" className="bg-white rounded-lg p-2" />
+              ),
+              attrs: {
+                'data-test-id': 'insert-quote',
+              },
+              command: ({ editor }) => {
+                const selection = editor.view.state.selection;
+                const from = selection.$from.posAtIndex(0);
+                const to = selection.$from.posAtIndex(1);
+                editor
+                  .chain()
+                  .focus()
+                  .deleteRange({ from, to })
+                  .setBlockquote()
+                  .run();
+              },
+            },
+            {
               title: 'Code Block',
+              group: 'Block',
               icon: <Icon.Code size="36" className="bg-white rounded-lg p-2" />,
               attrs: {
                 'data-test-id': 'insert-code',
@@ -240,6 +251,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'Note Alert',
+              group: 'Block',
               icon: <Icon.Info size="36" className="bg-white rounded-lg p-2" />,
               attrs: {
                 'data-test-id': 'insert-alert',
@@ -258,6 +270,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'Tip Alert',
+              group: 'Block',
               icon: (
                 <Icon.Lightbulb size="36" className="bg-white rounded-lg p-2" />
               ),
@@ -278,6 +291,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'Important Alert',
+              group: 'Block',
               icon: (
                 <Icon.MessageSquareWarning
                   size="36"
@@ -301,6 +315,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'Warning Alert',
+              group: 'Block',
               icon: (
                 <Icon.TriangleAlert
                   size="36"
@@ -324,6 +339,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'Caution Alert',
+              group: 'Block',
               icon: (
                 <Icon.OctagonAlert
                   size="36"
@@ -347,6 +363,7 @@ export const Commands = Extension.create({
             },
             {
               title: 'External Image',
+              group: 'Media',
               icon: (
                 <Icon.Image size="36" className="bg-white rounded-lg p-2" />
               ),
