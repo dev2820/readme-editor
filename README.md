@@ -10,11 +10,12 @@
 
 ## TODO
 
-### 블럭 & 인라인
-
-https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#headings
-
 ### Advanced
+
+- [ ] details 편리하게 개선하기 (Next)
+  - [ ] summary에서 enter시 content로 넘어가기
+  - [ ] toggle icon 변경
+  - [ ] summary 하위 간격 추가
 
 #### optional 기능
 
@@ -37,9 +38,8 @@ https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-wr
 
 #### 블럭 기능
 
-- [ ] details 편리하게 개선하기
 - [ ] table 블럭
-- [ ] 이미지 블럭
+- [ ] 이미지 블럭 (Next)
   - [ ] 이미지 align 기능 만들기
   - [ ] 이미지 블럭 꾸미기
   - [ ] 이미지 크기 조절 기능
@@ -56,9 +56,11 @@ https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-wr
 - [ ] 이모지 기능 지원
 - [ ] 이미지 압축 & 리사이즈 기능 (https://github.com/alefduarte/image-resize-compress)
 
-### TipTap
+## Reference
 
 https://tiptap.dev/docs/editor/api/nodes
 https://github.com/ueberdosis/tiptap/blob/main/packages/extension-blockquote/src/blockquote.ts
 
 https://tiptap.dev/docs/editor/guide/custom-extensions
+
+https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#headings
