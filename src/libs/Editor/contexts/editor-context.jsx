@@ -91,131 +91,6 @@ const extensions = [
   }),
 ];
 
-const content = `
-
-<h1>Markdown 문법 예제</h1>
-<p></p>
-
-<details>
-<summary>summary</summary>details
-</details>
-<details>
-<summary>summary</summary>
-<details>
-  <summary>nested summary</summary>nested details
-</details>
-</details>
-<h2>제목 (Headers)</h2>
-<hr/>
-<h1>H1</h1>
-<h2>H2</h2>
-<h3>H3</h3>
-<h4>H4</h4>
-<h5>H5</h5>
-<h6>H6</h6>
-
-<h2>볼드 및 이탤릭 (Bold &amp; Italic)</h2>
-<hr/>
-
-<p><strong>볼드 텍스트</strong></p>
-<p><em>이탤릭 텍스트</em></p>
-<p><code>코드 텍스트</code></p>
-<p><u>밑줄 텍스트</u></p>
-<p><del>취소선 텍스트</del></p>
-
-<h2>목록 (Lists)</h2>
-<hr/>
-<h3>순서 없는 목록 (Unordered Lists)</h3>
-
-<ul>
-<li>항목 1</li>
-<li>항목 2
-<ul>
-<li>하위 항목 1</li>
-<li>하위 항목 2</li>
-</ul>
-</li>
-</ul>
-
-<h3>순서 있는 목록 (Ordered Lists)</h3>
-
-<ol>
-<li>항목 1</li>
-<li>항목 2</li>
-<li>항목 3</li>
-<ol>
-<li>하위 항목 1</li>
-<li>하위 항목 2</li>
-
-</ol>
-</ol>
-
-<h2>링크 및 이미지 (Links &amp; Images)</h2>
-<hr/>
-<p><a href="링크 주소">링크 텍스트</a></p>
-
-<p><img src="이미지 주소" alt="대체 텍스트"></p>
-
-<h2>블록 인용문 (Blockquotes)</h2>
-<hr/>
-<blockquote>
-Hello World
-</blockquote>
-
-
-<h2>코드 블럭 (Pre Code)</h2>
-<hr/>
-<pre>
-<code class="language-js">
-const a = 3;
-console.log(a)
-</code>
-</pre>
-
-<h2>할 일 리스트 (taskList)</h2>
-<hr/>
-<ul data-type="taskList">
-  <li data-type="taskItem" data-checked="true">
-    <label contenteditable="false">
-      <input type="checkbox" checked="true">
-      <span></span>
-    </label>
-    <div>
-      <p data-type="paragraph">todo 1</p>
-    </div>
-  </li>
-  <li data-type="taskItem" data-checked="false">
-    <label contenteditable="false">
-      <input type="checkbox">
-      <span></span>
-    </label>
-    <div>
-      <p data-type="paragraph">todo2</p>
-      <ul data-type="taskList">
-        <li data-type="taskItem" data-checked="false">
-          <label contenteditable="false">
-            <input type="checkbox">
-            <span></span>
-          </label>
-          <div>
-            <p data-type="paragraph">nested todo1</p>
-          </div>
-        </li>
-        <li data-type="taskItem" data-checked="false">
-          <label contenteditable="false">
-            <input type="checkbox">
-            <span></span>
-          </label>
-          <div>
-            <p data-type="paragraph">nested todo2</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </li>
-</ul>
-`;
-
 /**
  * @type {string} code
  */
@@ -228,7 +103,13 @@ export const EditorContext = createContext(defaultValue);
 export const EditorProvider = ({ children }) => {
   const editor = useEditor({
     extensions,
-    content,
+    content:
+      '<h1>Hello World</h1>' +
+      '<p>write anything</p>' +
+      Array.from({ length: 10 })
+        .fill(0)
+        .map(() => '<p></p>')
+        .join(''),
   });
 
   const toMarkdown = async () => {

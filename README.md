@@ -30,8 +30,6 @@ https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-wr
 
 #### 디자인
 
-- [ ] SlashMenu 디자인 손보기 (Next)
-  - [ ] seperator 추가
 - [ ] ui 개선
 - [ ] Frontmatter를 선택적으로 추가할 수 있게 수정
   - [ ] plus버튼으로 frontmatter를 추가할 수 있음
