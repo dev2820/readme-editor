@@ -54,13 +54,18 @@ export const DetailsSummary = Node.create({
          */
         const cursor = editor.state.selection.$cursor;
 
-        if (cursor.parent.type.name === this.name) {
-          const nodePos = new NodePos(cursor, editor);
+        if (cursor.parent.type.name !== this.name) return false;
 
+        const nodePos = new NodePos(cursor, editor);
+        const detail = nodePos.parent.node;
+        if (detail.attrs.open) {
           editor.commands.focus(nodePos.after.resolvedPos.pos);
-          return true;
+        } else {
+          editor.commands.insertContentAt(nodePos.parent.to, {
+            type: 'paragraph',
+          });
         }
-        return false;
+        return true;
       },
     };
   },
