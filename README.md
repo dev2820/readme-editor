@@ -13,7 +13,7 @@
 ### Advanced
 
 - [ ] details 편리하게 개선하기 (Next)
-  - [ ] summary에서 enter시 content로 넘어가기
+  - [ ] summary에서 enter시 split하기
   - [ ] toggle icon 변경
   - [ ] summary 하위 간격 추가
 
