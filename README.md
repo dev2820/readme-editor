@@ -14,7 +14,6 @@
 
 - [ ] details 편리하게 개선하기 (Next)
   - [ ] summary에서 enter시 split하기
-  - [ ] summary 하위 간격 추가
 
 #### optional 기능
 
