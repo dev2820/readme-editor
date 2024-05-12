@@ -233,6 +233,7 @@
 }
 .tiptap [data-type='details'] summary {
   list-style: none;
+  margin-bottom: 0.25rem;
 }
 .tiptap [data-type='details'] summary::-webkit-details-marker {
   display: none;
