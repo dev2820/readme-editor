@@ -125,7 +125,7 @@ export const Details = Node.create({
         }
       });
 
-      $toggle.textContent = '▼';
+      $toggle.innerHTML = triangleDown;
       $toggle.contentEditable = false;
       $wrapper.append($toggle, $content);
 
@@ -145,11 +145,11 @@ export const Details = Node.create({
           );
           if (updatedNode.attrs.open) {
             $wrapper.setAttribute('data-open', 'true');
-            $toggle.textContent = '▼';
+            $toggle.innerHTML = triangleDown;
             content.contentEditable = true;
           } else {
             $wrapper.removeAttribute('data-open');
-            $toggle.textContent = '▶';
+            $toggle.innerHTML = triangleRight;
             content.contentEditable = false;
           }
 
@@ -174,3 +174,14 @@ export const Details = Node.create({
     ];
   },
 });
+
+const triangleDown = `<span style="pointer-events:none;">
+<svg width="14" height="24" viewBox="0 -1 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 11L0.937822 0.5L13.0622 0.5L7 11Z" fill="black"/>
+</svg>
+</span>
+`;
+const triangleRight = `<span style="pointer-events:none;"><svg width="11" height="24" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.499998 0.937851L11 7.00003L0.499998 13.0622L0.499998 0.937851Z" fill="black"/>
+</svg></span>
+`;
