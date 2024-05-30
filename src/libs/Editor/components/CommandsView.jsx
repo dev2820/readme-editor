@@ -53,9 +53,7 @@ export class CommandsView extends Component {
     this.selectItem(this.state.selectedIndex);
   }
 
-  selectItem(index) {
-    const item = this.props.items[index || 0];
-
+  selectItem(item) {
     if (item) {
       this.props.command(item);
     }
@@ -71,26 +69,27 @@ export class CommandsView extends Component {
       return group;
     }, new Map());
     const groups = [...groupMap.entries()];
+
     return (
       <ul className="insert-menu shadow-lg rounded-lg bg-white w-64 p-2 max-h-64 overflow-y-scroll">
         {groups.map(([groupName, items]) => (
-          <>
+          <div key={groupName}>
             <hr className="my-2" />
             <p className="ml-4 my-1 text-grey-400 font-bold">{groupName}</p>
             {items.map((item, index) => (
-              <li key={index}>
+              <li key={item.title}>
                 <button
                   type="button"
                   className={`w-full p-2 flex flex-row gap-2 items-center rounded-lg hover:bg-accent ${index === this.state.selectedIndex ? 'active' : ''}`}
                   {...item.attrs}
-                  onClick={() => this.selectItem(index)}
+                  onClick={() => this.selectItem(item)}
                 >
                   {item.icon}
                   <span>{item.element || item.title}</span>
                 </button>
               </li>
             ))}
-          </>
+          </div>
         ))}
       </ul>
     );

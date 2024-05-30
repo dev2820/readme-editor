@@ -58,9 +58,7 @@ function listItem(turndownService) {
         const leftPad = new Array(getParentListTotal(node, 'taskItem'))
           .fill('\t')
           .join('');
-        console.log(
-          `${leftPad}- [${isChecked ? 'x' : ' '}] ${content.trim()}\n`,
-        );
+
         return `${leftPad}- [${isChecked ? 'x' : ' '}] ${content.trim()}\n`;
       }
 
@@ -127,7 +125,6 @@ function list(turndownService) {
   turndownService.addRule('list', {
     filter: ['ol', 'ul'],
     replacement: function (content) {
-      console.log(content);
       return content.replace(/^\n+/, '');
     },
   });
